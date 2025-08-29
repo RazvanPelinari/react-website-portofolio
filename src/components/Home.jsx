@@ -60,87 +60,95 @@ const Home = () => {
             commitment to creating clean, efficient, and modern code.
           </p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          {/* All Icons have consistent styling now */}
 
-          {/* GitHub Icon */}
-          <a
-            href="https://github.com/xwaspy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-10 w-10 cursor-pointer rounded-full p-2 
-    border-2 border-transparent bg-purple-500 text-white
-    transition-all duration-200 hover:scale-110
-    hover:border-purple-600 hover:bg-white
-    hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
-          >
-            <BiLogoGithub className="h-6 w-6 md:h-8 md:w-8" />
-          </a>
+        {/* This container now holds two separate rows for icons */}
+        <div className="flex flex-col items-center gap-3">
+          {/* Top row for social icons */}
+          <div className="flex items-center gap-3">
+            {/* All Icons have consistent styling now */}
 
-          {/* LinkedIn Icon */}
-          <a
-            href="https://www.linkedin.com/in/razvan-pelinari-454445381/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-10 w-10 cursor-pointer rounded-full p-2
-  border-2 border-transparent bg-purple-500 text-white
-  transition-all duration-200 hover:scale-110
-  hover:border-purple-600 hover:bg-white
-  hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
-          >
-            <BiLogoLinkedin className="h-6 w-6 md:h-8 md:w-8" />
-          </a>
-
-          {/* Instagram Icon */}
-          <a
-            href="https://www.instagram.com/razvan.peli"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-10 w-10 cursor-pointer rounded-full p-2
-  border-2 border-transparent bg-purple-500 text-white
-  transition-all duration-200 hover:scale-110
-  hover:border-purple-600 hover:bg-white
-  hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
-          >
-            <BiLogoInstagram className="h-6 w-6 md:h-8 md:w-8" />
-          </a>
-
-          {/* Phone Icon and Number */}
-          <div className="relative group">
-            <div
-              onClick={() => handleCopy("+40729244375", setPhoneCopied)}
-              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+            {/* GitHub Icon */}
+            <a
+              href="https://github.com/xwaspy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-10 w-10 cursor-pointer rounded-full p-2 
+              border-2 border-transparent bg-purple-500 text-white
+              transition-all duration-200 hover:scale-110
+              hover:border-purple-600 hover:bg-white
+              hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
             >
-              <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
-              <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
-                +40729244375
-              </span>
-            </div>
-            {phoneCopied && (
-              <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
-                Copied!
-              </span>
-            )}
+              <BiLogoGithub className="h-full w-full" />
+            </a>
+
+            {/* LinkedIn Icon */}
+            <a
+              href="https://www.linkedin.com/in/razvan-pelinari-454445381/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-10 w-10 cursor-pointer rounded-full p-2
+            border-2 border-transparent bg-purple-500 text-white
+            transition-all duration-200 hover:scale-110
+            hover:border-purple-600 hover:bg-white
+            hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            >
+              <BiLogoLinkedin className="h-full w-full" />
+            </a>
+
+            {/* Instagram Icon */}
+            <a
+              href="https://www.instagram.com/razvan.peli"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-10 w-10 cursor-pointer rounded-full p-2
+            border-2 border-transparent bg-purple-500 text-white
+            transition-all duration-200 hover:scale-110
+            hover:border-purple-600 hover:bg-white
+            hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            >
+              <BiLogoInstagram className="h-full w-full" />
+            </a>
           </div>
 
-          {/* Email Icon and Address */}
-          <div className="relative group">
-            <div
-              onClick={() =>
-                handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
-              }
-              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
-            >
-              <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
-              <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
-                razvan.pelinari@gmail.com
-              </span>
+          {/* Bottom row for contact info */}
+          <div className="flex items-center flex-wrap justify-center gap-3">
+            {/* Phone Icon and Number */}
+            <div className="relative group flex items-center">
+              <div
+                onClick={() => handleCopy("+40729244375", setPhoneCopied)}
+                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+              >
+                <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
+                <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
+                  +40729244375
+                </span>
+              </div>
+              {phoneCopied && (
+                <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
+                  Copied!
+                </span>
+              )}
             </div>
-            {emailCopied && (
-              <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
-                Copied!
-              </span>
-            )}
+
+            {/* Email Icon and Address */}
+            <div className="relative group flex items-center">
+              <div
+                onClick={() =>
+                  handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
+                }
+                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+              >
+                <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
+                <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
+                  razvan.pelinari@gmail.com
+                </span>
+              </div>
+              {emailCopied && (
+                <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
+                  Copied!
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
