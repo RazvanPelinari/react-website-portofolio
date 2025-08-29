@@ -74,6 +74,15 @@ const Contact = () => {
             className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none 
             transition-all duration-200 hover:bg-purple-100 focus:ring-purple-500"
           />
+
+          <input
+            type="Phone"
+            placeholder="Your Phone Number"
+            required
+            name="user_phone"
+            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none 
+            transition-all duration-200 hover:bg-purple-100 focus:ring-purple-500"
+          />
         </div>
 
         <textarea
