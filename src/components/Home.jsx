@@ -120,7 +120,7 @@ const Home = () => {
                 className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
                 <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
-                <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
+                <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
                   +40729244375
                 </span>
               </div>
@@ -135,10 +135,10 @@ const Home = () => {
                     "Email address copied!"
                   )
                 }
-                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
                 <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
-                <span className="max-w-xs overflow-hidden transition-all duration-500 pl-2 md:max-w-0 md:group-hover:max-w-xs">
+                <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
                   razvan.pelinari@gmail.com
                 </span>
               </div>
