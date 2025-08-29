@@ -34,10 +34,16 @@ const Home = () => {
         <img src={Artwork} alt="Logo" className="w-[250px] sm:w-[300px]" />
 
         <div className="space-y-1 sm:space-y-3">
-          <h1 className="bg-gradient-to-r from-purple-600 to-fuchsia-700 bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl drop-shadow-sm">
+          <h1
+            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl drop-shadow-sm"
+          >
             Răzvan Pelinari
           </h1>
-          <h3 className="bg-gradient-to-r from-purple-600 to-fuchsia-800  bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl">
+          <h3
+            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm  bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl"
+          >
             {" "}
             <p classname="justify-center">Web Developer</p>
             {"JavaScript | React.js | Tailwind CSS"}

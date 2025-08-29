@@ -4,6 +4,7 @@ import {
   BiCode,
   BiBriefcase,
   BiMailSend,
+  BiInfoCircle,
 } from "react-icons/bi";
 
 const HeaderLeft = () => {
@@ -11,7 +12,8 @@ const HeaderLeft = () => {
     <div className="md:flex-[0.8]">
       <div
         className="min-h-screen top-0 hidden md:sticky md:flex items-center justify-center
-bg-purple-500 text-white backdrop-filter backdrop-blur-sm bg-opacity-70 border border-purple-400"
+  text-white border border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
       >
         <ul className="flex flex-col gap-10">
           {["Home", "More Info", "Experience", "Projects", "Contact"].map(
@@ -41,7 +43,8 @@ bg-purple-500 text-white backdrop-filter backdrop-blur-sm bg-opacity-70 border b
 
       <div
         className="fixed left-0 right-0 top-0 z-10 flex 
-      justify-evenly bg-purple-500 text-white md:hidden"
+      justify-evenly border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm text-white md:hidden"
       >
         <a
           href="#Home"
@@ -50,6 +53,15 @@ bg-purple-500 text-white backdrop-filter backdrop-blur-sm bg-opacity-70 border b
         >
           <BiHome className="text=2xl" />
           <span className="text-xs">Home</span>
+        </a>
+
+        <a
+          href="#More Info"
+          className="flex flex-col 
+  items-center justify-center"
+        >
+          <BiInfoCircle className="text-1xl" />
+          <span className="text-xs">More Info</span>
         </a>
 
         <a
