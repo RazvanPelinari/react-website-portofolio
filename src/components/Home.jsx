@@ -76,7 +76,7 @@ const Home = () => {
               border-2 border-transparent bg-purple-500 text-white
               transition-all duration-200 hover:scale-110
               hover:border-purple-600 hover:bg-white
-              hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+              hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoGithub className="h-full w-full" />
             </a>
@@ -90,7 +90,7 @@ const Home = () => {
             border-2 border-transparent bg-purple-500 text-white
             transition-all duration-200 hover:scale-110
             hover:border-purple-600 hover:bg-white
-            hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoLinkedin className="h-full w-full" />
             </a>
@@ -104,7 +104,7 @@ const Home = () => {
             border-2 border-transparent bg-purple-500 text-white
             transition-all duration-200 hover:scale-110
             hover:border-purple-600 hover:bg-white
-            hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoInstagram className="h-full w-full" />
             </a>
