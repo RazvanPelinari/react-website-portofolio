@@ -7,4 +7,8 @@ export default defineConfig({
   plugins: [tailwindcss(), react()],
   // This tells Vite the base URL for your project on GitHub Pages
   base: "/",
+
+  server: {
+    allowedHosts: ["devserver-preview--waspyportofolio.netlify.app"],
+  },
 });
