@@ -103,18 +103,15 @@ const Home = () => {
             <BiLogoInstagram className="h-full w-full p-2" />
           </a>
 
-          {/* Phone Icon with Copy functionality */}
+          {/* Phone Icon and Number */}
           <div className="relative">
-            <button
-              onClick={() => handleCopy("+40729244375", setPhoneCopied)}
-              className="h-10 w-10 cursor-pointer rounded-full 
-    border-2 border-transparent bg-purple-500 text-white
-    transition-all duration-200 hover:scale-110
-    hover:border-purple-600 hover:bg-white
-    hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            <div
+              onClick={() => handleCopy("+40742511417", setPhoneCopied)}
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 hover:translate-y-3 md:p-3"
             >
-              <BiPhone className="h-full w-full p-2" />
-            </button>
+              <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
+              <span className="text-sm md:text-base">+40742511417</span>
+            </div>
             {phoneCopied && (
               <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
                 Copied!
@@ -122,20 +119,19 @@ const Home = () => {
             )}
           </div>
 
-          {/* Email Icon with Copy functionality */}
+          {/* Email Icon and Address */}
           <div className="relative">
-            <button
+            <div
               onClick={() =>
                 handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
               }
-              className="h-10 w-10 cursor-pointer rounded-full 
-    border-2 border-transparent bg-purple-500 text-white
-    transition-all duration-200 hover:scale-110
-    hover:border-purple-600 hover:bg-white
-    hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 hover:translate-y-3 md:p-3"
             >
-              <BiEnvelope className="h-full w-full p-2" />
-            </button>
+              <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
+              <span className="text-sm md:text-base">
+                razvan.pelinari@gmail.com
+              </span>
+            </div>
             {emailCopied && (
               <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
                 Copied!
