@@ -34,22 +34,13 @@ const Home = () => {
         <img src={Artwork} alt="Logo" className="w-[250px] sm:w-[300px]" />
 
         <div className="space-y-1 sm:space-y-3">
-          <h1
-            className="bg-gradient-to-r from-purple-800
-          to-purple-400 bg-clip-text
-        text-4xl font-semibold text-transparent
-        md:text-5xl lg:text-6xl drop-s"
-          >
+          <h1 className="bg-gradient-to-r from-purple-600 to-fuchsia-700 bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl drop-shadow-sm">
             Răzvan Pelinari
           </h1>
-          <h3
-            className="bg-gradient-to-r from-purple-800
-          to-purple-400 bg-clip-text
-        text-xl font-semibold text-transparent
-        md:text-2xl lg:text-3xl"
-          >
+          <h3 className="bg-gradient-to-r from-purple-600 to-fuchsia-800  bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl">
             {" "}
-            Web Developer{" "}
+            <p classname="justify-center">Web Developer</p>
+            {"JavaScript | React.js | Tailwind CSS"}
           </h3>
           <p className="max-w-[500px] text-sm text-gray-600">
             A passionate and detail-oriented junior web developer dedicated to
@@ -119,7 +110,7 @@ const Home = () => {
                 }
                 className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
-                <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
+                <BiPhone className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
                 <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
                   +40729244375
                 </span>
@@ -137,7 +128,7 @@ const Home = () => {
                 }
                 className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
-                <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
+                <BiEnvelope className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
                 <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
                   razvan.pelinari@gmail.com
                 </span>

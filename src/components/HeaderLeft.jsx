@@ -14,26 +14,28 @@ const HeaderLeft = () => {
 bg-purple-500 text-white backdrop-filter backdrop-blur-sm bg-opacity-70 border border-purple-400"
       >
         <ul className="flex flex-col gap-10">
-          {["Home", "Experience", "Projects", "Contact"].map((item) => (
-            <li
-              key={item}
-              className="flex 
+          {["Home", "More Info", "Experience", "Projects", "Contact"].map(
+            (item) => (
+              <li
+                key={item}
+                className="flex 
           items-center justify-start cursor-pointer font-medium 
           transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
-            >
-              <BiRightArrowAlt
-                className="text-4xl 
+              >
+                <BiRightArrowAlt
+                  className="text-4xl 
             -translate-x-5 opacity-0 transform transition-all duration-200 
             group-hover:opacity-100 group-hover:translate-0"
-              />
-              <a
-                href={`#${item}`}
-                className="transition-all duration-200 hover:translate-x-2"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
+                />
+                <a
+                  href={`#${item}`}
+                  className="transition-all duration-200 hover:translate-x-2"
+                >
+                  {item}
+                </a>
+              </li>
+            )
+          )}
         </ul>
       </div>
 
