@@ -8,7 +8,7 @@ import {
 
 const HeaderLeft = () => {
   return (
-    <div className="md:flex-[1]">
+    <div className="md:flex-[0.8]">
       <div
         className="min-h-screen top-0 hidden md:sticky md:flex items-center justify-center
 bg-purple-500 text-white backdrop-filter backdrop-blur-sm bg-opacity-70 border border-purple-400"
