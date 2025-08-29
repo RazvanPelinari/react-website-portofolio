@@ -5,11 +5,15 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
-  // This tells Vite the base URL for your project on GitHub Pages
+  // This tells Vite the base URL for your project on Netlify
   base: "/",
 
-  server.allowedHosts: [
-    "waspyportofolio.netlify.app",
-    "www.waspyportofolio.netlify.app",
-    "devserver-preview--waspyportofolio.netlify.app"]
+  // This is the correct syntax for the server configuration
+  server: {
+    allowedHosts: [
+      "waspyportofolio.netlify.app",
+      "www.waspyportofolio.netlify.app",
+      "devserver-preview--waspyportofolio.netlify.app",
+    ],
+  },
 });
