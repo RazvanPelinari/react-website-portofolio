@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Artwork from "../assets/artwork.png";
 import {
-  BiLogoGit,
   BiLogoGithub,
   BiLogoInstagram,
   BiLogoLinkedin,
+  BiPhone,
+  BiEnvelope,
 } from "react-icons/bi";
 
 const Home = () => {
+  const [phoneCopied, setPhoneCopied] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopy = (text, setter) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setter(true);
+        setTimeout(() => {
+          setter(false);
+        }, 1500); // Reset the message after 1.5 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  };
+
   return (
     <div
       id="Home"
@@ -19,7 +37,7 @@ const Home = () => {
         <div className="space-y-1 sm:space-y-3">
           <h1
             className="bg-gradient-to-r from-purple-800
-         to-purple-400 bg-clip-text 
+          to-purple-400 bg-clip-text 
         text-4xl font-semibold text-transparent
         md:text-5xl lg:text-6xl drop-s"
           >
@@ -27,7 +45,7 @@ const Home = () => {
           </h1>
           <h3
             className="bg-gradient-to-r from-purple-800
-         to-purple-400 bg-clip-text 
+          to-purple-400 bg-clip-text 
         text-xl font-semibold text-transparent
         md:text-2xl lg:text-3xl"
           >
@@ -42,7 +60,8 @@ const Home = () => {
             commitment to creating clean, efficient, and modern code.
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {/* GitHub Icon */}
           <a
             href="https://github.com/xwaspy"
             target="_blank"
@@ -56,6 +75,7 @@ const Home = () => {
             <BiLogoGithub className="h-full w-full p-2" />
           </a>
 
+          {/* LinkedIn Icon */}
           <a
             href="https://www.linkedin.com/in/razvan-pelinari-454445381/"
             target="_blank"
@@ -69,6 +89,7 @@ const Home = () => {
             <BiLogoLinkedin className="h-full w-full p-2" />
           </a>
 
+          {/* Instagram Icon */}
           <a
             href="https://www.instagram.com/razvan.peli"
             target="_blank"
@@ -81,6 +102,46 @@ const Home = () => {
           >
             <BiLogoInstagram className="h-full w-full p-2" />
           </a>
+
+          {/* Phone Icon with Copy functionality */}
+          <div className="relative">
+            <button
+              onClick={() => handleCopy("+40729244375", setPhoneCopied)}
+              className="h-10 w-10 cursor-pointer rounded-full 
+    border-2 border-transparent bg-purple-500 text-white
+    transition-all duration-200 hover:scale-110
+    hover:border-purple-600 hover:bg-white
+    hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            >
+              <BiPhone className="h-full w-full p-2" />
+            </button>
+            {phoneCopied && (
+              <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
+                Copied!
+              </span>
+            )}
+          </div>
+
+          {/* Email Icon with Copy functionality */}
+          <div className="relative">
+            <button
+              onClick={() =>
+                handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
+              }
+              className="h-10 w-10 cursor-pointer rounded-full 
+    border-2 border-transparent bg-purple-500 text-white
+    transition-all duration-200 hover:scale-110
+    hover:border-purple-600 hover:bg-white
+    hover:text-purple-600 hover:translate-y-3 md:h-12 md:w-12"
+            >
+              <BiEnvelope className="h-full w-full p-2" />
+            </button>
+            {emailCopied && (
+              <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
+                Copied!
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </div>
