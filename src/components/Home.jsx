@@ -9,17 +9,16 @@ import {
 } from "react-icons/bi";
 
 const Home = () => {
-  const [phoneCopied, setPhoneCopied] = useState(false);
-  const [emailCopied, setEmailCopied] = useState(false);
+  const [copiedMessage, setCopiedMessage] = useState(""); // State to store the message to display
 
-  const handleCopy = (text, setter) => {
+  const handleCopy = (text, message) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setter(true);
+        setCopiedMessage(message); // Set the message
         setTimeout(() => {
-          setter(false);
-        }, 1500); // Reset the message after 1.5 seconds
+          setCopiedMessage(""); // Clear the message after 1.5 seconds
+        }, 1500);
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
@@ -37,7 +36,7 @@ const Home = () => {
         <div className="space-y-1 sm:space-y-3">
           <h1
             className="bg-gradient-to-r from-purple-800
-          to-purple-400 bg-clip-text 
+          to-purple-400 bg-clip-text
         text-4xl font-semibold text-transparent
         md:text-5xl lg:text-6xl drop-s"
           >
@@ -45,7 +44,7 @@ const Home = () => {
           </h1>
           <h3
             className="bg-gradient-to-r from-purple-800
-          to-purple-400 bg-clip-text 
+          to-purple-400 bg-clip-text
         text-xl font-semibold text-transparent
         md:text-2xl lg:text-3xl"
           >
@@ -72,7 +71,7 @@ const Home = () => {
               href="https://github.com/xwaspy"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 w-10 cursor-pointer rounded-full p-2 
+              className="h-10 w-10 cursor-pointer rounded-full p-2
               border-2 border-transparent bg-purple-500 text-white
               transition-all duration-200 hover:scale-110
               hover:border-purple-600 hover:bg-white
@@ -115,7 +114,9 @@ const Home = () => {
             {/* Phone Icon and Number */}
             <div className="relative group flex items-center">
               <div
-                onClick={() => handleCopy("+40729244375", setPhoneCopied)}
+                onClick={() =>
+                  handleCopy("+40729244375", "Phone number copied!")
+                }
                 className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
                 <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
@@ -123,18 +124,16 @@ const Home = () => {
                   +40729244375
                 </span>
               </div>
-              {phoneCopied && (
-                <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
-                  Copied!
-                </span>
-              )}
             </div>
 
             {/* Email Icon and Address */}
             <div className="relative group flex items-center">
               <div
                 onClick={() =>
-                  handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
+                  handleCopy(
+                    "razvan.pelinari@gmail.com",
+                    "Email address copied!"
+                  )
                 }
                 className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
               >
@@ -143,15 +142,17 @@ const Home = () => {
                   razvan.pelinari@gmail.com
                 </span>
               </div>
-              {emailCopied && (
-                <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
-                  Copied!
-                </span>
-              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Global Copied Message at the bottom */}
+      {copiedMessage && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 transform rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in">
+          {copiedMessage}
+        </div>
+      )}
     </div>
   );
 };
