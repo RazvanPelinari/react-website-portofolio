@@ -55,6 +55,7 @@ const Contact = () => {
         onSubmit={sendEmail}
         className="flex w-full max-w-md flex-col gap-8 
       rounded-lg p-6 md:max-w-lg lg:max-w-xl"
+        netlify
       >
         <div className="flex flex-col gap-4">
           <input
