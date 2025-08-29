@@ -8,7 +8,8 @@ export default defineConfig({
   // This tells Vite the base URL for your project on GitHub Pages
   base: "/",
 
-  server: {
-    allowedHosts: ["devserver-preview--waspyportofolio.netlify.app"],
-  },
+  server.allowedHosts: [
+    "waspyportofolio.netlify.app",
+    "www.waspyportofolio.netlify.app",
+    "devserver-preview--waspyportofolio.netlify.app"]
 });
