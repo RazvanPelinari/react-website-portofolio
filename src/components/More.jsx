@@ -19,7 +19,7 @@ const MoreInfo = () => {
             </p>
             <p className="text-gray-700 leading-relaxed">
               When I'm not coding, I enjoy exploring new places, listening to
-              electronic music, and playing strategy video games. I believe that
+              hip-hop music, and playing strategy video games. I believe that
               creativity and a desire to learn are the keys to a successful
               project, and I bring that mindset to every line of code I write.
             </p>
@@ -28,7 +28,7 @@ const MoreInfo = () => {
             {/* Placeholder for a profile picture or personal graphic */}
             <div className="w-64 h-64 bg-purple-500/30 rounded-full flex items-center justify-center overflow-hidden">
               <img
-                src="./src/assets/artwork.png"
+                src="./assets/artwork-BEUAy-aG.png"
                 alt="A personal artistic illustration of myself"
                 className="w-70 h-70 object-cover rounded-full"
               />
@@ -52,14 +52,6 @@ const MoreInfo = () => {
               and visually appealing. For styling, I primarily use{" "}
               <span className="font-bold text-purple-600">Tailwind CSS</span> to
               build custom, responsive designs efficiently.
-            </p>
-            <p>
-              On the back end, I have experience with{" "}
-              <span className="font-bold text-purple-600">Node.js</span> and{" "}
-              <span className="font-bold text-purple-600">Express.js</span> to
-              build RESTful APIs. I can manage and interact with databases like{" "}
-              <span className="font-bold text-purple-600">MongoDB</span>,
-              creating full-stack applications that are scalable and robust.
             </p>
             <p>
               My workflow is built on a solid foundation of{" "}
