@@ -147,14 +147,12 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Global Copied Message at the bottom */}
-      {copiedMessage && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 transform rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in">
-          {copiedMessage}
-        </div>
-      )}
+{copiedMessage && (
+  <div className="fixed bottom-4 left-1/2 -translate-x-1/2 transform rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in z-50">
+    {copiedMessage}
+  </div>
+)}
     </div>
   );
-};
-
+}
 export default Home;
