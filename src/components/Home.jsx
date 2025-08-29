@@ -104,13 +104,15 @@ const Home = () => {
           </a>
 
           {/* Phone Icon and Number */}
-          <div className="relative">
+          <div className="relative group">
             <div
-              onClick={() => handleCopy("+40742511417", setPhoneCopied)}
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 hover:translate-y-3 md:p-3"
+              onClick={() => handleCopy("+40729244375", setPhoneCopied)}
+              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 md:p-3"
             >
               <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
-              <span className="text-sm md:text-base">+40742511417</span>
+              <span className="max-w-0 overflow-hidden transition-all duration-500 group-hover:max-w-xs text-sm md:text-base pl-0 group-hover:pl-2">
+                +40742511417
+              </span>
             </div>
             {phoneCopied && (
               <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
@@ -120,15 +122,15 @@ const Home = () => {
           </div>
 
           {/* Email Icon and Address */}
-          <div className="relative">
+          <div className="relative group">
             <div
               onClick={() =>
                 handleCopy("razvan.pelinari@gmail.com", setEmailCopied)
               }
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 hover:translate-y-3 md:p-3"
+              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 md:p-3"
             >
               <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
-              <span className="text-sm md:text-base">
+              <span className="max-w-0 overflow-hidden transition-all duration-500 group-hover:max-w-xs text-sm md:text-base pl-0 group-hover:pl-2">
                 razvan.pelinari@gmail.com
               </span>
             </div>
