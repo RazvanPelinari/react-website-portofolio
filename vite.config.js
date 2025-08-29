@@ -13,7 +13,7 @@ export default defineConfig({
     allowedHosts: [
       "waspyportofolio.netlify.app",
       "www.waspyportofolio.netlify.app",
-      "devserver-preview--waspyportofolio.netlify.app",
+      "devserver-preview--razvanpelinari.netlify.app",
     ],
   },
 });
