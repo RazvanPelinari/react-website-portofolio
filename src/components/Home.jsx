@@ -107,11 +107,11 @@ const Home = () => {
           <div className="relative group">
             <div
               onClick={() => handleCopy("+40729244375", setPhoneCopied)}
-              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 md:p-3"
+              className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 md:p-3"
             >
-              <BiPhone className="h-6 w-6 md:h-8 md:w-8" />
+              <BiPhone className="h-full w-full p-2" />
               <span className="max-w-0 overflow-hidden transition-all duration-500 group-hover:max-w-xs text-sm md:text-base pl-0 group-hover:pl-2">
-                +40742511417
+                +40729244375
               </span>
             </div>
             {phoneCopied && (
@@ -129,7 +129,7 @@ const Home = () => {
               }
               className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 p-2 text-white transition-all duration-200 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 md:p-3"
             >
-              <BiEnvelope className="h-6 w-6 md:h-8 md:w-8" />
+              <BiEnvelope className="h-full w-full p-2" />
               <span className="max-w-0 overflow-hidden transition-all duration-500 group-hover:max-w-xs text-sm md:text-base pl-0 group-hover:pl-2">
                 razvan.pelinari@gmail.com
               </span>
