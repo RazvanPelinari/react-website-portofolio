@@ -47,9 +47,11 @@ const MoreInfo = () => {
             <p>
               I specialize in creating modern, responsive web applications using{" "}
               <span className="font-bold text-purple-600">React.js</span>. I
-              have a strong understanding of core JavaScript principles and am
-              adept at building dynamic user interfaces that are both intuitive
-              and visually appealing. For styling, I primarily use{" "}
+              have a strong understanding of core{" "}
+              <span className="font-bold text-purple-600">JavaScript</span>{" "}
+              principles and am adept at building dynamic user interfaces that
+              are both intuitive and visually appealing. For styling, I
+              primarily use{" "}
               <span className="font-bold text-purple-600">Tailwind CSS</span> to
               build custom, responsive designs efficiently.
             </p>
