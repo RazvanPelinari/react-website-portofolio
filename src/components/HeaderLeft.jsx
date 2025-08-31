@@ -42,9 +42,10 @@ const HeaderLeft = () => {
       </div>
 
       <div
-        className="fixed left-0 right-0 top-0 z-10 flex 
-      justify-evenly border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm text-white md:hidden"
+        className="fixed left-0 right-0 top-0 z-10 flex justify-evenly 
+  text-white md:hidden border-b border-purple-400 
+  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+  animate-gradient bg-[length:300%_300%]"
       >
         <a
           href="#Home"
