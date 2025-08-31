@@ -42,7 +42,7 @@ const Home = () => {
           </h1>
           <h3
             className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm  bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl"
+  animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl"
           >
             {" "}
             <p classname="justify-center">Web Developer</p>
@@ -69,10 +69,11 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2
-              border-2 border-transparent bg-purple-500 text-white
+              border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%]  text-white
               transition-all duration-200 hover:scale-110
-              hover:border-purple-600 hover:bg-white
-              hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
+              hover:border-fuchsia-500 hover:bg-fuchsia-500
+              hover:text-white hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoGithub className="h-full w-full" />
             </a>
@@ -83,10 +84,11 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2
-            border-2 border-transparent bg-purple-500 text-white
+            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%]  text-white
             transition-all duration-200 hover:scale-110
-            hover:border-purple-600 hover:bg-white
-            hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
+            hover:border-fuchsia-500 hover:bg-fuchsia-500
+            hover:text-white hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoLinkedin className="h-full w-full" />
             </a>
@@ -97,10 +99,11 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2
-            border-2 border-transparent bg-purple-500 text-white
+            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%]  text-white
             transition-all duration-200 hover:scale-110
-            hover:border-purple-600 hover:bg-white
-            hover:text-purple-600 hover:translate-y-1 md:h-12 md:w-12"
+            hover:border-fuchsia-500 hover:bg-fuchsia-500
+            hover:text-white hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoInstagram className="h-full w-full" />
             </a>
@@ -114,7 +117,9 @@ const Home = () => {
                 onClick={() =>
                   handleCopy("+40729244375", "Phone number copied!")
                 }
-                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%]  text-white transition-all duration-500 hover:scale-105 hover:border-fucshia-500
+   hover:bg-fuchsia-500 hover:text-white p-2 md:p-3"
               >
                 <BiPhone className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
                 <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
@@ -132,7 +137,8 @@ const Home = () => {
                     "Email address copied!"
                   )
                 }
-                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-purple-500 text-white transition-all duration-500 hover:scale-105 hover:border-purple-600 hover:bg-white hover:text-purple-600 p-2 md:p-3"
+                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+  animate-gradient bg-[length:400%_400%]  text-white transition-all duration-500 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white p-2 md:p-3"
               >
                 <BiEnvelope className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
                 <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
