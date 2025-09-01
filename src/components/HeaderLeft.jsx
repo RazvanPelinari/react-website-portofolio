@@ -46,10 +46,6 @@ const HeaderLeft = () => {
         text-white md:hidden border-b border-purple-400
         bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
         animate-gradient bg-[length:300%_300%] h-14"
-        style={{
-          paddingTop: "env(safe-area-inset-top)",
-          paddingBottom: "env(safe-area-inset-bottom)",
-        }}
       >
         {[
           { href: "#Home", icon: BiHome, label: "Home" },
