@@ -8,8 +8,6 @@ import {
 } from "react-icons/bi";
 
 const HeaderLeft = () => {
-  const mobileNavbarHeight = "3.5rem"; // adjust if your navbar height changes
-
   return (
     <div className="md:flex-[0.8]">
       {/* Desktop Sidebar */}
@@ -33,7 +31,6 @@ const HeaderLeft = () => {
                 <a
                   href={`#${item}`}
                   className="transition-all duration-200 hover:translate-x-2"
-                  style={{ scrollMarginTop: mobileNavbarHeight }}
                 >
                   {item}
                 </a>
@@ -46,9 +43,9 @@ const HeaderLeft = () => {
       {/* Mobile Top Bar */}
       <div
         className="fixed left-0 right-0 top-0 z-10 flex justify-evenly 
-  text-white md:hidden border-b border-purple-400 
-  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-  animate-gradient bg-[length:300%_300%] h-14"
+        text-white md:hidden border-b border-purple-400 
+        bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+        animate-gradient bg-[length:300%_300%] h-14"
       >
         {[
           { href: "#Home", icon: BiHome, label: "Home" },
@@ -67,8 +64,6 @@ const HeaderLeft = () => {
           </a>
         ))}
       </div>
-      {/* Mobile-only spacer so content isn’t under the fixed navbar */}
-      <div className="h-14 md:hidden"></div>
     </div>
   );
 };
