@@ -66,11 +66,9 @@ const Projects = () => {
               React • Tailwind • Vite • i18n
             </h3>
             <p className="text-sm text-gray-600">
-              <span className="font-black text-purple-500">
-                Kultur Clothing
-              </span>{" "}
-              is a modern-luxury e-commerce website designed to showcase and
-              sell premium fashion items. The project features a sleek shopping
+              <span className="font-black text-">Kultur Clothing</span> is a
+              modern-luxury e-commerce website designed to showcase and sell
+              premium fashion items. The project features a sleek shopping
               experience with a multilingual interface, interactive cart, smooth
               animations, and responsive layouts. Built to explore advanced
               front-end development and branding for online retail.
