@@ -8,6 +8,8 @@ import {
 } from "react-icons/bi";
 
 const HeaderLeft = () => {
+  const mobileNavbarHeight = "3.5rem"; // adjust if your navbar height changes
+
   return (
     <div className="md:flex-[0.8]">
       {/* Desktop Sidebar */}
@@ -31,6 +33,7 @@ const HeaderLeft = () => {
                 <a
                   href={`#${item}`}
                   className="transition-all duration-200 hover:translate-x-2"
+                  style={{ scrollMarginTop: mobileNavbarHeight }}
                 >
                   {item}
                 </a>
@@ -45,47 +48,27 @@ const HeaderLeft = () => {
         className="fixed left-0 right-0 top-0 z-10 flex justify-evenly 
   text-white md:hidden border-b border-purple-400 
   bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-  animate-gradient bg-[length:300%_300%] 
-  pt-[env(safe-area-inset-top)]" // <-- safe area padding
-        style={{ paddingTop: "env(safe-area-inset-top)" }} // fallback
+  animate-gradient bg-[length:300%_300%] h-14"
       >
-        <a href="#Home" className="flex flex-col items-center justify-center">
-          <BiHome className="text-2xl" />
-          <span className="text-xs">Home</span>
-        </a>
-
-        <a
-          href="#More Info"
-          className="flex flex-col items-center justify-center"
-        >
-          <BiInfoCircle className="text-xl" />
-          <span className="text-xs">More Info</span>
-        </a>
-
-        <a
-          href="#Experience"
-          className="flex flex-col items-center justify-center"
-        >
-          <BiBriefcase className="text-2xl" />
-          <span className="text-xs">Experience</span>
-        </a>
-
-        <a
-          href="#Projects"
-          className="flex flex-col items-center justify-center"
-        >
-          <BiCode className="text-2xl" />
-          <span className="text-xs">Projects</span>
-        </a>
-
-        <a
-          href="#Contact"
-          className="flex flex-col items-center justify-center"
-        >
-          <BiMailSend className="text-2xl" />
-          <span className="text-xs">Contact</span>
-        </a>
+        {[
+          { href: "#Home", icon: BiHome, label: "Home" },
+          { href: "#More Info", icon: BiInfoCircle, label: "More Info" },
+          { href: "#Experience", icon: BiBriefcase, label: "Experience" },
+          { href: "#Projects", icon: BiCode, label: "Projects" },
+          { href: "#Contact", icon: BiMailSend, label: "Contact" },
+        ].map(({ href, icon: Icon, label }) => (
+          <a
+            key={label}
+            href={href}
+            className="flex flex-col items-center justify-center"
+          >
+            <Icon className="text-2xl" />
+            <span className="text-xs">{label}</span>
+          </a>
+        ))}
       </div>
+      {/* Mobile-only spacer so content isn’t under the fixed navbar */}
+      <div className="h-14 md:hidden"></div>
     </div>
   );
 };

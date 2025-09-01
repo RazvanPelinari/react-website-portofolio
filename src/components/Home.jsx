@@ -28,10 +28,14 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="flex min-h-screen w-full items-center justify-center pt-[calc(3.5rem+var(--safe-top))] md:pt-0"
+      className="flex min-h-screen w-full items-center justify-center scroll-mt-14 md:scroll-mt-0"
     >
-      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center">
-        <img src={Artwork} alt="Logo" className="w-[250px] sm:w-[300px]" />
+      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
+        <img
+          src={Artwork}
+          alt="Logo"
+          className="w-[250px] sm:w-[300px] scroll-mt-14 md:scroll-mt-0"
+        />
 
         <div className="space-y-1 sm:space-y-3">
           <h1

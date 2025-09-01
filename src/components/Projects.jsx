@@ -5,9 +5,11 @@ const Projects = () => {
     <div
       id="Projects"
       className="min-h-screen w-full flex flex-col 
-    items-center justify-center gap-20 p-10 md:p-16 xl:p-32 pt-[calc(1.5rem+var(--safe-top))] md:pt-0 "
+    items-center justify-center gap-20 p-10 md:p-16 xl:p-32 scroll-mt-14 md:scroll-mt-0 "
     >
-      <h1 className="text-center text-5xl font-light ">Projects</h1>
+      <h1 className="text-center text-5xl font-light scroll-mt-14 md:scroll-mt-0 ">
+        Projects
+      </h1>
 
       <div
         className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3
