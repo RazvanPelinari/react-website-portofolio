@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="flex min-h-screen w-full items-center justify-center scroll-mt-14 md:scroll-mt-0 top-20"
+      className="flex min-h-screen w-full items-center justify-center scroll-mt-14 md:scroll-mt-0 top-0"
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
         <img
