@@ -30,7 +30,7 @@ const Home = () => {
       id="Home"
       className="flex min-h-screen w-full items-center justify-center"
     >
-      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center pt-[calc(2.5rem+var(--safe-top))] md:pt-0">
+      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center pt-[calc(3.5rem+var(--safe-top))] md:pt-0">
         <img src={Artwork} alt="Logo" className="w-[250px] sm:w-[300px]" />
 
         <div className="space-y-1 sm:space-y-3">
