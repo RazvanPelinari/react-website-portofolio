@@ -9,15 +9,15 @@ import {
 } from "react-icons/bi";
 
 const Home = () => {
-  const [copiedMessage, setCopiedMessage] = useState(""); // State to store the message to display
+  const [copiedMessage, setCopiedMessage] = useState("");
 
   const handleCopy = (text, message) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setCopiedMessage(message); // Set the message
+        setCopiedMessage(message);
         setTimeout(() => {
-          setCopiedMessage(""); // Clear the message after 1.5 seconds
+          setCopiedMessage("");
         }, 1500);
       })
       .catch((err) => {
@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 min-h-screen"
+      className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
         <img
@@ -48,8 +48,7 @@ const Home = () => {
             className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
   animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl"
           >
-            {" "}
-            <p classname="justify-center">Web Developer</p>
+            <p className="justify-center">Web Developer</p>
             {"JavaScript | React.js | Tailwind CSS"}
           </h3>
           <p className="max-w-[500px] text-sm text-gray-600">
@@ -61,28 +60,22 @@ const Home = () => {
           </p>
         </div>
 
-        {/* This container now holds two separate rows for icons */}
         <div className="flex flex-col items-center gap-3">
-          {/* Top row for social icons */}
           <div className="flex items-center gap-3">
-            {/* All Icons have consistent styling now */}
-
-            {/* GitHub Icon */}
             <a
               href="https://github.com/xwaspy"
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2
-              border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
   animate-gradient bg-[length:400%_400%]  text-white
-              transition-all duration-200 hover:scale-110
-              hover:border-fuchsia-500 hover:bg-fuchsia-500
-              hover:text-white hover:translate-y-1 md:h-12 md:w-12"
+            transition-all duration-200 hover:scale-110
+            hover:border-fuchsia-500 hover:bg-fuchsia-500
+            hover:text-white hover:translate-y-1 md:h-12 md:w-12"
             >
               <BiLogoGithub className="h-full w-full" />
             </a>
 
-            {/* LinkedIn Icon */}
             <a
               href="https://www.linkedin.com/in/razvan-pelinari-454445381/"
               target="_blank"
@@ -97,7 +90,6 @@ const Home = () => {
               <BiLogoLinkedin className="h-full w-full" />
             </a>
 
-            {/* Instagram Icon */}
             <a
               href="https://www.instagram.com/razvan.peli"
               target="_blank"
@@ -113,9 +105,7 @@ const Home = () => {
             </a>
           </div>
 
-          {/* Bottom row for contact info */}
           <div className="flex items-center flex-wrap justify-center gap-3">
-            {/* Phone Icon and Number */}
             <div className="relative group flex items-center">
               <div
                 onClick={() =>
@@ -132,7 +122,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Email Icon and Address */}
             <div className="relative group flex items-center">
               <div
                 onClick={() =>
@@ -154,8 +143,10 @@ const Home = () => {
         </div>
       </div>
       {copiedMessage && (
-        <div className="fixed bottom-4 translate-x-1 transform rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in z-50">
-          {copiedMessage}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-4 z-50">
+          <div className="rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in">
+            {copiedMessage}
+          </div>
         </div>
       )}
     </div>
