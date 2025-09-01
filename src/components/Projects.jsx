@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import ProjectModal from "./ProjectModal"; // Import the new modal component
 
 const Projects = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [currentProjectUrl, setCurrentProjectUrl] = useState("");
+
+  const handleOpenModal = (url) => {
+    setCurrentProjectUrl(url);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setCurrentProjectUrl("");
+  };
+
   return (
     <div
       id="Projects"
@@ -36,15 +50,14 @@ const Projects = () => {
 
           {/* Buttons section */}
           <div className="pt-6 flex justify-center gap-4">
-            <a
-              href="https://villaotto.netlify.app"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* 🔗 This button now opens the modal */}
+            <button
+              onClick={() => handleOpenModal("https://villaotto.netlify.app")}
               className="px-6 py-2 text-white bg-purple-500 rounded-lg shadow-md 
       hover:bg-purple-600 hover:shadow-lg transition-all duration-200"
             >
               View Project
-            </a>
+            </button>
             <a
               href="https://github.com/xwaspy/villa-otto"
               target="_blank"
@@ -68,11 +81,9 @@ const Projects = () => {
               React • Tailwind • Vite • i18n
             </h3>
             <p className="text-sm text-gray-600">
-              <span className="font-black text-purple-500">
-                Kultur Clothing
-              </span>{" "}
-              is a modern-luxury e-commerce website designed to showcase and
-              sell premium fashion items. The project features a sleek shopping
+              <span className="font-black text-">Kultur Clothing</span> is a
+              modern-luxury e-commerce website designed to showcase and sell
+              premium fashion items. The project features a sleek shopping
               experience with a multilingual interface, interactive cart, smooth
               animations, and responsive layouts. Built to explore advanced
               front-end development and branding for online retail.
@@ -81,15 +92,16 @@ const Projects = () => {
 
           {/* Buttons section */}
           <div className="pt-6 flex justify-center gap-4">
-            <a
-              href="https://your-kultur-live-demo.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* 🔗 This button also opens the modal */}
+            <button
+              onClick={() =>
+                handleOpenModal("https://your-kultur-live-demo.com")
+              }
               className="px-6 py-2 text-white bg-purple-500 rounded-lg shadow-md 
       hover:bg-purple-600 hover:shadow-lg transition-all duration-200"
             >
               View Project
-            </a>
+            </button>
             <a
               href="https://github.com/yourusername/kultur-clothing"
               target="_blank"
@@ -102,6 +114,13 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* The Modal */}
+      <ProjectModal
+        show={showModal}
+        onClose={handleCloseModal}
+        projectUrl={currentProjectUrl}
+      />
     </div>
   );
 };
