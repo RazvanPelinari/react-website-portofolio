@@ -2,8 +2,8 @@ import React from "react";
 
 const MoreInfo = () => {
   return (
-    <div className="w-full bg-white px-4 py-12 md:px-10 lg:px-20">
-      <div className="max-w-5xl mx-auto space-y-12">
+    <div className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 ">
+      <div className="max-w-5xl mx-auto space-y-12 pt-[calc(3.5rem+var(--safe-top))] md:pt-0">
         {/* Main "About Me" Section */}
         <section className="flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="md:w-1/2 space-y-4 text-center md:text-left">

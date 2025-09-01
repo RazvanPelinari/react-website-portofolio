@@ -6,7 +6,9 @@ const Experience = () => {
       id="Experience"
       className="flex min-h-screen w-full flex-col items-center justify-center gap-20 p-14 md:p-20 lg:p-36"
     >
-      <h1 className="text-center text-5xl font-light">Experience</h1>
+      <h1 className="text-center text-5xl font-light pt-[calc(3.5rem+var(--safe-top))] md:pt-0">
+        Experience
+      </h1>
 
       <div className="flex flex-wrap gap-o md:flex:nowrap md:gap-10">
         <div className="flex-1">
