@@ -42,14 +42,12 @@ const HeaderLeft = () => {
 
       {/* Mobile Top Bar */}
       <div
-        className="fixed top-0 left-0 w-full z-50 flex justify-evenly 
-        text-white md:hidden border-b border-purple-400 
-        bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-        animate-gradient bg-[length:300%_300%]"
-        style={{
-          paddingTop: "var(--safe-top)",
-          backgroundColor: "black", // fallback under gradient
-        }}
+        className="fixed left-0 right-0 top-0 z-10 flex justify-evenly 
+  text-white md:hidden border-b border-purple-400 
+  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+  animate-gradient bg-[length:300%_300%] 
+  pt-[env(safe-area-inset-top)]" // <-- safe area padding
+        style={{ paddingTop: "env(safe-area-inset-top)" }} // fallback
       >
         <a href="#Home" className="flex flex-col items-center justify-center">
           <BiHome className="text-2xl" />
