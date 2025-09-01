@@ -7,9 +7,7 @@ const Projects = () => {
       className="min-h-screen w-full flex flex-col 
     items-center justify-center gap-20 p-10 md:p-16 xl:p-32 "
     >
-      <h1 className="text-center text-5xl font-light pt-[calc(3.5rem+var(--safe-top))] md:pt-0">
-        Projects
-      </h1>
+      <h1 className="text-center text-5xl font-light">Projects</h1>
 
       <div
         className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3
