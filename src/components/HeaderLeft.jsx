@@ -10,24 +10,23 @@ import {
 const HeaderLeft = () => {
   return (
     <div className="md:flex-[0.8]">
+      {/* Desktop sidebar */}
       <div
-        className="min-h-screen top-0 hidden md:sticky md:flex items-center justify-center
-  text-white border border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
+        className="h-full top-0 hidden md:sticky md:flex items-center justify-center
+        text-white border border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+        animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
       >
         <ul className="flex flex-col gap-10">
           {["Home", "More Info", "Experience", "Projects", "Contact"].map(
             (item) => (
               <li
                 key={item}
-                className="flex 
-          items-center justify-start cursor-pointer font-medium 
-          transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
+                className="flex items-center justify-start cursor-pointer font-medium 
+                transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
               >
                 <BiRightArrowAlt
-                  className="text-4xl 
-            -translate-x-5 opacity-0 transform transition-all duration-200 
-            group-hover:opacity-100 group-hover:translate-0"
+                  className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200 
+                  group-hover:opacity-100 group-hover:translate-0"
                 />
                 <a
                   href={`#${item}`}
@@ -41,54 +40,50 @@ const HeaderLeft = () => {
         </ul>
       </div>
 
+      {/* Mobile top bar */}
       <div
-        className="fixed left-0 right-0 top-0 z-10 flex justify-evenly 
-  text-white md:hidden border-b border-purple-400 
-  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-  animate-gradient bg-[length:300%_300%]"
+        className="fixed top-0 left-0 w-full z-50 flex justify-evenly 
+        text-white md:hidden border-b border-purple-400 
+        bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+        animate-gradient bg-[length:300%_300%] pt-[env(safe-area-inset-top)]"
       >
         <a
           href="#Home"
-          className="flex flex-col 
-          items-center justify-center"
+          className="flex flex-col items-center justify-center py-2"
         >
-          <BiHome className="text=2xl" />
+          <BiHome className="text-2xl" />
           <span className="text-xs">Home</span>
         </a>
 
         <a
           href="#More Info"
-          className="flex flex-col 
-  items-center justify-center"
+          className="flex flex-col items-center justify-center py-2"
         >
-          <BiInfoCircle className="text-1xl" />
+          <BiInfoCircle className="text-xl" />
           <span className="text-xs">More Info</span>
         </a>
 
         <a
           href="#Experience"
-          className="flex flex-col 
-          items-center justify-center"
+          className="flex flex-col items-center justify-center py-2"
         >
-          <BiBriefcase className="text=2xl" />
+          <BiBriefcase className="text-2xl" />
           <span className="text-xs">Experience</span>
         </a>
 
         <a
           href="#Projects"
-          className="flex flex-col 
-          items-center justify-center"
+          className="flex flex-col items-center justify-center py-2"
         >
-          <BiCode className="text=2xl" />
+          <BiCode className="text-2xl" />
           <span className="text-xs">Projects</span>
         </a>
 
         <a
           href="#Contact"
-          className="flex flex-col 
-          items-center justify-center"
+          className="flex flex-col items-center justify-center py-2"
         >
-          <BiMailSend className="text=2xl" />
+          <BiMailSend className="text-2xl" />
           <span className="text-xs">Contact</span>
         </a>
       </div>
