@@ -10,9 +10,9 @@ import {
 const HeaderLeft = () => {
   return (
     <div className="md:flex-[0.8]">
-      {/* Desktop sidebar */}
+      {/* Desktop Sidebar */}
       <div
-        className="h-full top-0 hidden md:sticky md:flex items-center justify-center
+        className="min-h-screen top-0 hidden md:sticky md:flex items-center justify-center
         text-white border border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
         animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
       >
@@ -40,24 +40,25 @@ const HeaderLeft = () => {
         </ul>
       </div>
 
-      {/* Mobile top bar */}
+      {/* Mobile Top Bar */}
       <div
         className="fixed top-0 left-0 w-full z-50 flex justify-evenly 
         text-white md:hidden border-b border-purple-400 
         bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-        animate-gradient bg-[length:300%_300%] pt-[env(safe-area-inset-top)]"
+        animate-gradient bg-[length:300%_300%]"
+        style={{
+          paddingTop: "var(--safe-top)",
+          backgroundColor: "black", // fallback under gradient
+        }}
       >
-        <a
-          href="#Home"
-          className="flex flex-col items-center justify-center py-2"
-        >
+        <a href="#Home" className="flex flex-col items-center justify-center">
           <BiHome className="text-2xl" />
           <span className="text-xs">Home</span>
         </a>
 
         <a
           href="#More Info"
-          className="flex flex-col items-center justify-center py-2"
+          className="flex flex-col items-center justify-center"
         >
           <BiInfoCircle className="text-xl" />
           <span className="text-xs">More Info</span>
@@ -65,7 +66,7 @@ const HeaderLeft = () => {
 
         <a
           href="#Experience"
-          className="flex flex-col items-center justify-center py-2"
+          className="flex flex-col items-center justify-center"
         >
           <BiBriefcase className="text-2xl" />
           <span className="text-xs">Experience</span>
@@ -73,7 +74,7 @@ const HeaderLeft = () => {
 
         <a
           href="#Projects"
-          className="flex flex-col items-center justify-center py-2"
+          className="flex flex-col items-center justify-center"
         >
           <BiCode className="text-2xl" />
           <span className="text-xs">Projects</span>
@@ -81,7 +82,7 @@ const HeaderLeft = () => {
 
         <a
           href="#Contact"
-          className="flex flex-col items-center justify-center py-2"
+          className="flex flex-col items-center justify-center"
         >
           <BiMailSend className="text-2xl" />
           <span className="text-xs">Contact</span>
