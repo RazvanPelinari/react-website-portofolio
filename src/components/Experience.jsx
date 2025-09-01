@@ -29,9 +29,7 @@ const Experience = () => {
 
           <div className="relative space-y-1 border-l-2 p-8 text-left">
             <h3 className="text-xl font-semibold md:text-2xl ">Experience 2</h3>
-            <p className="font-light text-lg text-gray-600">
-              Freelancing & Personal Projects
-            </p>
+            <p className="font-light text-lg text-gray-600">Freelancing</p>
             <p className="text-sm text-gray-600">
               While freelancing, I have had the opportunity to work with diverse
               clients, delivering tailored web solutions that meet their
@@ -44,7 +42,7 @@ const Experience = () => {
             <span className="absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-purple-500"></span>
           </div>
           <div className="relative space-y-1 border-l-2 p-8 text-left">
-            <h3 className="text-xl font-semibold md:text-2xl ">Experience 2</h3>
+            <h3 className="text-xl font-semibold md:text-2xl ">Experience 3</h3>
             <p className="font-light text-lg text-gray-600">
               Personal Projects
             </p>

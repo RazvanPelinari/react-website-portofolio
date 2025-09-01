@@ -1,11 +1,14 @@
 import React from "react";
 
-const MoreInfo = () => {
+const More = () => {
   return (
-    <div className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 top-0">
+    <div
+      id="MoreInfo"
+      className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 min-h-screen"
+    >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Main "About Me" Section */}
-        <section className="flex flex-col md:flex-row items-center justify-between gap-10 top-0]">
+        <section className="flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="md:w-1/2 space-y-4 text-center md:text-left">
             <h2 className="text-4xl font-medium text-gray-800 border-b-2 border-purple-400">
               A Little More About Me
@@ -21,36 +24,33 @@ const MoreInfo = () => {
               When I'm not coding, I enjoy exploring new places, listening to
               hip-hop music, and playing strategy video games. I believe that
               creativity and a desire to learn are the keys to a successful
-              project, and I bring that mindset to every line of code I write.
+              project, and I bring that mindset to every project I undertake.
             </p>
           </div>
-          <div className="md:w-1/2 flex justify-center md:justify-end">
-            {/* Placeholder for a profile picture or personal graphic */}
-            <div className="w-64 h-64 bg-purple-500/30 rounded-full flex items-center justify-center overflow-hidden">
-              <img
-                src="./assets/artwork-BEUAy-aG.png"
-                alt="A personal artistic illustration of myself"
-                className="w-70 h-70 object-cover rounded-full"
-              />
+          <div className="md:w-1/2 flex items-center justify-center">
+            {/* Placeholder for an image or graphic */}
+            <div className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-gray-200 flex items-center justify-center">
+              <span className="text-gray-500">Your Image Here</span>
             </div>
           </div>
         </section>
 
         <hr className="border-t border-gray-300" />
 
-        {/* New Section for a Narrative-Style CV */}
+        {/* Skills & Technologies Section */}
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-purple-800 border-b border-gray-300 pb-1">
-            My Skills & Expertise
+            Skills & Technologies
           </h2>
-          <div className="text-gray-700 space-y-4 leading-relaxed">
+          <div className="text-gray-700 space-y-2">
             <p>
-              I specialize in creating modern, responsive web applications using{" "}
-              <span className="font-bold text-purple-600">React.js</span>. I
-              have a strong understanding of core{" "}
-              <span className="font-bold text-purple-600">JavaScript</span>{" "}
-              principles and am adept at building dynamic user interfaces that
-              are both intuitive and visually appealing. For styling, I
+              My expertise lies in{" "}
+              <span className="font-bold text-purple-600">JavaScript</span>,{" "}
+              <span className="font-bold text-purple-600">React</span>, and{" "}
+              <span className="font-bold text-purple-600">Node.js</span>. I
+              specialize in building responsive and dynamic user interfaces with{" "}
+              <span className="font-bold text-purple-600">React</span>, ensuring
+              they are both intuitive and visually appealing. For styling, I
               primarily use{" "}
               <span className="font-bold text-purple-600">Tailwind CSS</span> to
               build custom, responsive designs efficiently.
@@ -86,4 +86,4 @@ const MoreInfo = () => {
   );
 };
 
-export default MoreInfo;
+export default More;

@@ -6,11 +6,14 @@
 }
 
 .root {
-  --safe-top: env(safe-area-inset-top);
-  --safe-bottom: env(safe-area-inset-bottom);
-  --safe-left: env(safe-area-inset-left);
-  --safe-right: env(safe-area-inset-right);
-  scroll-padding-top: calc(3.5rem + env(safe-area-inset-top));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Fallback for older browsers */
+  padding-top: constant(safe-area-inset-top);
+  /* The modern and standard way */
+  padding-top: env(safe-area-inset-top);
 }
 
 @keyframes gradient {

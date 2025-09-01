@@ -13,7 +13,7 @@ function App() {
 
         <main className="flex-[3]">
           <Home />
-          <div id="More%20Info">
+          <div id="MoreInfo">
             <More />
           </div>
           <Experience />

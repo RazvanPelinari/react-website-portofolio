@@ -10,6 +10,11 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Reset messages
+    setIsSuccess(false);
+    setIsError(false);
+
+    // Send the message to the developer
     emailjs
       .sendForm(
         "Portofolio_Email",
@@ -20,21 +25,6 @@ const Contact = () => {
       .then(
         (result) => {
           console.log("Message sent to me:", result.text);
-
-          emailjs
-            .sendForm(
-              "Portofolio_Email",
-              "template_u2j35js",
-              form.current,
-              "cZAxokqCmFBNFdwxT"
-            )
-            .then((replyResult) => {
-              console.log("Auto-reply sent:", replyResult.text);
-            })
-            .catch((replyError) => {
-              console.error("Auto-reply failed:", replyError.text);
-            });
-
           setIsSuccess(true);
           e.target.reset();
           setTimeout(() => setIsSuccess(false), 4000);
@@ -45,6 +35,21 @@ const Contact = () => {
           setTimeout(() => setIsError(false), 4000);
         }
       );
+
+    // Separately attempt to send the auto-reply to the user
+    emailjs
+      .sendForm(
+        "Portofolio_Email",
+        "template_u2j35js",
+        form.current,
+        "cZAxokqCmFBNFdwxT"
+      )
+      .then((replyResult) => {
+        console.log("Auto-reply sent:", replyResult.text);
+      })
+      .catch((replyError) => {
+        console.error("Auto-reply failed:", replyError.text);
+      });
   };
 
   return (

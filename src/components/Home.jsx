@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="flex min-h-screen w-full items-center justify-center scroll-mt-14 md:scroll-mt-0 top-0"
+      className="w-full bg-white px-4 py-12 md:px-10 lg:px-20 min-h-screen"
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
         <img
@@ -153,7 +153,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       {copiedMessage && (
         <div className="fixed bottom-4 translate-x-1 transform rounded-lg border border-purple-300 bg-white/30 px-4 py-2 text-sm text-gray-800 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in z-50">
           {copiedMessage}

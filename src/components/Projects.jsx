@@ -37,7 +37,7 @@ const Projects = () => {
           {/* Buttons section */}
           <div className="pt-6 flex justify-center gap-4">
             <a
-              href="https://villaotto.netlify.app" // 🔗 Replace with live site
+              href="https://villaotto.netlify.app"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-white bg-purple-500 rounded-lg shadow-md 
@@ -46,7 +46,7 @@ const Projects = () => {
               View Project
             </a>
             <a
-              href="https://github.com/xwaspy/villa-otto" // 🔗 Replace with GitHub repo
+              href="https://github.com/xwaspy/villa-otto"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-purple-600 border border-purple-500 rounded-lg 
@@ -68,9 +68,11 @@ const Projects = () => {
               React • Tailwind • Vite • i18n
             </h3>
             <p className="text-sm text-gray-600">
-              <span className="font-black text-">Kultur Clothing</span> is a
-              modern-luxury e-commerce website designed to showcase and sell
-              premium fashion items. The project features a sleek shopping
+              <span className="font-black text-purple-500">
+                Kultur Clothing
+              </span>{" "}
+              is a modern-luxury e-commerce website designed to showcase and
+              sell premium fashion items. The project features a sleek shopping
               experience with a multilingual interface, interactive cart, smooth
               animations, and responsive layouts. Built to explore advanced
               front-end development and branding for online retail.
@@ -80,7 +82,7 @@ const Projects = () => {
           {/* Buttons section */}
           <div className="pt-6 flex justify-center gap-4">
             <a
-              href="https://your-kultur-live-demo.com" // 🔗 Replace with live demo link
+              href="https://your-kultur-live-demo.com"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-white bg-purple-500 rounded-lg shadow-md 
@@ -89,7 +91,7 @@ const Projects = () => {
               View Project
             </a>
             <a
-              href="https://github.com/yourusername/kultur-clothing" // 🔗 Replace with GitHub repo
+              href="https://github.com/yourusername/kultur-clothing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-purple-600 border border-purple-500 rounded-lg 
