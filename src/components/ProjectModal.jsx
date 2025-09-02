@@ -28,7 +28,7 @@ const ProjectModal = ({ show, onClose, projectUrl }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 transition-opacity duration-300"
       onClick={onClose}
     >
       <div
