@@ -63,7 +63,7 @@ const Home = () => {
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com/xwaspy"
+              href="https://github.com/RazvanPelinari"
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2

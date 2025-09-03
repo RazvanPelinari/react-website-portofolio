@@ -59,7 +59,7 @@ const Projects = () => {
               View Project
             </button>
             <a
-              href="https://github.com/xwaspy/villa-otto"
+              href="https://github.com/RazvanPelinari/villa-otto"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-purple-600 border border-purple-500 rounded-lg 
@@ -105,7 +105,7 @@ const Projects = () => {
               View Project
             </button>
             <a
-              href="https://github.com/yourusername/kultur-clothing"
+              href="https://github.com/RazvanPelinari/kultur-clothing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-purple-600 border border-purple-500 rounded-lg 
