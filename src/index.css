@@ -10,10 +10,12 @@
   top: 0;
   left: 0;
   right: 0;
-  /* Fallback for older browsers */
   padding-top: constant(safe-area-inset-top);
-  /* The modern and standard way */
   padding-top: env(safe-area-inset-top);
+}
+
+.font-audiowide {
+  font-family: "Audiowide", sans-serif;
 }
 
 @keyframes gradient {
