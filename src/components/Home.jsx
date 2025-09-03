@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Artwork from "../assets/artwork.png";
+import Artwork from "../assets/artwork2.jpg";
 import {
   BiLogoGithub,
   BiLogoInstagram,
@@ -34,7 +34,7 @@ const Home = () => {
         <img
           src={Artwork}
           alt="Logo"
-          className="w-[250px] sm:w-[300px] scroll-mt-14 md:scroll-mt-0"
+          className="w-[250px] sm:w-[300px] rounded-full border-purple-500 border-4 scroll-mt-14 md:scroll-mt-0"
         />
 
         <div className="space-y-1 sm:space-y-3">

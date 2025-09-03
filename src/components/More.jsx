@@ -1,5 +1,5 @@
 import React from "react";
-import Artowrk from "../assets/artwork.png";
+import Artowrk from "../assets/artwork2.jpg";
 
 const MoreInfo = () => {
   return (
@@ -31,7 +31,7 @@ const MoreInfo = () => {
               <img
                 src={Artowrk}
                 alt="A personal artistic illustration of myself"
-                className="w-full h-full object-cover rounded-full list-image-none"
+                className="object-cover rounded-full list-image-none w-60 h-60"
               />
             </div>
           </div>
