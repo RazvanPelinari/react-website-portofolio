@@ -134,6 +134,16 @@ const Contact = () => {
           Send Message
         </button>
       </form>
+
+      {/* ✅ Disclaimer Section */}
+      <div className="flex w-full max-w-2xl flex-col items-center justify-center p-6 text-center text-sm text-gray-600">
+        <hr className="w-full border-t border-gray-300 mb-4" />
+        <p>You can also reach me directly at:</p>
+        <p className="mt-2 font-semibold text-gray-800">
+          Email: razvan.pelinari@gmail.com
+        </p>
+        <p className="font-semibold text-gray-800">Phone: +40729244375</p>
+      </div>
     </div>
   );
 };
