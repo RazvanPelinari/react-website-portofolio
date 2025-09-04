@@ -1,58 +1,93 @@
+@import "./components/RGBBorder.css";
+/* Import global theme first (so Tailwind + components can use variables) */
 @import "tailwindcss";
 
+/* Smooth scrolling and base transitions */
 * {
-  font-family: "Inter";
   scroll-behavior: smooth;
+  transition: color 0.12s ease, background-color 0.12s ease;
 }
 
-.root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding-top: constant(safe-area-inset-top);
-  padding-top: env(safe-area-inset-top);
+/* Typography baseline */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.12;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.font-audiowide {
-  font-family: "Audiowide", sans-serif;
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.9s ease-out both;
 }
 
-@keyframes gradient {
+@keyframes fade-in-up {
   0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 50% 100%;
+    opacity: 0;
+    transform: translateY(10px);
   }
   100% {
-    background-position: 0% 50%;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-
-.animate-gradient {
-  animation: gradient 25s ease-in-out infinite;
-  background-size: 400% 400%;
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
 }
 
-/* Custom scrollbar styles */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-} /* Width of the scrollbar */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-} /* Track color */
-::-webkit-scrollbar-thumb {
-  background: #a46ede;
-  border-radius: 4px;
-} /* Thumb color and rounded corners */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} /* Thumb hover color */
+/* Page transitions */
+.page-transition {
+  transition: opacity 0.36s ease-in-out, transform 0.36s ease-in-out;
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+/* Page Transition Animations */
+.page-transition {
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
