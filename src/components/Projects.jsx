@@ -97,7 +97,7 @@ const Projects = () => {
             {/* 🔗 This button also opens the modal */}
             <button
               onClick={() =>
-                handleOpenModal("https://your-kultur-live-demo.com")
+                handleOpenModal("https://kulturclothing.netlify.app")
               }
               className="px-6 py-2 text-white bg-purple-500 rounded-lg shadow-md 
       hover:bg-purple-600 hover:shadow-lg transition-all duration-200"
@@ -105,7 +105,7 @@ const Projects = () => {
               View Project
             </button>
             <a
-              href="https://github.com/RazvanPelinari/kultur-clothing"
+              href="https://github.com/RazvanPelinari/Kultur-Shop"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 text-purple-600 border border-purple-500 rounded-lg 
