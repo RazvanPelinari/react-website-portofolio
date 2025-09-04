@@ -55,7 +55,7 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8 bg-gray-100/75"
     >
       {/* ✅ Floating Success/Error Messages */}
       <AnimatePresence>
@@ -94,7 +94,7 @@ const Contact = () => {
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="flex w-full max-w-2xl flex-col gap-6 rounded-lg p-6 shadow-lg"
+        className="flex w-full max-w-2xl flex-col gap-6 rounded-lg p-6 shadow-lg drop-shadow-[0_-4px_6px_rgba(245,245,245,1)] "
       >
         <div className="flex flex-col gap-4">
           <input

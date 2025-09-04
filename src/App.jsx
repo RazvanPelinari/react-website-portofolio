@@ -8,7 +8,7 @@ import More from "./components/More";
 function App() {
   return (
     <>
-      <div className="flex min-h-screen w-full subpixel-antialiased">
+      <div className="flex min-h-screen w-full subpixel-antialiased bg-gray-100/75">
         <HeaderLeft />
 
         <main className="flex-[3]">
