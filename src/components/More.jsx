@@ -12,17 +12,18 @@ const MoreInfo = () => {
               A Little More About Me
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Hello! I'm a passionate web developer based in Galați, Romania,
-              with a deep love for creating clean, efficient, and user-friendly
-              websites. My journey into coding began out of a curiosity for how
-              things work on the web, and it quickly grew into a full-fledged
-              passion for building and problem-solving.
+              Hello! I’m a web developer based in Galați, Romania, with a strong
+              focus on building clean, efficient, and user-friendly websites. My
+              journey into coding started with a curiosity about how the web
+              works and quickly developed into a passion for creating thoughtful
+              digital solutions.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              When I'm not coding, I enjoy exploring new places, listening to
-              hip-hop music, and playing strategy video games. I believe that
-              creativity and a desire to learn are the keys to a successful
-              project, and I bring that mindset to every line of code I write.
+              Beyond coding, I enjoy exploring new places, listening to hip-hop,
+              and playing strategy video games. I believe that continuous
+              learning, creativity, and attention to detail are essential to
+              delivering successful projects, and I bring that mindset to every
+              line of code I write.
             </p>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
