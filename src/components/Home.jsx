@@ -78,7 +78,7 @@ const Home = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/razvan-pelinari-454445381/"
+              href="https://www.linkedin.com/in/razvan-pelinari/"
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 w-10 cursor-pointer rounded-full p-2
