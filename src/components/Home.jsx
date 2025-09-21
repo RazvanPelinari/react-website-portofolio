@@ -7,11 +7,8 @@ import {
   BiPhone,
   BiEnvelope,
 } from "react-icons/bi";
-import useScrollMagic from "../../hooks/useScrollMagic";
 
 const Home = () => {
-  useScrollMagic();
-
   const [copiedMessage, setCopiedMessage] = useState("");
 
   const handleCopy = (text, message) => {
@@ -31,7 +28,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="scroll-anim w-full bg-gray-100/75 px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
+      className="w-full bg-gray-100/75 px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
         <img

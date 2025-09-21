@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
-import useScrollMagic from "../../hooks/useScrollMagic";
+
 
 const Contact = () => {
-  useScrollMagic();
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -57,7 +56,7 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="scroll-anim relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8 bg-gray-100/75"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8 bg-gray-100/75"
     >
       {/* ✅ Floating Success/Error Messages */}
       <AnimatePresence>
