@@ -9,8 +9,8 @@ export default function Section({ children, bg = "bg-white" }) {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`min-h-screen flex items-center justify-center ${bg}`}
     >
