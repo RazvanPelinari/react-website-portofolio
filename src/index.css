@@ -55,8 +55,8 @@
 } /* Thumb color and rounded corners */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-} /* Thumb hover color */
-/* Base hidden state */
+} 
+
 .scroll-anim {
   opacity: 1;
   transform: translateY(0);
