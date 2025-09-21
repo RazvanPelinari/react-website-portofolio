@@ -42,6 +42,7 @@ const Home = () => {
 
         <div className="space-y-1 sm:space-y-3">
           <h1
+            id="home-title"
             className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
   animate-gradient bg-[length:400%_400%] bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)]"
           >
