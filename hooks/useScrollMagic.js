@@ -8,23 +8,29 @@ export default function useScrollMagic() {
     const sections = document.querySelectorAll(".scroll-anim");
 
     sections.forEach((section, i) => {
-      // Skip last section (nothing to fade into)
       if (i < sections.length - 1) {
         const nextSection = sections[i + 1];
 
-        // Timeline for cross-fade
         const tl = gsap.timeline();
-        tl.fromTo(
+        tl.to(
           section,
-          { opacity: 1 },
-          { opacity: 0, ease: "none" },
+          {
+            opacity: 0,
+            y: -50, // slide up while fading
+            ease: "none",
+          },
           0
-        ).fromTo(nextSection, { opacity: 0 }, { opacity: 1, ease: "none" }, 0);
+        ).fromTo(
+          nextSection,
+          { opacity: 0, y: 50 }, // start slightly below, hidden
+          { opacity: 1, y: 0, ease: "none" }, // fade + slide into place
+          0
+        );
 
         new ScrollMagic.Scene({
           triggerElement: section,
           triggerHook: 0,
-          duration: "100%", // one viewport height
+          duration: "100%", // effect lasts for viewport height
         })
           .setTween(tl)
           .addTo(controller);
