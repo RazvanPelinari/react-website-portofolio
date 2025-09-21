@@ -16,21 +16,21 @@ export default function useScrollMagic() {
           section,
           {
             opacity: 0,
-            y: -50, // slide up while fading
+            y: -50,
             ease: "none",
           },
           0
         ).fromTo(
           nextSection,
-          { opacity: 0, y: 50 }, // start slightly below, hidden
-          { opacity: 1, y: 0, ease: "none" }, // fade + slide into place
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, ease: "none" },
           0
         );
 
         new ScrollMagic.Scene({
           triggerElement: section,
           triggerHook: 0,
-          duration: "100%", // effect lasts for viewport height
+          duration: "100%",
         })
           .setTween(tl)
           .addTo(controller);

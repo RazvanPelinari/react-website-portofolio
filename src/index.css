@@ -64,5 +64,5 @@
 }
 
 .scroll-anim:first-of-type {
-  opacity: 1; /* Home visible on load */
+  opacity: 1; /* Home starts visible */
 }

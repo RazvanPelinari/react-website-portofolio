@@ -7,6 +7,7 @@ import More from "./components/More";
 import useScrollMagic from "../hooks/useScrollMagic";
 
 function App() {
+  
   useScrollMagic();
 
   return (
