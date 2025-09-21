@@ -4,36 +4,29 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import More from "./components/More";
-import useScrollMagic from "../hooks/useScrollMagic";
+import Section from "./components/Animation";
 
 function App() {
-  
-  useScrollMagic();
-
   return (
-    <div className="flex min-h-screen w-full subpixel-antialiased bg-gray-100/75">
+    <div className="flex min-h-screen w-full subpixel-antialiased">
       <HeaderLeft />
 
-      <main className="flex-[3]">
-        <section id="Home" className="scroll-anim min-h-screen">
+      <main className="flex-[3] h-screen overflow-y-scroll snap-y snap-mandatory">
+        <Section>
           <Home />
-        </section>
-
-        <section id="MoreInfo" className="scroll-anim min-h-screen">
-          <More />
-        </section>
-
-        <section id="Experience" className="scroll-anim min-h-screen">
+        </Section>
+        <Section>
+          <More id="MoreInfo" />
+        </Section>
+        <Section>
           <Experience />
-        </section>
-
-        <section id="Projects" className="scroll-anim min-h-screen">
+        </Section>
+        <Section>
           <Projects />
-        </section>
-
-        <section id="Contact" className="scroll-anim min-h-screen">
+        </Section>
+        <Section>
           <Contact />
-        </section>
+        </Section>
       </main>
     </div>
   );

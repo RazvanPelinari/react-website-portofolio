@@ -57,12 +57,10 @@
   background: #555;
 }
 
-.scroll-anim {
-  opacity: 0;
-  transform: translateY(0);
-  will-change: opacity, transform;
+main {
+  scroll-snap-type: y mandatory;
 }
 
-.scroll-anim:first-of-type {
-  opacity: 1; /* Home starts visible */
+section {
+  scroll-snap-align: start;
 }
