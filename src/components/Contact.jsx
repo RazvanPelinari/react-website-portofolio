@@ -57,7 +57,7 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8 bg-gray-100/75"
+      className="scroll-anim relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8 bg-gray-100/75"
     >
       {/* ✅ Floating Success/Error Messages */}
       <AnimatePresence>
