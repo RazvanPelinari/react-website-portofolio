@@ -9,10 +9,16 @@ export default function useScrollMagic() {
       new ScrollMagic.Scene({
         triggerElement: el,
         triggerHook: 0.8,
-        duration: "80%",
-        reverse: true, // 👈 allow toggle when leaving
+        reverse: true, // allow toggle on exit
       })
-        .setClassToggle(el, "visible") // adds AND removes
+        .on("enter", () => {
+          el.classList.remove("exiting");
+          el.classList.add("visible");
+        })
+        .on("leave", () => {
+          el.classList.remove("visible");
+          el.classList.add("exiting"); // animate exit smoothly
+        })
         .addTo(controller);
     });
 
