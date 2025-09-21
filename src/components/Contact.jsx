@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
+import useScrollMagic from "../../hooks/useScrollMagic";
 
 const Contact = () => {
+  useScrollMagic();
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
