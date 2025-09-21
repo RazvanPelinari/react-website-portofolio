@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProjectModal from "./ProjectModal"; // Import the new modal component
-import useScrollMagic from "../../hooks/useScrollMagic";
 const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentProjectUrl, setCurrentProjectUrl] = useState("");
