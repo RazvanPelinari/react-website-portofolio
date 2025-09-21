@@ -17,19 +17,5 @@ export default function useScrollMagic() {
         .setClassToggle(el, "visible")
         .addTo(controller);
     });
-
-    // Text motion for Home
-    const homeTitle = document.querySelector("#home-title");
-    if (homeTitle) {
-      new ScrollMagic.Scene({
-        triggerElement: "#Home",
-        triggerHook: 0,
-        duration: "100%", // animation tied to scroll
-      })
-        .setTween(TweenMax.to(homeTitle, 1, { y: -100, ease: "linear" }))
-        .addTo(controller);
-    }
-
-    return () => controller.destroy(true);
   }, []);
 }
