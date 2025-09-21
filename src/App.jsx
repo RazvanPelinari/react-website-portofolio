@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import More from "./components/More";
+import MoreInfo from "./components/More";
 import Section from "./components/Animation";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Home />
         </Section>
         <Section>
-          <More id="MoreInfo" />
+          <MoreInfo />
         </Section>
         <Section>
           <Experience />

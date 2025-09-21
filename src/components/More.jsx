@@ -3,7 +3,10 @@ import Artowrk from "../assets/artwork2.jpg";
 
 const MoreInfo = () => {
   return (
-    <div className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen translate-y-10">
+    <div
+      id="MoreInfo"
+      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen translate-y-10"
+    >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Main "About Me" Section */}
         <section className="flex flex-col md:flex-row items-center justify-between gap-10">
