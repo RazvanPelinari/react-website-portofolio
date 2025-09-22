@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const Contact = () => {
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
@@ -56,7 +55,7 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-8"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-4 scroll-mt-20 md:scroll-mt-0"
     >
       {/* ✅ Floating Success/Error Messages */}
       <AnimatePresence>

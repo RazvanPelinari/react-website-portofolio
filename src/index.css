@@ -43,15 +43,15 @@
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   height: 8px;
 } /* Width of the scrollbar */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #ffffff;
 } /* Track color */
 ::-webkit-scrollbar-thumb {
   background: #a46ede;
-  border-radius: 4px;
+  border-radius: 10px;
 } /* Thumb color and rounded corners */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;

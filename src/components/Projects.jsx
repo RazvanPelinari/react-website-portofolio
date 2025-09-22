@@ -18,7 +18,7 @@ const Projects = () => {
     <div
       id="Projects"
       className="min-h-screen w-full flex flex-col 
-    items-center justify-center gap-20 p-10 md:p-16 xl:p-32 scroll-mt-14 md:scroll-mt-0"
+    items-center justify-center gap-20 p-10 md:p-16 xl:p-32 scroll-mt-20 md:scroll-mt-0"
     >
       <h1 className="text-center text-5xl font-light scroll-mt-14 md:scroll-mt-0 ">
         Projects
