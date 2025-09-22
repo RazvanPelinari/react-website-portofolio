@@ -5,7 +5,7 @@ const MoreInfo = () => {
   return (
     <div
       id="MoreInfo"
-      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen translate-y-10"
+      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen mt-0 pt-16"
     >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Main "About Me" Section */}
