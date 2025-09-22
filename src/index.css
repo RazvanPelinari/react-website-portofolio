@@ -59,9 +59,9 @@
 
 .box {
   position: relative;
-  background: rgba(0, 0, 0, 0);
+  background: rgb(255, 255, 255);
   border-radius: 200px;
-  padding: 2px;
+  padding: 4px;
   height: 300px;
   width: 300px;
   aspect-ratio: 16/9;
@@ -95,7 +95,6 @@
     purple,
     indigo
   );
-  filter: blur(5px);
   z-index: -2;
   border-radius: inherit;
   animation: autoRotate 2s linear infinite;
@@ -103,7 +102,7 @@
 }
 
 .box::after {
-  filter: blur(10px);
+  filter: blur(15px);
   z-index: -1;
 }
 
@@ -125,9 +124,9 @@
 
 .box2 {
   position: relative;
-  background: rgba(0, 0, 0, 0);
+  background: rgb(255, 255, 255);
   border-radius: 200px;
-  padding: 1px;
+  inset: 0;
   height: 250px;
   width: 250px;
   aspect-ratio: 16/9;
@@ -161,15 +160,14 @@
     purple,
     rgb(104, 0, 130)
   );
-  filter: blur(5px);
   z-index: -2;
   border-radius: inherit;
   animation: autoRotate 2s linear infinite;
-  padding: 1px;
+  padding: 2px;
 }
 
 .box2::after {
-  filter: blur(10px);
+  filter: blur(15px);
   z-index: -1;
 }
 
