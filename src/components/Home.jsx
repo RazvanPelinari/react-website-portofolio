@@ -33,11 +33,11 @@ const Home = () => {
       className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-20 md:scroll-mt-0">
-        <div className="box overflow-visible m-2">
+        <div className="box overflow-visible m-4">
           <img
             src={Artwork}
             alt="Logo"
-            className="w-[250px] sm:w-[300px] rounded-full scroll-mt-14 md:scroll-mt-0"
+            className="w-[250px] sm:w-[300px] rounded-full scroll-mt-14 md:scroll-mt-0 overflow-hidden"
           />
         </div>
 
