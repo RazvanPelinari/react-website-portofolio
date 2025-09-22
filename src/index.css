@@ -56,11 +56,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-main {
-  scroll-snap-type: y mandatory;
-}
-
-section {
-  scroll-snap-align: start;
-}

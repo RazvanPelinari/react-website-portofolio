@@ -28,7 +28,7 @@ const Projects = () => {
         className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3
       gap-5"
       >
-        <div
+        <div 
           className="text-left space-y-4 border-2 hover:scale-105 
   transition-all duration-200 cursor-pointer px-8 py-10
   border-purple-500 rounded-lg hover:bg-purple-100 flex flex-col justify-between"
