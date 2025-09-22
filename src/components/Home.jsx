@@ -30,10 +30,10 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative mt-10" // Added relative here
+      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
     >
-      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-20 md:scroll-mt-0 mt-4 overflow-visible">
-        <div className="box">
+      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-20 md:scroll-mt-0">
+        <div className="box overflow-visible m-2">
           <img
             src={Artwork}
             alt="Logo"
