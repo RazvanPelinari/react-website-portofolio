@@ -31,7 +31,7 @@ const MoreInfo = () => {
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
             {/* The new image container with a purple background */}
-            <div className="w-64 h-64 bg-purple-500/20 rounded-full flex items-center justify-center overflow-hidden">
+            <div className="box2">
               <img
                 src={Artowrk}
                 alt="A personal artistic illustration of myself"
