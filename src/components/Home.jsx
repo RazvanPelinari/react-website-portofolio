@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative" // Added relative here
+      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative mt-10" // Added relative here
     >
       <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-14 md:scroll-mt-0">
         <div className="box">
