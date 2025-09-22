@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Artwork from "../assets/artwork2.jpg";
+import Artwork from "../../assets/artwork2.jpg";
 import {
   BiLogoGithub,
   BiLogoInstagram,
@@ -8,7 +8,7 @@ import {
   BiEnvelope,
 } from "react-icons/bi";
 
-import Typewriter from "./Typewriter";
+import Typewriter from "../Animations/Typewriter";
 
 const Home = () => {
   const [copiedMessage, setCopiedMessage] = useState("");

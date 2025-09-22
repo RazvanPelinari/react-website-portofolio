@@ -1,10 +1,10 @@
-import HeaderLeft from "./components/HeaderLeft";
-import Home from "./components/Home";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import MoreInfo from "./components/More";
-import Section from "./components/Animation";
+import HeaderLeft from "./components/Navigation/HeaderLeft";
+import Home from "./components/Pages/Home";
+import Experience from "./components/Pages/Experience";
+import Projects from "./components/Pages/Projects";
+import Contact from "./components/Pages/Contact";
+import MoreInfo from "./components/Pages/More";
+import Section from "./components/Animations/ScrollAnimation";
 
 function App() {
   return (

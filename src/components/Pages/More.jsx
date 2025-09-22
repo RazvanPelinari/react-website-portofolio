@@ -1,5 +1,5 @@
 import React from "react";
-import Artowrk from "../assets/artwork2.jpg";
+import Artowrk from "../../assets/artwork2.jpg";
 
 const MoreInfo = () => {
   return (
