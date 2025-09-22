@@ -8,6 +8,8 @@ import {
   BiEnvelope,
 } from "react-icons/bi";
 
+import Typewriter from "./Typewriter";
+
 const Home = () => {
   const [copiedMessage, setCopiedMessage] = useState("");
 
@@ -50,7 +52,7 @@ const Home = () => {
             className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
   animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)]"
           >
-            <p className="justify-center">Web Developer</p>
+            <Typewriter />
             {"JavaScript | React.js | Tailwind CSS"}
             <p />
           </h3>
