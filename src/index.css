@@ -66,7 +66,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden; /* prevent inner overlay */
-  z-index: 0;
+  z-index: -2;
 }
 
 .box {
@@ -117,14 +117,14 @@
     purple,
     indigo
   );
-  z-index: -2;
+  z-index: -1;
   animation: autoRotate 2s linear infinite;
 }
 
 .box::after,
 .box2::after {
   filter: blur(15px);
-  z-index: -1;
+  z-index: -2;
 }
 
 @keyframes autoRotate {
@@ -139,5 +139,5 @@
 .box > *,
 .box2 > * {
   position: relative;
-  z-index: 1;
+  z-index: -1;
 }
