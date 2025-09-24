@@ -11,7 +11,7 @@ function App() {
     <div className="flex min-h-screen w-full subpixel-antialiased">
       <HeaderLeft />
 
-      <main className="flex-[3] h-screen overflow-y-scroll snap-y snap-mandatory">
+      <main className="flex-[3] h-screen overflow-y-scroll snap-y snap-mandatory overflow-x-hidden scroll-smooth">
         <Section>
           <Home />
         </Section>
