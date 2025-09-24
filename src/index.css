@@ -121,12 +121,12 @@
   z-index: -2;
 }
 
-/* Glow effect */
+/* Base glow (works fine in Chrome/Firefox/desktop Safari) */
 .box::after,
 .box2::after {
   content: "";
   position: absolute;
-  inset: 0; /* extend outside container */
+  inset: -6px;
   border-radius: inherit;
   background: conic-gradient(
     from var(--deg) at center,
@@ -141,11 +141,26 @@
     purple,
     indigo
   );
-  filter: blur(15px); /* bigger blur for glow */
+  filter: blur(15px);
   animation: autoRotate 2s linear infinite;
-  z-index: -3; /* behind everything */
-  width: 100%;
-  height: 100%;
+  z-index: -3;
+}
+
+/* iOS Safari fix: use radial gradient mask to hide overflow glow */ 
+@media screen and (max-width: 820px) {
+  @supports (-webkit-touch-callout: none) {
+    .box::after,
+    .box2::after {
+      -webkit-mask-image: radial-gradient(circle, #000 70%, transparent 100%);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: cover;
+      mask-image: radial-gradient(circle, #000 70%, transparent 100%);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: cover;
+    }
+  }
 }
 
 @keyframes autoRotate {
