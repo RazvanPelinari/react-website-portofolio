@@ -146,16 +146,20 @@
   z-index: -3;
 }
 
-/* iOS Safari fix: use radial gradient mask to hide overflow glow */ 
+/* iOS Safari fix: use radial gradient mask to hide overflow glow */
 @media screen and (max-width: 820px) {
   @supports (-webkit-touch-callout: none) {
     .box::after,
     .box2::after {
-      -webkit-mask-image: radial-gradient(circle, #000 70%, transparent 100%);
+      -webkit-mask-image: radial-gradient(
+        circle,
+        #ffffff00 80%,
+        transparent 100%
+      );
       -webkit-mask-repeat: no-repeat;
       -webkit-mask-position: center;
       -webkit-mask-size: cover;
-      mask-image: radial-gradient(circle, #000 70%, transparent 100%);
+      mask-image: radial-gradient(circle, #ffffff00 80%, transparent 100%);
       mask-repeat: no-repeat;
       mask-position: center;
       mask-size: cover;
