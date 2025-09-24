@@ -61,8 +61,8 @@
 .box,
 .box2 {
   position: relative;
-  background: #fff;
-  border-radius: 200px;
+  background: #ffffff00;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,23 +71,23 @@
 }
 
 .box {
-  width: 310px;
-  height: 310px;
+  width: 300px;
+  height: 300px;
 }
 
 .box2 {
-  width: 250px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
 }
 
 @media screen and (max-width: 641px) {
   .box {
-    width: 260px;
-    height: 260px;
+    width: 250px;
+    height: 250px;
   }
   .box2 {
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
   }
 }
 
@@ -102,7 +102,7 @@
 .box2::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -4px;
   border-radius: inherit;
   background: conic-gradient(
     from var(--deg) at center,
@@ -126,7 +126,7 @@
 .box2::after {
   content: "";
   position: absolute;
-  inset: -2px; /* extend outside container */
+  inset: 0; /* extend outside container */
   border-radius: inherit;
   background: conic-gradient(
     from var(--deg) at center,
@@ -144,6 +144,8 @@
   filter: blur(15px); /* bigger blur for glow */
   animation: autoRotate 2s linear infinite;
   z-index: -3; /* behind everything */
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes autoRotate {
