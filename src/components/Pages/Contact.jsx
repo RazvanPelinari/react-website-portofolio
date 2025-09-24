@@ -129,7 +129,7 @@ const Contact = () => {
 
         <button
           type="submit"
-          className="rounded-lg border-2 border-purple-400 bg-purple-500 px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-purple-600 hover:scale-105"
+          className="rounded-lg border-2 border-purple-400 bg-purple-500 px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-purple-600"
         >
           Send Message
         </button>
