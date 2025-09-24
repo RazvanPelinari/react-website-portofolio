@@ -66,8 +66,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* keep glow outside */
-  z-index: 0; /* reset */
+  overflow: visible; /* allow glow to be seen */
+  z-index: 0;
 }
 
 .box {
@@ -97,6 +97,7 @@
   inherits: true;
 }
 
+/* Main animated gradient ring */
 .box::before,
 .box2::before {
   content: "";
@@ -117,13 +118,15 @@
     indigo
   );
   animation: autoRotate 2s linear infinite;
-  z-index: 0; /* sits behind content */
+  z-index: -2;
 }
 
+/* Glow effect */
 .box::after,
 .box2::after {
   content: "";
   position: absolute;
+  inset: -2px; /* extend outside container */
   border-radius: inherit;
   background: conic-gradient(
     from var(--deg) at center,
@@ -138,10 +141,9 @@
     purple,
     indigo
   );
-  filter: blur(40px);
+  filter: blur(15px); /* bigger blur for glow */
   animation: autoRotate 2s linear infinite;
-  z-index: 0; /* blurred glow below main gradient */
-  padding: 10px; /* to make glow larger than main gradient */
+  z-index: -3; /* behind everything */
 }
 
 @keyframes autoRotate {
@@ -156,5 +158,5 @@
 .box > *,
 .box2 > * {
   position: relative;
-  z-index: 0; /* above the gradients */
+  z-index: 1; /* ensure content is above glow */
 }
