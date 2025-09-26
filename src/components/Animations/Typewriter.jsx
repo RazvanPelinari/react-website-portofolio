@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 export default function Typewriter() {
-  const words = ["Web Developer", "FrontEnd Developer", "Junior Programmer"];
+  const words = ["Web Developer", "FrontEnd Developer", "React Developer", "Junior Programmer"];
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
