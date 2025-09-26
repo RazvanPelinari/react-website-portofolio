@@ -21,13 +21,6 @@ const MoreInfo = () => {
               works and quickly developed into a passion for creating thoughtful
               digital solutions.
             </p>
-            <p className="text-gray-700 leading-relaxed">
-              Beyond coding, I enjoy exploring new places, listening to hip-hop,
-              and playing strategy video games. I believe that continuous
-              learning, creativity, and attention to detail are essential to
-              delivering successful projects, and I bring that mindset to every
-              line of code I write.
-            </p>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end">
             {/* The new image container with a purple background */}
