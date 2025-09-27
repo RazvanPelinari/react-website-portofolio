@@ -4,13 +4,15 @@ import Experience from "./components/Pages/Experience";
 import Projects from "./components/Pages/Projects";
 import Contact from "./components/Pages/Contact";
 import MoreInfo from "./components/Pages/More";
+import DarkModeToggle from "./components/DarkModeToggle"; // 👈 import toggle
 
 function App() {
   return (
-    <div className="flex min-h-screen w-full subpixel-antialiased">
+    <div className="flex min-h-screen w-full subpixel-antialiased relative">
+      {/* Sidebar / Navbar */}
       <HeaderLeft />
 
-      {/* IMPORTANT: give top padding on small screens to avoid overlap */}
+      {/* Main Content */}
       <main className="flex-[3] h-screen overflow-y-scroll scroll-smooth pt-14 md:pt-0 relative z-0">
         <Home />
         <MoreInfo />
@@ -18,6 +20,11 @@ function App() {
         <Projects />
         <Contact />
       </main>
+
+      {/* Dark Mode Toggle (always floating above everything) */}
+      <div className="fixed top-4 right-4 z-[9999] md:translate-y-0 translate-y-8 md:translate-x-0 translate-x-4">
+        <DarkModeToggle />
+      </div>
     </div>
   );
 }

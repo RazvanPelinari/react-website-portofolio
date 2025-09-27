@@ -9,12 +9,9 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    // Reset messages
     setIsSuccess(false);
     setIsError(false);
 
-    // Send the message to the developer
     emailjs
       .sendForm(
         "Portofolio_Email",
@@ -24,7 +21,7 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log("Message sent to me:", result.text);
+          console.log("Message sent:", result.text);
           setIsSuccess(true);
           e.target.reset();
           setTimeout(() => setIsSuccess(false), 4000);
@@ -36,7 +33,6 @@ const Contact = () => {
         }
       );
 
-    // Separately attempt to send the auto-reply to the user
     emailjs
       .sendForm(
         "Portofolio_Email",
@@ -55,9 +51,10 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-4 scroll-mt-20 md:scroll-mt-0"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-4 
+                 scroll-mt-20 md:scroll-mt-0 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
     >
-      {/* ✅ Floating Success/Error Messages */}
+      {/* Floating Success/Error Messages */}
       <AnimatePresence>
         {isSuccess && (
           <motion.div
@@ -66,7 +63,8 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-8 left-1/2 transform -translate-x-1/2 rounded-lg bg-green-500 px-6 py-3 text-white shadow-xl text-center z-50"
+            className="absolute top-8 left-1/2 transform -translate-x-1/2 rounded-lg 
+                       bg-green-500 px-6 py-3 text-white shadow-xl text-center z-50"
           >
             ✅ Message sent! A confirmation email was also sent to you.
           </motion.div>
@@ -78,23 +76,26 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-8 left-1/2 transform -translate-x-1/2 rounded-lg bg-red-500 px-6 py-3 text-white shadow-xl text-center z-50"
+            className="absolute top-8 left-1/2 transform -translate-x-1/2 rounded-lg 
+                       bg-red-500 px-6 py-3 text-white shadow-xl text-center z-50"
           >
             ❌ Failed to send. Please try again.
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ✅ Heading */}
+      {/* Heading */}
       <h1 className="text-center text-5xl md:text-6xl font-light text-purple-600 mb-6 mt-16">
         Get in Touch
       </h1>
 
-      {/* ✅ Form */}
+      {/* Form */}
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="flex w-full max-w-2xl flex-col gap-6 rounded-lg p-6 shadow-lg drop-shadow-[0_-4px_6px_rgba(245,245,245,1)] "
+        className="flex w-full max-w-2xl flex-col gap-6 rounded-lg p-6 
+                   shadow-lg dark:shadow-gray-800 drop-shadow-[0_-4px_6px_rgba(245,245,245,0.5)] dark:drop-shadow-[0_-4px_6px_rgba(0,0,0,0.3)]
+                   bg-white dark:bg-gray-900 transition-colors duration-500"
       >
         <div className="flex flex-col gap-4">
           <input
@@ -102,21 +103,27 @@ const Contact = () => {
             placeholder="Your Name"
             required
             name="user_name"
-            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none transition-all duration-200 hover:bg-purple-100 focus:ring-2 focus:ring-purple-500"
+            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none
+                       transition-all duration-200 hover:bg-purple-100 dark:hover:bg-purple-800
+                       focus:ring-2 focus:ring-purple-500 dark:bg-gray-800 dark:text-white"
           />
           <input
             type="email"
             placeholder="Your Email"
             required
             name="user_email"
-            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none transition-all duration-200 hover:bg-purple-100 focus:ring-2 focus:ring-purple-500"
+            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none
+                       transition-all duration-200 hover:bg-purple-100 dark:hover:bg-purple-800
+                       focus:ring-2 focus:ring-purple-500 dark:bg-gray-800 dark:text-white"
           />
           <input
             type="tel"
             placeholder="Your Phone Number"
             required
             name="user_phone"
-            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none transition-all duration-200 hover:bg-purple-100 focus:ring-2 focus:ring-purple-500"
+            className="rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none
+                       transition-all duration-200 hover:bg-purple-100 dark:hover:bg-purple-800
+                       focus:ring-2 focus:ring-purple-500 dark:bg-gray-800 dark:text-white"
           />
         </div>
 
@@ -124,25 +131,30 @@ const Contact = () => {
           placeholder="Your Message"
           name="message"
           required
-          className="h-40 w-full resize-none rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none transition-all duration-200 hover:bg-purple-100 focus:ring-2 focus:ring-purple-500"
+          className="h-40 w-full resize-none rounded-lg border-2 border-purple-400 px-4 py-3 text-lg outline-none
+                     transition-all duration-200 hover:bg-purple-100 dark:hover:bg-purple-800
+                     focus:ring-2 focus:ring-purple-500 dark:bg-gray-800 dark:text-white"
         ></textarea>
 
         <button
           type="submit"
-          className="rounded-lg border-2 border-purple-400 bg-purple-500 px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-purple-600"
+          className="rounded-lg border-2 border-purple-400 bg-purple-500 px-6 py-3 font-semibold text-white
+                     transition-all duration-200 hover:bg-purple-600 dark:bg-purple-700 dark:hover:bg-purple-800"
         >
           Send Message
         </button>
       </form>
 
-      {/* ✅ Disclaimer Section */}
-      <div className="flex w-full max-w-2xl flex-col items-center justify-center p-6 text-center text-sm text-gray-600">
-        <hr className="w-full border-t border-gray-300 mb-4" />
+      {/* Disclaimer Section */}
+      <div className="flex w-full max-w-2xl flex-col items-center justify-center p-6 text-center text-sm text-gray-600 dark:text-gray-300 transition-colors duration-500">
+        <hr className="w-full border-t border-gray-300 dark:border-gray-700 mb-4" />
         <p>You can also reach me directly at:</p>
-        <p className="mt-2 font-semibold text-gray-800">
+        <p className="mt-2 font-semibold text-gray-800 dark:text-gray-200">
           Email: razvan.pelinari@gmail.com
         </p>
-        <p className="font-semibold text-gray-800">Phone: +40729244375</p>
+        <p className="font-semibold text-gray-800 dark:text-gray-200">
+          Phone: +40729244375
+        </p>
       </div>
     </div>
   );

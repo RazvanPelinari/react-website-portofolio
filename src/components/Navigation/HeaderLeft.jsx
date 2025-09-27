@@ -26,9 +26,11 @@ function MobileTopBarPortal() {
   return createPortal(
     <div
       className="fixed left-0 right-0 top-0 z-[9999] flex justify-evenly
-                 text-white md:hidden border-b border-purple-400
+                 text-white dark:text-gray-100 md:hidden border-b
+                 border-purple-400 dark:border-purple-600
                  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                 animate-gradient bg-[length:300%_300%] h-14"
+                 dark:from-indigo-900 dark:via-purple-900 dark:to-fuchsia-900
+                 animate-gradient bg-[length:300%_300%] h-14 transition-colors duration-500"
     >
       {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
         <a
@@ -51,9 +53,12 @@ const HeaderLeft = () => {
       {/* Desktop Sidebar */}
       <div className="hidden md:flex md:flex-[0.8]">
         <div
-          className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center
-                   border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                     animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
+          className="min-h-screen w-full text-white dark:text-gray-100 top-0 sticky flex items-center justify-center
+                     border-purple-400 dark:border-purple-600
+                     bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                     dark:from-indigo-900 dark:via-purple-900 dark:to-fuchsia-900
+                     animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm
+                     transition-colors duration-500"
         >
           <ul className="flex flex-col gap-10">
             {["Home", "More Info", "Experience", "Projects", "Contact"].map(
