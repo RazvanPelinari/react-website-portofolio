@@ -8,7 +8,7 @@ import DarkModeToggle from "./components/DarkModeToggle"; // 👈 import toggle
 
 function App() {
   return (
-    <div className="flex min-h-screen w-full subpixel-antialiased relative">
+    <div className="flex min-h-screen w-full subpixel-antialiased relative  bg-white dark:bg-gray-900">
       {/* Sidebar / Navbar */}
       <HeaderLeft />
 
