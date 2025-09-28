@@ -10,21 +10,13 @@ export default function DarkModeToggle() {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setDark(savedTheme === "dark");
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
       setDark(prefersDark);
-      if (prefersDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      document.documentElement.classList.toggle("dark", prefersDark);
     }
   }, []);
 
@@ -42,7 +34,8 @@ export default function DarkModeToggle() {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    // Hidden on mobile (smaller than md), visible from md and up
+    <div className="fixed top-4 right-4 z-50 hidden md:block">
       <button
         onClick={toggleDark}
         className="relative w-12 h-12 rounded-full flex items-center justify-center

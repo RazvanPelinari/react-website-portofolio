@@ -8,6 +8,7 @@ import {
   BiMailSend,
   BiInfoCircle,
 } from "react-icons/bi";
+import { Sun, Moon } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "#Home", icon: BiHome, label: "Home" },
@@ -17,8 +18,35 @@ const NAV_ITEMS = [
   { href: "#Contact", icon: BiMailSend, label: "Contact" },
 ];
 
-// Mobile bar portal component (safe for SSR)
-function MobileTopBarPortal() {
+function useDarkMode() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setDark(savedTheme === "dark");
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setDark(prefersDark);
+      document.documentElement.classList.toggle("dark", prefersDark);
+    }
+  }, []);
+
+  const toggle = () => {
+    const newTheme = !dark;
+    setDark(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+  };
+
+  return { dark, toggle };
+}
+
+// Mobile bar portal component
+function MobileTopBarPortal({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -26,11 +54,9 @@ function MobileTopBarPortal() {
   return createPortal(
     <div
       className="fixed left-0 right-0 top-0 z-[9999] flex justify-evenly
-                 text-white dark:text-gray-100 md:hidden border-b
-                 border-purple-400 dark:border-purple-600
+                 text-white md:hidden border-b border-purple-400
                  bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                 dark:from-indigo-900 dark:via-purple-900 dark:to-fuchsia-900
-                 animate-gradient bg-[length:300%_300%] h-14 transition-colors duration-500"
+                 animate-gradient bg-[length:300%_300%] h-14"
     >
       {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
         <a
@@ -42,23 +68,31 @@ function MobileTopBarPortal() {
           <span className="text-xs">{label}</span>
         </a>
       ))}
+
+      {/* Dark mode toggle as nav item */}
+      <button
+        onClick={toggle}
+        className="flex flex-col items-center justify-center"
+      >
+        {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
+        <span className="text-xs">Theme</span>
+      </button>
     </div>,
     document.body
   );
 }
 
 const HeaderLeft = () => {
+  const { dark, toggle } = useDarkMode();
+
   return (
     <>
       {/* Desktop Sidebar */}
       <div className="hidden md:flex md:flex-[0.8]">
         <div
-          className="min-h-screen w-full text-white dark:text-gray-100 top-0 sticky flex items-center justify-center
-                     border-purple-400 dark:border-purple-600
-                     bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                     dark:from-indigo-900 dark:via-purple-900 dark:to-fuchsia-900
-                     animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm
-                     transition-colors duration-500"
+          className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center
+                   border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                   animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
           <ul className="flex flex-col gap-10">
             {["Home", "More Info", "Experience", "Projects", "Contact"].map(
@@ -81,12 +115,34 @@ const HeaderLeft = () => {
                 </li>
               )
             )}
+
+            {/* Dark mode toggle as nav item */}
+            <li
+              className="flex items-center justify-start cursor-pointer font-medium
+                         transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
+            >
+              <BiRightArrowAlt
+                className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
+                           group-hover:opacity-100 group-hover:translate-0"
+              />
+              <button
+                onClick={toggle}
+                className="flex items-center gap-2 transition-all duration-200 hover:translate-x-2"
+              >
+                {dark ? (
+                  <Moon className="text-2xl" />
+                ) : (
+                  <Sun className="text-2xl" />
+                )}
+                <span>Theme</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
 
-      {/* Mobile Top Bar rendered via portal */}
-      <MobileTopBarPortal />
+      {/* Mobile Top Bar */}
+      <MobileTopBarPortal dark={dark} toggle={toggle} />
     </>
   );
 };
