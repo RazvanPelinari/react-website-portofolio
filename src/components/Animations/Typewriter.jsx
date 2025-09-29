@@ -2,7 +2,12 @@
 import { useEffect, useState } from "react";
 
 export default function Typewriter() {
-  const words = ["Web Developer", "FrontEnd Developer", "React Developer", "Junior Programmer"];
+  const words = [
+    "Web Developer",
+    "FrontEnd Developer",
+    "React Developer",
+    "Junior Programmer",
+  ];
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -24,7 +29,7 @@ export default function Typewriter() {
       // Finished deleting
       if (isDeleting && charIndex === 0) {
         setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length); // move to next
+        setWordIndex((prev) => (prev + 1) % words.length);
       }
     }, typingSpeed);
 
@@ -32,9 +37,9 @@ export default function Typewriter() {
   }, [charIndex, isDeleting, wordIndex, words]);
 
   return (
-    <p className="justify-center text-xl font-semibold py-0">
+    <span className="inline-block min-w-[180px]">
       {text}
       <span className="border-r-2 border-purple-500 animate-pulse ml-1"></span>
-    </p>
+    </span>
   );
 }

@@ -52,25 +52,38 @@ const Home = () => {
         {/* Headings */}
         <div className="space-y-1 sm:space-y-3">
           <h1
-            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-              animate-gradient bg-[length:400%_400%] bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl 
-              drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]
-              flex items-center justify-center gap-2"
+            className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+             animate-gradient bg-[length:400%_400%] bg-clip-text 
+             text-4xl md:text-5xl lg:text-6xl font-semibold text-transparent 
+             drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] 
+             dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)] 
+             flex items-center justify-center gap-2"
           >
             Hi, I'm Răzvan
-            <span className="inline-block align-middle text-4xl md:text-5xl lg:text-6xl">
+            <span className="inline-block align-middle text-neutral-50">
               👋
             </span>
           </h1>
 
-          <h3
-            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-              animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl 
-              drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]
-              flex items-center justify-center gap-2"
-          >
-            <span>I'm a</span>
-            <Typewriter />
+          <h3 className="flex items-center justify-center gap-2 text-xl md:text-2xl lg:text-3xl font-semibold">
+            {/* Fixed "I'm a" */}
+            <span
+              className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+               animate-gradient bg-[length:400%_400%] bg-clip-text text-transparent 
+               drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] 
+               dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
+            >
+              I'm a
+            </span>
+            <span
+              className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+               animate-gradient bg-[length:400%_400%] bg-clip-text text-transparent 
+               drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] 
+               dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]
+               inline-block min-w-[180px] text-xl md:text-2xl lg:text-3xl"
+            >
+              <Typewriter />
+            </span>
           </h3>
 
           <p className="max-w-[500px] text-sm md:text-base text-gray-600 dark:text-gray-300 mx-auto leading-relaxed">
@@ -120,11 +133,11 @@ const Home = () => {
             {/* Copy Phone */}
             <button
               onClick={() => handleCopy("+40729244375", "Phone number copied!")}
-              className="flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
+              className=" flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
                 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
                 text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
             >
-              <BiPhone className="text-lg" /> Copy Phone
+              <BiPhone className="text-lg" /> Call Me!
             </button>
 
             {/* Copy Email */}
@@ -136,7 +149,7 @@ const Home = () => {
                 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
                 text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
             >
-              <BiEnvelope className="text-lg" /> Copy Email
+              <BiEnvelope className="text-lg" /> Email Me!
             </button>
 
             {/* View Projects */}

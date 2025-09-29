@@ -130,30 +130,37 @@ export default function TechLibrary() {
   return (
     <section
       id="TechStack"
-      className="max-w-6xl mx-auto py-16 px-6 text-center"
+      className="max-w-6xl mx-auto py-20 px-6 text-center"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-neutral-900 dark:text-neutral-100">
+      <h2
+        className="text-4xl md:text-5xl font-bold mb-6 
+        bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+        bg-clip-text text-transparent animate-gradient bg-[length:400%_400%]"
+      >
         📚 Tech Stack
       </h2>
 
-      <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto">
+      <p className="text-neutral-700 dark:text-neutral-300 mb-16 max-w-2xl mx-auto">
         A collection of languages, frameworks, databases, tools, and platforms I
         use to build modern and scalable applications.
       </p>
 
       {/* Main Stack */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-10">
         {mainStack.map((tech, i) => (
           <motion.div
             key={i}
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 rounded-xl shadow-md 
-                       bg-neutral-100 dark:bg-neutral-900 
-                       text-neutral-900 dark:text-neutral-100 transition"
+            whileHover={{ scale: 1.06 }}
+            className="flex flex-col items-center p-6 rounded-2xl shadow-lg 
+                       bg-white/70 dark:bg-purple-900/10
+                       border border-purple-400/40 
+                       backdrop-blur-md transition-all hover:shadow-purple-500/40"
           >
             <div className="text-5xl mb-4">{tech.icon}</div>
-            <h3 className="text-xl font-semibold">{tech.name}</h3>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+            <h3 className="text-xl font-semibold text-black dark:text-neutral-50">
+              {tech.name}
+            </h3>
+            <p className="text-sm text-purple-600 dark:text-purple-400">
               {tech.category}
             </p>
             <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
@@ -170,19 +177,22 @@ export default function TechLibrary() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-6"
           >
             {moreStack.map((tech, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center p-6 rounded-xl shadow-md 
-                           bg-neutral-100 dark:bg-neutral-900 
-                           text-neutral-900 dark:text-neutral-100 transition"
+                whileHover={{ scale: 1.06 }}
+                className="flex flex-col items-center p-6 rounded-2xl shadow-lg 
+                           bg-white/70 dark:bg-purple-900/10 
+                           border border-purple-400/40 
+                           backdrop-blur-md transition-all hover:shadow-purple-500/40"
               >
                 <div className="text-4xl mb-3">{tech.icon}</div>
-                <h3 className="text-lg font-semibold">{tech.name}</h3>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                <h3 className="text-lg font-semibold text-black dark:text-neutral-50">
+                  {tech.name}
+                </h3>
+                <p className="text-xs text-purple-600 dark:text-purple-400">
                   {tech.category}
                 </p>
                 <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
@@ -197,14 +207,12 @@ export default function TechLibrary() {
       {/* Toggle button */}
       <button
         onClick={() => setShowMore(!showMore)}
-        className="mt-10 px-6 py-2 rounded-md 
-                   bg-neutral-900 text-white 
-                   dark:bg-neutral-100 dark:text-neutral-900 
-                   font-medium hover:opacity-80 transition"
+        className="mt-12 px-8 py-3 rounded-lg font-medium text-white 
+                   bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+                   shadow-md hover:scale-105 transition-transform"
       >
         {showMore ? "View Less" : "View More"}
       </button>
     </section>
   );
 }
-
