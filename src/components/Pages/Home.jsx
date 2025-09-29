@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Artwork from "../assets/logo.jpg";
+import Artwork from "../../assets/artwork2.jpg";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import Typewriter from "../Animations/Typewriter";
 import { motion, AnimatePresence } from "framer-motion";
