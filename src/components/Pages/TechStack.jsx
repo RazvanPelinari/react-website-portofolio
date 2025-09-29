@@ -46,14 +46,12 @@ const stackData = [
     category: "Framework",
     description: "React framework for SSR, SSG, and optimized web apps.",
     icon: <SiNextdotjs />,
-    main: true,
   },
   {
     name: "TailwindCSS",
     category: "CSS Framework",
     description: "Utility-first CSS framework for fast and responsive design.",
     icon: <SiTailwindcss className="text-teal-400" />,
-    main: true,
   },
   {
     name: "HTML5",
