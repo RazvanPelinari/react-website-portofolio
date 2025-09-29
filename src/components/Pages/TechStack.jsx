@@ -135,7 +135,7 @@ export default function TechLibrary() {
       <h2
         className="text-4xl md:text-5xl font-bold mb-6 
         bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-        bg-clip-text text-transparent animate-gradient bg-[length:400%_400%]"
+        bg-clip-text text-transparent animate-gradient bg-[length:2000%_200%]"
       >
         📚 Tech Stack
       </h2>
@@ -209,7 +209,7 @@ export default function TechLibrary() {
         onClick={() => setShowMore(!showMore)}
         className="mt-12 px-8 py-3 rounded-lg font-medium text-white 
                    bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-                   shadow-md hover:scale-105 transition-transform"
+                   shadow-md hover:scale-105 transition-transform animate-gradient bg-[length:400%_400%]"
       >
         {showMore ? "View Less" : "View More"}
       </button>

@@ -56,26 +56,35 @@ function MobileOffCanvasNav({ dark, toggle }) {
 
   // swipe gesture state
   const [touchStartX, setTouchStartX] = useState(null);
+  const [touchCurrentX, setTouchCurrentX] = useState(null);
 
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
-
-  // handle touch start
   const handleTouchStart = (e) => {
     setTouchStartX(e.touches[0].clientX);
+    setTouchCurrentX(e.touches[0].clientX);
   };
 
-  // handle touch move
   const handleTouchMove = (e) => {
-    if (!touchStartX) return;
-    const currentX = e.touches[0].clientX;
-    const diff = touchStartX - currentX;
+    if (touchStartX === null) return;
+    setTouchCurrentX(e.touches[0].clientX);
+  };
 
-    // swipe right-to-left to close
-    if (diff > 80) {
-      setOpen(false);
-      setTouchStartX(null);
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchCurrentX === null) return;
+
+    const diff = touchStartX - touchCurrentX;
+
+    // Swipe right-to-left → open menu
+    if (!open && diff > 80) {
+      setOpen(true);
     }
+
+    // Swipe left-to-right → close menu
+    if (open && diff < -80) {
+      setOpen(false);
+    }
+
+    setTouchStartX(null);
+    setTouchCurrentX(null);
   };
 
   return createPortal(
