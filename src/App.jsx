@@ -5,6 +5,7 @@ import Projects from "./components/Pages/Projects";
 import Contact from "./components/Pages/Contact";
 import MoreInfo from "./components/Pages/More";
 import DarkModeToggle from "./components/DarkModeToggle"; // 👈 import toggle
+import TechStack from "./components/Pages/TechStack";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <MoreInfo />
         <Experience />
         <Projects />
+        <TechStack />
         <Contact />
       </main>
 
