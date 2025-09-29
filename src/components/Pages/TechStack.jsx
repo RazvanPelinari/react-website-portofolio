@@ -128,8 +128,8 @@ export default function TechLibrary() {
   const moreStack = stackData.filter((item) => !item.main);
 
   return (
-    <section className="max-w-6xl mx-auto py-16 px-6 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">📚 Tech Library</h2>
+    <section id="TechStack" className="max-w-6xl mx-auto py-16 px-6 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-10">📚 Tech Stack</h2>
 
       <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto">
         A collection of languages, frameworks, databases, tools, and platforms I
