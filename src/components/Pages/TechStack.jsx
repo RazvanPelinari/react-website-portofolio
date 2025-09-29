@@ -142,7 +142,7 @@ export default function TechLibrary() {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 rounded-xl shadow-md bg-white dark:bg-neutral-900 transition text-left"
+            className="flex flex-col items-center p-6 rounded-xl shadow-md bg-white dark:bg-neutral-300 transition text-left"
           >
             <div className="text-5xl mb-4">{tech.icon}</div>
             <h3 className="text-xl font-semibold">{tech.name}</h3>
