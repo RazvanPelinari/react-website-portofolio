@@ -32,7 +32,9 @@ function useDarkMode() {
       setDark(savedTheme === "dark");
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
       setDark(prefersDark);
       document.documentElement.classList.toggle("dark", prefersDark);
     }
@@ -81,8 +83,8 @@ function MobileOffCanvasNav({ dark, toggle }) {
       {/* Top bar */}
       <div
         className="flex items-center justify-between px-4 h-14 
-                   bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-                   border-b border-purple-400 text-white"
+                   bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                   border-b border-purple-400 text-white animate-gradient bg-[length:400%_400%]"
       >
         <span className="font-bold text-lg">{`</Razvan>`}</span>
 
@@ -113,8 +115,9 @@ function MobileOffCanvasNav({ dark, toggle }) {
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
               className="fixed top-0 right-0 h-full w-64 
-                         bg-gradient-to-b from-purple-600 via-fuchsia-600 to-purple-700 
-                         text-white shadow-lg z-[10000] p-6"
+                         bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                         animate-gradient bg-[length:400%_400%]
+                         text-white shadow-lg z-[10000] p-6 backdrop-filter backdrop-blur-sm"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
             >
@@ -132,7 +135,7 @@ function MobileOffCanvasNav({ dark, toggle }) {
                   </li>
                 ))}
 
-                {/* Dark mode toggle */}
+                {/* Dark mode toggle (only in mobile) */}
                 <li>
                   <button
                     onClick={() => {
@@ -141,7 +144,11 @@ function MobileOffCanvasNav({ dark, toggle }) {
                     }}
                     className="flex items-center gap-3 text-lg"
                   >
-                    {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
+                    {dark ? (
+                      <Moon className="text-2xl" />
+                    ) : (
+                      <Sun className="text-2xl" />
+                    )}
                     Theme
                   </button>
                 </li>
@@ -164,57 +171,35 @@ const HeaderLeft = () => {
       <div className="hidden md:flex md:flex-[0.8]">
         <div
           className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center
-                   border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                   animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
+                     border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                     animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
           <ul className="flex flex-col gap-10">
-            {["Home", "More Info", "Experience", "Projects", "Tech Stack", "Contact"].map(
-              (item) => (
-                <li
-                  key={item}
-                  className="flex items-center justify-start cursor-pointer font-medium
+            {[
+              "Home",
+              "More Info",
+              "Experience",
+              "Projects",
+              "Tech Stack",
+              "Contact",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-center justify-start cursor-pointer font-medium
                              transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
-                >
-                  <BiRightArrowAlt
-                    className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
-                               group-hover:opacity-100 group-hover:translate-0"
-                  />
-                  <a
-                    href={`#${item.replace(/\s+/g, "")}`}
-                    className="transition-all duration-200 hover:translate-x-2"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
-
-            {/* Dark mode toggle */}
-            <li
-              className="md:hidden flex items-center justify-start cursor-pointer font-medium
-                         transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
-            >
-              <BiRightArrowAlt
-                className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
-                           group-hover:opacity-100 group-hover:translate-0"
-              />
-              <button
-                onClick={toggle}
-                className="flex items-center gap-2 transition-all duration-200 hover:translate-x-2"
               >
-<<<<<<< Updated upstream
-                {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
-=======
-                {dark ? (
-                  <Moon className="text-2xl" />
-                ) : (
-                  <Sun className="text-2xl" />
-                )}
-
->>>>>>> Stashed changes
-                <span>Theme</span>
-              </button>
-            </li>
+                <BiRightArrowAlt
+                  className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
+                               group-hover:opacity-100 group-hover:translate-0"
+                />
+                <a
+                  href={`#${item.replace(/\s+/g, "")}`}
+                  className="transition-all duration-200 hover:translate-x-2"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
