@@ -1,158 +1,136 @@
 import React, { useState } from "react";
-import Artwork from "../../assets/artwork2.jpg";
-import {
-  BiLogoGithub,
-  BiLogoInstagram,
-  BiLogoLinkedin,
-  BiPhone,
-  BiEnvelope,
-} from "react-icons/bi";
+import Artwork from "../assets/logo.jpg";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import Typewriter from "typewriter-effect";
+import { motion, AnimatePresence } from "framer-motion";
 
-import Typewriter from "../Animations/Typewriter";
+export default function Home() {
+  const [copied, setCopied] = useState(false);
 
-const Home = () => {
-  const [copiedMessage, setCopiedMessage] = useState("");
-
-  const handleCopy = (text, message) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        setCopiedMessage(message);
-        setTimeout(() => {
-          setCopiedMessage("");
-        }, 1500);
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("pelinariirazvan@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div
+    <section
       id="Home"
-      className="w-full px-4 py-12 md:px-10 lg:px-20 min-h-screen relative bg-white dark:bg-gray-900 transition-colors duration-500"
+      className="relative flex flex-col items-center justify-center py-12 text-center"
     >
-      <div className="flex flex-col items-center justify-center gap-8 p-5 text-center scroll-mt-20 md:scroll-mt-0">
-        <div className="box overflow-visible m-4">
-          <img
-            src={Artwork}
-            alt="Logo"
-            className="w-[250px] sm:w-[300px] rounded-full scroll-mt-14 md:scroll-mt-0 overflow-hidden shadow-lg dark:shadow-purple-900/50"
-          />
-        </div>
+      {/* Avatar with animation */}
+      <motion.img
+        src={Artwork}
+        alt="Logo"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        className="w-[250px] sm:w-[300px] rounded-full shadow-lg dark:shadow-purple-900/50"
+      />
 
-        <div className="space-y-1 sm:space-y-3">
-          <h1
-            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl 
-  drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
-          >
-            Hi, I'm Răzvan</h1> <span>👋</span>
-          <h3
-            className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl 
-  drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
-          >
-            <span>I'm a</span>< Typewriter />
-            <p />
-          </h3>
-          <p className="max-w-[500px] text-sm text-gray-600 dark:text-gray-300">
-            A passionate and detail-oriented junior web developer dedicated to
-            building responsive and user-friendly web applications. This
-            portfolio showcases my projects, demonstrating a strong foundation
-            in HTML, CSS, JavaScript, React.js and Tailwind CSS, and a
-            commitment to creating clean, efficient, and modern code.
-          </p>
-        </div>
+      {/* Heading with waving emoji */}
+      <h1
+        className="mt-6 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+        animate-gradient bg-[length:400%_400%] bg-clip-text text-4xl font-semibold text-transparent 
+        md:text-5xl lg:text-6xl flex items-center justify-center gap-2
+        drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)]
+        dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
+      >
+        Hi, I'm Răzvan
+        <span className="inline-block align-middle text-4xl md:text-5xl lg:text-6xl">
+          👋
+        </span>
+      </h1>
 
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/RazvanPelinari"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-10 w-10 cursor-pointer rounded-full p-2
-            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100
-            transition-all duration-200 hover:scale-110
-            hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white hover:translate-y-1 md:h-12 md:w-12"
-            >
-              <BiLogoGithub className="h-full w-full" />
-            </a>
+      {/* Inline Typewriter */}
+      <h3
+        className="mt-3 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+        animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent 
+        md:text-2xl lg:text-3xl flex items-center justify-center gap-2
+        drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)]
+        dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
+      >
+        <span>I'm a</span>
+        <Typewriter
+          options={{
+            strings: ["Web Developer", "Frontend Developer", "Programmer"],
+            autoStart: true,
+            loop: true,
+          }}
+        />
+      </h3>
 
-            <a
-              href="https://www.linkedin.com/in/razvan-pelinari/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-10 w-10 cursor-pointer rounded-full p-2
-            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100
-            transition-all duration-200 hover:scale-110
-            hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white hover:translate-y-1 md:h-12 md:w-12"
-            >
-              <BiLogoLinkedin className="h-full w-full" />
-            </a>
+      {/* Short bio */}
+      <p className="mt-4 max-w-xl text-base md:text-lg text-gray-700 dark:text-gray-300 mx-auto leading-relaxed">
+        Passionate about crafting modern, performant web apps with{" "}
+        <span className="font-semibold">Next.js, React & Tailwind</span>. I
+        focus on building interactive experiences with clean code and sleek
+        design.
+      </p>
 
-            <a
-              href="https://www.instagram.com/razvan.peli"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-10 w-10 cursor-pointer rounded-full p-2
-            border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100
-            transition-all duration-200 hover:scale-110
-            hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white hover:translate-y-1 md:h-12 md:w-12"
-            >
-              <BiLogoInstagram className="h-full w-full" />
-            </a>
-          </div>
-
-          <div className="flex items-center flex-wrap justify-center gap-3">
-            <div className="relative group flex items-center">
-              <div
-                onClick={() =>
-                  handleCopy("+40729244375", "Phone number copied!")
-                }
-                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100 transition-all duration-500 hover:scale-105 hover:border-fuchsia-500
-   hover:bg-fuchsia-500 hover:text-white p-2 md:p-3"
-              >
-                <BiPhone className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
-                <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
-                  +40729244375
-                </span>
-              </div>
-            </div>
-
-            <div className="relative group flex items-center">
-              <div
-                onClick={() =>
-                  handleCopy(
-                    "razvan.pelinari@gmail.com",
-                    "Email address copied!"
-                  )
-                }
-                className="flex cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-  animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100 transition-all duration-500 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:text-white p-2 md:p-3"
-              >
-                <BiEnvelope className="h-6 w-6 md:h-8 md:w-8 translate-x-1" />
-                <span className="max-w-xs overflow-hidden transition-all duration-1000 pl-2 md:max-w-0 md:group-hover:max-w-xs">
-                  razvan.pelinari@gmail.com
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Social Icons */}
+      <div className="mt-6 flex justify-center gap-6">
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
+        >
+          <FaGithub size={28} />
+        </a>
+        <a
+          href="https://linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
+        >
+          <FaLinkedin size={28} />
+        </a>
+        <a
+          href="https://instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
+        >
+          <FaInstagram size={28} />
+        </a>
       </div>
 
-      {copiedMessage && (
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-4 z-50">
-          <div className="rounded-lg border border-purple-300 bg-white/30 dark:bg-gray-800/50 px-4 py-2 text-sm text-gray-800 dark:text-gray-200 backdrop-blur-md shadow-lg transition-opacity duration-300 animate-fade-in">
-            {copiedMessage}
-          </div>
-        </div>
-      )}
-    </div>
+      {/* Copy Email Button */}
+      <button
+        onClick={handleCopyEmail}
+        className="mt-6 rounded-lg bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
+        animate-gradient bg-[length:400%_400%] px-5 py-2 text-white font-medium shadow-md 
+        hover:scale-105 transition-transform"
+      >
+        Copy Email
+      </button>
+
+      {/* Copy confirmation */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+            className="mt-3 rounded-lg bg-green-500 px-4 py-2 text-white shadow-md"
+          >
+            Email copied!
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CTA Button */}
+      <a
+        href="#Projects"
+        className="mt-8 inline-block rounded-lg bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+        animate-gradient bg-[length:400%_400%] px-6 py-3 font-semibold text-white shadow-md 
+        hover:scale-105 transition-transform"
+      >
+        View My Projects
+      </a>
+    </section>
   );
-};
-export default Home;
+}
+
