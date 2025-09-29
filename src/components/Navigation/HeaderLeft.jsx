@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
-import {
-  BiMenu,
-  BiX,
+  BiRightArrowAlt,
   BiHome,
   BiCode,
   BiBriefcase,
   BiMailSend,
   BiInfoCircle,
   BiBookAlt,
-  BiRightArrowAlt,
+  BiMenu,
+  BiX,
 } from "react-icons/bi";
 import { Sun, Moon } from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 
 const NAV_ITEMS = [
   { href: "#Home", icon: BiHome, label: "Home" },
@@ -30,6 +30,7 @@ const NAV_ITEMS = [
 
 function useDarkMode() {
   const [dark, setDark] = useState(false);
+
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
@@ -57,97 +58,115 @@ function useDarkMode() {
 function MobileOffCanvasNav({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const drawerWidth = 300;
-  const x = useMotionValue(drawerWidth); // start offscreen
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchCurrentX, setTouchCurrentX] = useState(null);
 
   useEffect(() => setMounted(true), []);
-  useEffect(() => {
-    x.set(open ? 0 : drawerWidth); // always sync x with open state
-  }, [open, x]);
 
   const handleTouchStart = (e) => {
-    e.target.startX = e.touches[0].clientX;
+    setTouchStartX(e.touches[0].clientX);
+    setTouchCurrentX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
-    if (e.target.startX === undefined) return;
-    const diff = e.touches[0].clientX - e.target.startX;
-
-    if (!open && e.target.startX < 30) {
-      x.set(Math.min(drawerWidth, drawerWidth - diff));
-    } else if (open) {
-      x.set(Math.min(Math.max(diff, 0), drawerWidth));
-    }
+    if (touchStartX === null) return;
+    setTouchCurrentX(e.touches[0].clientX);
   };
 
-  const handleTouchEnd = (e) => {
-    const currentX = x.get();
-    if (!open) {
-      setOpen(currentX < drawerWidth / 2);
-    } else {
-      setOpen(currentX < drawerWidth / 2 ? false : true);
-    }
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchCurrentX === null) return;
+    const diff = touchStartX - touchCurrentX;
+
+    // Swipe right-to-left → open menu
+    if (!open && diff > 80) setOpen(true);
+    // Swipe left-to-right → close menu
+    if (open && diff < -80) setOpen(false);
+
+    setTouchStartX(null);
+    setTouchCurrentX(null);
   };
 
   if (!mounted) return null;
 
   return createPortal(
-    <>
+    <div className="md:hidden fixed top-0 left-0 right-0 z-[9999]">
+      {/* Top bar */}
+      <div
+        className="flex items-center justify-between px-4 h-14 
+                   bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                   border-b border-purple-400 text-white animate-gradient bg-[length:400%_400%]"
+      >
+        <span className="font-bold text-lg">{`</Razvan>`}</span>
+        <button onClick={() => setOpen(!open)} className="text-3xl">
+          {open ? <BiX /> : <BiMenu />}
+        </button>
+      </div>
+
       <AnimatePresence>
         {open && (
-          <motion.div
-            key="overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-[999]"
-            onClick={() => setOpen(false)}
-          />
+          <>
+            {/* Overlay */}
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black"
+              onClick={() => setOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              key="panel"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 h-full w-64 
+                         bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                         animate-gradient bg-[length:400%_400%]
+                         text-white shadow-lg z-[10000] p-6 backdrop-filter backdrop-blur-sm"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <ul className="flex flex-col gap-6 mt-10">
+                {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 text-lg hover:translate-x-2 transition-transform"
+                    >
+                      <Icon className="text-2xl" />
+                      {label}
+                    </a>
+                  </li>
+                ))}
+
+                {/* Dark mode toggle (mobile only) */}
+                <li>
+                  <button
+                    onClick={() => {
+                      toggle();
+                      setOpen(false);
+                    }}
+                    className="flex items-center gap-3 text-lg"
+                  >
+                    {dark ? (
+                      <Moon className="text-2xl" />
+                    ) : (
+                      <Sun className="text-2xl" />
+                    )}
+                    Theme
+                  </button>
+                </li>
+              </ul>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-
-      <motion.div
-        style={{ x }}
-        className="fixed top-0 left-0 h-full w-[300px] bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 text-white shadow-lg z-[1000] p-6 backdrop-filter backdrop-blur-sm"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="flex justify-between items-center mb-10">
-          <span className="font-bold text-lg">{`</Razvan>`}</span>
-          <button onClick={() => setOpen(!open)} className="text-3xl">
-            {open ? <BiX /> : <BiMenu />}
-          </button>
-        </div>
-
-        <ul className="flex flex-col gap-6">
-          {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
-            <li key={label}>
-              <a
-                href={href}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-3 text-lg hover:translate-x-2 transition-transform"
-              >
-                <Icon className="text-2xl" /> {label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <button
-              onClick={toggle}
-              className="flex items-center gap-3 text-lg"
-            >
-              {dark ? (
-                <Moon className="text-2xl" />
-              ) : (
-                <Sun className="text-2xl" />
-              )}{" "}
-              Theme
-            </button>
-          </li>
-        </ul>
-      </motion.div>
-    </>,
+    </div>,
     document.body
   );
 }
@@ -157,27 +176,29 @@ const HeaderLeft = () => {
 
   return (
     <>
+      {/* Desktop Sidebar */}
       <div className="hidden md:flex md:flex-[0.8]">
-        <div className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm">
+        <div
+          className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center
+                     border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
+                     animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
+        >
           <ul className="flex flex-col gap-10">
-            {[
-              "Home",
-              "More Info",
-              "Experience",
-              "Projects",
-              "Tech Stack",
-              "Contact",
-            ].map((item) => (
+            {NAV_ITEMS.map(({ label }, idx) => (
               <li
-                key={item}
-                className="flex items-center justify-start cursor-pointer font-medium transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
+                key={idx}
+                className="flex items-center justify-start cursor-pointer font-medium
+                           transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
               >
-                <BiRightArrowAlt className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200 group-hover:opacity-100 group-hover:translate-0" />
+                <BiRightArrowAlt
+                  className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
+                             group-hover:opacity-100 group-hover:translate-0"
+                />
                 <a
-                  href={`#${item.replace(/\s+/g, "")}`}
+                  href={`#${label.replace(/\s+/g, "")}`}
                   className="transition-all duration-200 hover:translate-x-2"
                 >
-                  {item}
+                  {label}
                 </a>
               </li>
             ))}
@@ -185,6 +206,7 @@ const HeaderLeft = () => {
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       <MobileOffCanvasNav dark={dark} toggle={toggle} />
     </>
   );
