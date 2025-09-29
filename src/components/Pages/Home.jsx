@@ -47,15 +47,14 @@ const Home = () => {
   animate-gradient bg-[length:400%_400%] bg-clip-text text-4xl font-semibold text-transparent md:text-5xl lg:text-6xl 
   drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
           >
-            Răzvan Pelinari
+            Hi, I'm Răzvan
           </h1>
           <h3
             className="border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
   animate-gradient bg-[length:400%_400%] bg-clip-text text-xl font-semibold text-transparent md:text-2xl lg:text-3xl 
   drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
           >
-            <Typewriter />
-            {"JavaScript | React.js | Tailwind CSS"}
+            I am a < Typewriter />
             <p />
           </h3>
           <p className="max-w-[500px] text-sm text-gray-600 dark:text-gray-300">
