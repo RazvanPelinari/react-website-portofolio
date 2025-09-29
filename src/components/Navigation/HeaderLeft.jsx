@@ -53,8 +53,53 @@ function useDarkMode() {
 function MobileOffCanvasNav({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchCurrentX, setTouchCurrentX] = useState(null);
 
   useEffect(() => setMounted(true), []);
+
+  // Touch gestures for opening/closing
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      setTouchStartX(e.touches[0].clientX);
+      setTouchCurrentX(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+      if (touchStartX === null) return;
+      setTouchCurrentX(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+      if (touchStartX === null || touchCurrentX === null) return;
+
+      const diff = touchStartX - touchCurrentX;
+
+      // Swipe left from left edge → open drawer
+      if (!open && touchStartX < 30 && diff > 50) {
+        setOpen(true);
+      }
+
+      // Swipe right on drawer → close
+      if (open && diff < -50) {
+        setOpen(false);
+      }
+
+      setTouchStartX(null);
+      setTouchCurrentX(null);
+    };
+
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [open, touchStartX, touchCurrentX]);
+
   if (!mounted) return null;
 
   return createPortal(
@@ -71,7 +116,6 @@ function MobileOffCanvasNav({ dark, toggle }) {
         </button>
       </div>
 
-      {/* Overlay + Drawer */}
       <AnimatePresence>
         {open && (
           <>
@@ -85,24 +129,17 @@ function MobileOffCanvasNav({ dark, toggle }) {
               onClick={() => setOpen(false)}
             />
 
-            {/* Drawer with swipe gestures */}
+            {/* Drawer */}
             <motion.div
-              key="drawer"
-              drag="x"
-              dragConstraints={{ left: 0, right: 300 }}
-              dragElastic={0.2}
-              onDragEnd={(event, info) => {
-                if (!open && info.offset.x < -80) setOpen(true); // swipe left to open
-                if (open && info.offset.x > 80) setOpen(false); // swipe right to close
-              }}
+              key="panel"
               initial={{ x: "100%" }}
-              animate={{ x: open ? 0 : "100%" }}
+              animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: "tween", duration: 0.3 }}
               className="fixed top-0 right-0 h-full w-64 
                          bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
-                         animate-gradient bg-[length:400%_400%]
-                         text-white shadow-lg z-[10000] p-6 backdrop-filter backdrop-blur-sm"
+                         animate-gradient bg-[length:400%_400%] text-white shadow-lg z-[10000] p-6
+                         backdrop-filter backdrop-blur-sm"
             >
               <ul className="flex flex-col gap-6 mt-10">
                 {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
@@ -118,7 +155,7 @@ function MobileOffCanvasNav({ dark, toggle }) {
                   </li>
                 ))}
 
-                {/* Dark mode toggle (mobile only) */}
+                {/* Dark mode toggle */}
                 <li>
                   <button
                     onClick={() => {
@@ -158,21 +195,28 @@ const HeaderLeft = () => {
                      animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
           <ul className="flex flex-col gap-10">
-            {NAV_ITEMS.map((item) => (
+            {[
+              "Home",
+              "More Info",
+              "Experience",
+              "Projects",
+              "Tech Stack",
+              "Contact",
+            ].map((item) => (
               <li
-                key={item.label}
+                key={item}
                 className="flex items-center justify-start cursor-pointer font-medium
-                           transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
+                             transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
               >
                 <BiRightArrowAlt
                   className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
-                             group-hover:opacity-100 group-hover:translate-0"
+                               group-hover:opacity-100 group-hover:translate-0"
                 />
                 <a
-                  href={item.href}
+                  href={`#${item.replace(/\s+/g, "")}`}
                   className="transition-all duration-200 hover:translate-x-2"
                 >
-                  {item.label}
+                  {item}
                 </a>
               </li>
             ))}
