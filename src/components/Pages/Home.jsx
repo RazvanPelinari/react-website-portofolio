@@ -65,16 +65,7 @@ const Home = () => {
             </span>
           </h1>
 
-          <h3 className="flex items-center justify-center gap-2 text-xl md:text-2xl lg:text-3xl font-semibold">
-            {/* Fixed "I'm a" */}
-            <span
-              className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
-               animate-gradient bg-[length:400%_400%] bg-clip-text text-transparent 
-               drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] 
-               dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]"
-            >
-              I'm a
-            </span>
+          <h3 className="flex items-center justify-center-safe gap-2 text-xl md:text-2xl lg:text-3xl font-semibold">
             <span
               className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
                animate-gradient bg-[length:400%_400%] bg-clip-text text-transparent 
