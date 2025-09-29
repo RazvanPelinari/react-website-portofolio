@@ -128,8 +128,13 @@ export default function TechLibrary() {
   const moreStack = stackData.filter((item) => !item.main);
 
   return (
-    <section id="TechStack" className="max-w-6xl mx-auto py-16 px-6 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">📚 Tech Stack</h2>
+    <section
+      id="TechStack"
+      className="max-w-6xl mx-auto py-16 px-6 text-center"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-neutral-900 dark:text-neutral-100">
+        📚 Tech Stack
+      </h2>
 
       <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto">
         A collection of languages, frameworks, databases, tools, and platforms I
@@ -142,12 +147,18 @@ export default function TechLibrary() {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 rounded-xl shadow-md bg-white dark:bg-neutral-300 transition text-left"
+            className="flex flex-col items-center p-6 rounded-xl shadow-md 
+                       bg-neutral-100 dark:bg-neutral-900 
+                       text-neutral-900 dark:text-neutral-100 transition"
           >
             <div className="text-5xl mb-4">{tech.icon}</div>
             <h3 className="text-xl font-semibold">{tech.name}</h3>
-            <p className="text-sm text-neutral-500">{tech.category}</p>
-            <p className="mt-2 text-sm">{tech.description}</p>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              {tech.category}
+            </p>
+            <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+              {tech.description}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -165,12 +176,18 @@ export default function TechLibrary() {
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center p-6 rounded-xl shadow-md bg-white dark:bg-neutral-900 transition text-left"
+                className="flex flex-col items-center p-6 rounded-xl shadow-md 
+                           bg-neutral-100 dark:bg-neutral-900 
+                           text-neutral-900 dark:text-neutral-100 transition"
               >
                 <div className="text-4xl mb-3">{tech.icon}</div>
                 <h3 className="text-lg font-semibold">{tech.name}</h3>
-                <p className="text-xs text-neutral-500">{tech.category}</p>
-                <p className="mt-2 text-sm">{tech.description}</p>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                  {tech.category}
+                </p>
+                <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+                  {tech.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -180,10 +197,14 @@ export default function TechLibrary() {
       {/* Toggle button */}
       <button
         onClick={() => setShowMore(!showMore)}
-        className="mt-10 px-6 py-2 rounded-md bg-black text-white dark:bg-white dark:text-black font-medium hover:opacity-80 transition"
+        className="mt-10 px-6 py-2 rounded-md 
+                   bg-neutral-900 text-white 
+                   dark:bg-neutral-100 dark:text-neutral-900 
+                   font-medium hover:opacity-80 transition"
       >
         {showMore ? "View Less" : "View More"}
       </button>
     </section>
   );
 }
+
