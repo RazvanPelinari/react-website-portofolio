@@ -8,7 +8,7 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("pelinariirazvan@gmail.com");
+    navigator.clipboard.writeText("razvanpelinari@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -71,7 +71,7 @@ export default function Home() {
       {/* Social Icons */}
       <div className="mt-6 flex justify-center gap-6">
         <a
-          href="https://github.com/"
+          href="https://github.com/razvanpelinari"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
@@ -79,7 +79,7 @@ export default function Home() {
           <FaGithub size={28} />
         </a>
         <a
-          href="https://linkedin.com/"
+          href="https://linkedin.com/razvanpelinari"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
@@ -87,7 +87,7 @@ export default function Home() {
           <FaLinkedin size={28} />
         </a>
         <a
-          href="https://instagram.com/"
+          href="https://instagram.com/razvan.peli"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-110 hover:shadow-[0_0_10px_rgba(236,72,153,0.7)]"
@@ -133,4 +133,3 @@ export default function Home() {
     </section>
   );
 }
-
