@@ -15,6 +15,7 @@ import {
   BiMailSend,
   BiInfoCircle,
   BiBookAlt,
+  BiRightArrowAlt,
 } from "react-icons/bi";
 import { Sun, Moon } from "lucide-react";
 
@@ -56,54 +57,42 @@ function useDarkMode() {
 function MobileOffCanvasNav({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const x = useMotionValue(300); // start offscreen
   const drawerWidth = 300;
+  const x = useMotionValue(drawerWidth); // start offscreen
 
   useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    x.set(open ? 0 : drawerWidth); // always sync x with open state
+  }, [open, x]);
 
   const handleTouchStart = (e) => {
-    x.set(open ? 0 : drawerWidth); // ensure correct start
     e.target.startX = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
-    const touchX = e.touches[0].clientX;
-    const diff = touchX - e.target.startX;
+    if (e.target.startX === undefined) return;
+    const diff = e.touches[0].clientX - e.target.startX;
 
     if (!open && e.target.startX < 30) {
-      // swiping from left edge to open
-      const newX = Math.max(drawerWidth - diff, 0);
-      x.set(Math.min(drawerWidth, newX));
-    }
-
-    if (open) {
-      // swiping drawer to close
-      const newX = Math.min(Math.max(diff, 0), drawerWidth);
-      x.set(newX);
+      x.set(Math.min(drawerWidth, drawerWidth - diff));
+    } else if (open) {
+      x.set(Math.min(Math.max(diff, 0), drawerWidth));
     }
   };
 
   const handleTouchEnd = (e) => {
     const currentX = x.get();
     if (!open) {
-      if (currentX < drawerWidth / 2) setOpen(true);
-      else x.set(drawerWidth);
+      setOpen(currentX < drawerWidth / 2);
     } else {
-      if (currentX > drawerWidth / 2) setOpen(false);
-      else x.set(0);
+      setOpen(currentX < drawerWidth / 2 ? false : true);
     }
   };
-
-  useEffect(() => {
-    x.set(open ? 0 : drawerWidth);
-  }, [open, x]);
 
   if (!mounted) return null;
 
   return createPortal(
     <>
-      {/* Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -117,7 +106,6 @@ function MobileOffCanvasNav({ dark, toggle }) {
         )}
       </AnimatePresence>
 
-      {/* Drawer */}
       <motion.div
         style={{ x }}
         className="fixed top-0 left-0 h-full w-[300px] bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 text-white shadow-lg z-[1000] p-6 backdrop-filter backdrop-blur-sm"
@@ -131,6 +119,7 @@ function MobileOffCanvasNav({ dark, toggle }) {
             {open ? <BiX /> : <BiMenu />}
           </button>
         </div>
+
         <ul className="flex flex-col gap-6">
           {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
             <li key={label}>
@@ -168,7 +157,6 @@ const HeaderLeft = () => {
 
   return (
     <>
-      {/* Desktop Sidebar */}
       <div className="hidden md:flex md:flex-[0.8]">
         <div className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm">
           <ul className="flex flex-col gap-10">
@@ -197,7 +185,6 @@ const HeaderLeft = () => {
         </div>
       </div>
 
-      {/* Mobile Off-Canvas Navbar */}
       <MobileOffCanvasNav dark={dark} toggle={toggle} />
     </>
   );

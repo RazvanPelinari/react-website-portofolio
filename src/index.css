@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant removed: handled via Tailwind plugin in tailwind.config.cjs
+  Equivalent variant available as `where-dark:` (e.g. `where-dark:bg-black`). */
 
 * {
   font-family: "Inter";
