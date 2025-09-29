@@ -48,13 +48,33 @@ function useDarkMode() {
   return { dark, toggle };
 }
 
-// Mobile Off-Canvas Navbar
 function MobileOffCanvasNav({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // swipe gesture state
+  const [touchStartX, setTouchStartX] = useState(null);
+
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
+
+  // handle touch start
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  // handle touch move
+  const handleTouchMove = (e) => {
+    if (!touchStartX) return;
+    const currentX = e.touches[0].clientX;
+    const diff = touchStartX - currentX;
+
+    // swipe right-to-left to close
+    if (diff > 80) {
+      setOpen(false);
+      setTouchStartX(null);
+    }
+  };
 
   return createPortal(
     <div className="md:hidden fixed top-0 left-0 right-0 z-[9999]">
@@ -71,10 +91,11 @@ function MobileOffCanvasNav({ dark, toggle }) {
         </button>
       </div>
 
-      {/* Overlay */}
+      {/* Overlay + Drawer */}
       <AnimatePresence>
         {open && (
           <>
+            {/* Overlay */}
             <motion.div
               key="overlay"
               initial={{ opacity: 0 }}
@@ -84,16 +105,18 @@ function MobileOffCanvasNav({ dark, toggle }) {
               onClick={() => setOpen(false)}
             />
 
-            {/* Side panel */}
+            {/* Right Drawer */}
             <motion.div
               key="panel"
-              initial={{ x: "-100%" }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
+              exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 left-0 h-full w-64 
+              className="fixed top-0 right-0 h-full w-64 
                          bg-gradient-to-b from-purple-600 via-fuchsia-600 to-purple-700 
                          text-white shadow-lg z-[10000] p-6"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
             >
               <ul className="flex flex-col gap-6 mt-10">
                 {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
