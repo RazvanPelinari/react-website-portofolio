@@ -51,37 +51,11 @@ function useDarkMode() {
 }
 
 function MobileOffCanvasNav({ dark, toggle }) {
+  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const [dragX, setDragX] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(null);
 
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    if (touchStartX === null) return;
-    const currentX = e.touches[0].clientX;
-    const delta = currentX - touchStartX;
-
-    if (!open && delta < 0) {
-      // Swipe right-to-left to open
-      setDragX(Math.max(delta, -300));
-    } else if (open && delta > 0) {
-      // Swipe left-to-right to close
-      setDragX(Math.min(delta, 300));
-    }
-  };
-
-  const handleTouchEnd = () => {
-    if (!open && dragX <= -80) setOpen(true);
-    else if (open && dragX >= 80) setOpen(false);
-    setDragX(0);
-    setTouchStartX(null);
-  };
-
-  const overlayOpacity = open ? 0.5 : Math.min(Math.abs(dragX) / 300 / 2, 0.5);
-  const drawerX = open ? dragX : 300 + dragX;
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return createPortal(
     <div className="md:hidden fixed top-0 left-0 right-0 z-[9999]">
@@ -97,28 +71,38 @@ function MobileOffCanvasNav({ dark, toggle }) {
         </button>
       </div>
 
+      {/* Overlay + Drawer */}
       <AnimatePresence>
-        {(open || dragX !== 0) && (
+        {open && (
           <>
             {/* Overlay */}
             <motion.div
               key="overlay"
-              style={{ opacity: overlayOpacity }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black"
               onClick={() => setOpen(false)}
             />
 
-            {/* Drawer */}
+            {/* Drawer with swipe gestures */}
             <motion.div
               key="drawer"
-              style={{ x: drawerX }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 300 }}
+              dragElastic={0.2}
+              onDragEnd={(event, info) => {
+                if (!open && info.offset.x < -80) setOpen(true); // swipe left to open
+                if (open && info.offset.x > 80) setOpen(false); // swipe right to close
+              }}
+              initial={{ x: "100%" }}
+              animate={{ x: open ? 0 : "100%" }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="fixed top-0 right-0 h-full w-64 
                          bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
                          animate-gradient bg-[length:400%_400%]
                          text-white shadow-lg z-[10000] p-6 backdrop-filter backdrop-blur-sm"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
             >
               <ul className="flex flex-col gap-6 mt-10">
                 {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
@@ -134,7 +118,7 @@ function MobileOffCanvasNav({ dark, toggle }) {
                   </li>
                 ))}
 
-                {/* Dark mode toggle */}
+                {/* Dark mode toggle (mobile only) */}
                 <li>
                   <button
                     onClick={() => {
@@ -174,16 +158,9 @@ const HeaderLeft = () => {
                      animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
           <ul className="flex flex-col gap-10">
-            {[
-              "Home",
-              "More Info",
-              "Experience",
-              "Projects",
-              "Tech Stack",
-              "Contact",
-            ].map((item) => (
+            {NAV_ITEMS.map((item) => (
               <li
-                key={item}
+                key={item.label}
                 className="flex items-center justify-start cursor-pointer font-medium
                            transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
               >
@@ -192,10 +169,10 @@ const HeaderLeft = () => {
                              group-hover:opacity-100 group-hover:translate-0"
                 />
                 <a
-                  href={`#${item.replace(/\s+/g, "")}`}
+                  href={item.href}
                   className="transition-all duration-200 hover:translate-x-2"
                 >
-                  {item}
+                  {item.label}
                 </a>
               </li>
             ))}
