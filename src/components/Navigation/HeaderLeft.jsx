@@ -48,8 +48,8 @@ function useDarkMode() {
   return { dark, toggle };
 }
 
-// Mobile Dropdown Navbar
-function MobileDropdownNav({ dark, toggle }) {
+// Mobile Off-Canvas Navbar
+function MobileOffCanvasNav({ dark, toggle }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -64,52 +64,67 @@ function MobileDropdownNav({ dark, toggle }) {
                    bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
                    border-b border-purple-400 text-white"
       >
-        <span className="font-bold text-lg">Menu</span>
+        <span className="font-bold text-lg">{`</Razvan>`}</span>
 
         <button onClick={() => setOpen(!open)} className="text-3xl">
           {open ? <BiX /> : <BiMenu />}
         </button>
       </div>
 
-      {/* Dropdown */}
+      {/* Overlay */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-600 text-white border-b border-purple-400"
-          >
-            <ul className="flex flex-col gap-4 p-4">
-              {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    onClick={() => setOpen(false)} // close menu on click
-                    className="flex items-center gap-3 text-lg hover:translate-x-2 transition-transform"
-                  >
-                    <Icon className="text-2xl" />
-                    {label}
-                  </a>
-                </li>
-              ))}
+          <>
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black"
+              onClick={() => setOpen(false)}
+            />
 
-              {/* Dark mode toggle */}
-              <li>
-                <button
-                  onClick={() => {
-                    toggle();
-                    setOpen(false);
-                  }}
-                  className="flex items-center gap-3 text-lg"
-                >
-                  {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
-                  Theme
-                </button>
-              </li>
-            </ul>
-          </motion.div>
+            {/* Side panel */}
+            <motion.div
+              key="panel"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+              className="fixed top-0 left-0 h-full w-64 
+                         bg-gradient-to-b from-purple-600 via-fuchsia-600 to-purple-700 
+                         text-white shadow-lg z-[10000] p-6"
+            >
+              <ul className="flex flex-col gap-6 mt-10">
+                {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 text-lg hover:translate-x-2 transition-transform"
+                    >
+                      <Icon className="text-2xl" />
+                      {label}
+                    </a>
+                  </li>
+                ))}
+
+                {/* Dark mode toggle */}
+                <li>
+                  <button
+                    onClick={() => {
+                      toggle();
+                      setOpen(false);
+                    }}
+                    className="flex items-center gap-3 text-lg"
+                  >
+                    {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
+                    Theme
+                  </button>
+                </li>
+              </ul>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>,
@@ -172,8 +187,8 @@ const HeaderLeft = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Navbar */}
-      <MobileDropdownNav dark={dark} toggle={toggle} />
+      {/* Mobile Off-Canvas Navbar */}
+      <MobileOffCanvasNav dark={dark} toggle={toggle} />
     </>
   );
 };
