@@ -191,7 +191,7 @@ const HeaderLeft = () => {
 
             {/* Dark mode toggle */}
             <li
-              className="flex items-center justify-start cursor-pointer font-medium
+              className="md:hidden flex items-center justify-start cursor-pointer font-medium
                          transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
             >
               <BiRightArrowAlt
@@ -202,7 +202,16 @@ const HeaderLeft = () => {
                 onClick={toggle}
                 className="flex items-center gap-2 transition-all duration-200 hover:translate-x-2"
               >
+<<<<<<< Updated upstream
                 {dark ? <Moon className="text-2xl" /> : <Sun className="text-2xl" />}
+=======
+                {dark ? (
+                  <Moon className="text-2xl" />
+                ) : (
+                  <Sun className="text-2xl" />
+                )}
+
+>>>>>>> Stashed changes
                 <span>Theme</span>
               </button>
             </li>
