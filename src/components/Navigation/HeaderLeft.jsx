@@ -96,7 +96,7 @@ function MobileOffCanvasNav({ dark, toggle }) {
                    bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
                    border-b border-purple-400 text-white animate-gradient bg-[length:400%_400%]"
       >
-        <span className="font-bold text-lg">{`</Razvan>`}</span>
+        <span className="font-bold text-lg">{`</Răzvan>`}</span>
         <button onClick={() => setOpen(!open)} className="text-3xl">
           {open ? <BiX /> : <BiMenu />}
         </button>

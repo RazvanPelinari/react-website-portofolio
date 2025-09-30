@@ -1,107 +1,153 @@
-import React from "react";
-import Artwork from "../../assets/artwork2.jpg";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { BookOpen, Code, Rocket } from "lucide-react";
 
-const MoreInfo = () => {
-  return (
-    <div
-      id="MoreInfo"
-      className="w-full px-2 py-12 md:px-4 lg:px-6 min-h-screen scroll-mt-20 md:scroll-mt-0 
-                 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500"
-    >
-      <div className="max-w-5xl mx-auto space-y-12">
-        {/* Main "About Me" Section */}
-        <section className="flex flex-col md:flex-row items-center justify-between gap-10">
-          <div className="md:w-1/2 space-y-4 text-center md:text-left">
-            <h2 className="text-4xl font-medium text-gray-800 dark:text-gray-100 border-b-2 border-purple-400">
-              A Little More About Me
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Hello! I’m a web developer based in Galați, Romania, with a strong
-              focus on building clean, efficient, and user-friendly websites. My
-              journey into coding started with a curiosity about how the web
-              works and quickly developed into a passion for creating thoughtful
-              digital solutions.
-            </p>
-          </div>
+export default function AboutMe() {
+  const [showMore, setShowMore] = useState(false);
 
-          <div className="md:w-1/2 flex justify-center md:justify-end">
-            <div className="box2 overflow-visible m-4">
-              <img
-                src={Artwork}
-                alt="A personal artistic illustration of myself"
-                className="object-cover rounded-full w-60 h-60 overflow-hidden shadow-lg dark:shadow-purple-900/50 transition-shadow duration-500"
-              />
-            </div>
-          </div>
-        </section>
+  const coreSkills = [
+    { name: "JavaScript", level: "Advanced", percent: 90 },
+    { name: "React.js", level: "Advanced", percent: 85 },
+    { name: "TypeScript", level: "Intermediate", percent: 70 },
+    { name: "SCSS", level: "Intermediate", percent: 75 },
+  ];
 
-        <hr className="border-t border-gray-300 dark:border-gray-700" />
+  const extraSkills = [
+    { name: "Docker", level: "Intermediate", percent: 40 },
+    { name: "Node.js", level: "Intermediate", percent: 35 },
+    { name: "MongoDB", level: "Intermediate", percent: 30 },
+  ];
 
-        {/* Skills & Expertise */}
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-purple-800 dark:text-purple-400 border-b border-gray-300 dark:border-gray-700 pb-1">
-            My Skills & Expertise
-          </h2>
-          <div className="text-gray-700 dark:text-gray-300 space-y-4 leading-relaxed">
-            <p>
-              I specialize in creating modern, responsive web applications using{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                React.js
-              </span>
-              . I have a strong understanding of core{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                JavaScript
-              </span>{" "}
-              principles and am adept at building dynamic user interfaces that
-              are both intuitive and visually appealing. For styling, I
-              primarily use{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                Tailwind CSS
-              </span>{" "}
-              to build custom, responsive designs efficiently.
-            </p>
-            <p>
-              My workflow is built on a solid foundation of{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                Git
-              </span>{" "}
-              for version control, and I am comfortable using{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                GitHub
-              </span>{" "}
-              for collaborative projects and code management. I'm a firm
-              believer in clean code and organized development practices.
-            </p>
-          </div>
-        </section>
+  const learningNow = [
+    {
+      name: "Angular",
+      level: "Learning",
+      reason:
+        "I want to understand another major front-end framework and broaden my perspective beyond React. This helps me compare approaches and improve as a well-rounded developer.",
+    },
+    {
+      name: "PostgreSQL",
+      level: "Learning",
+      reason:
+        "To gain stronger experience in relational databases, improve my backend skills, and handle structured data more effectively in full-stack applications.",
+    },
+    {
+      name: "Flutter",
+      level: "Learning",
+      reason:
+        "To expand into cross-platform mobile development and build apps that run seamlessly on both iOS and Android using a single codebase.",
+    },
+  ];
 
-        <hr className="border-t border-gray-300 dark:border-gray-700" />
-
-        {/* Learning Section */}
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-purple-800 dark:text-purple-400 border-b border-gray-300 dark:border-gray-700 pb-1">
-            What I'm Learning Right Now
-          </h2>
-          <div className="text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed">
-            <p>
-              I believe in continuous learning. Currently, I'm diving deep into
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                {" "}
-                TypeScript
-              </span>{" "}
-              to improve the scalability and reliability of my React projects.
-              I'm also exploring{" "}
-              <span className="font-bold text-purple-600 dark:text-purple-400">
-                Docker
-              </span>{" "}
-              to streamline my development workflow and better understand
-              containerization.
-            </p>
-          </div>
-        </section>
+  const renderSkill = (skill) => (
+    <div key={skill.name} className="space-y-1">
+      <div className="flex justify-between text-sm">
+        <span className="font-medium text-gray-700 dark:text-gray-300">
+          {skill.name}
+        </span>
+        <span className="text-purple-600 dark:text-purple-400">
+          {skill.level}
+        </span>
+      </div>
+      <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <motion.div
+          className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+          initial={{ width: 0 }}
+          animate={{ width: `${skill.percent}%` }}
+          transition={{ duration: 1 }}
+        />
       </div>
     </div>
   );
-};
 
-export default MoreInfo;
+  return (
+    <div
+      id="MoreInfo"
+      className="p-6 lg:p-12 max-w-6xl mx-auto space-y-8 scroll-mt-10 md:scroll-mt-0"
+    >
+      {/* Top row: About + Learning */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        {/* About Me */}
+        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-4 flex flex-col h-full">
+          <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-purple-500" />A Little More About
+            Me
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Hello! I’m a web developer based in Galați, Romania, with a strong
+            focus on building clean, efficient, and user-friendly websites.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            My journey into coding started with a curiosity about how the web
+            works and quickly developed into a passion for creating thoughtful
+            digital solutions.
+          </p>
+        </section>
+
+        {/* Learning Now */}
+        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6 flex flex-col h-full">
+          <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
+            <Rocket className="w-6 h-6" />
+            What I’m Learning Right Now
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            I believe in continuous learning. Exploring new tools not only helps
+            me grow technically but also gives me the flexibility to adapt to
+            different project needs. Right now, I’m focusing on technologies
+            that complement my front-end skills and open doors to full-stack and
+            cross-platform development.
+          </p>
+          <ul className="space-y-4">
+            {learningNow.map((tech) => (
+              <li key={tech.name} className="space-y-1">
+                <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span>{tech.name}</span>
+                  <span className="text-purple-600 dark:text-purple-400">
+                    {tech.level}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {tech.reason}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      {/* Skills & Expertise - full width */}
+      <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
+        <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
+          <Code className="w-6 h-6" />
+          My Skills & Expertise
+        </h2>
+        <div className="space-y-4">
+          {coreSkills.map(renderSkill)}
+
+          <AnimatePresence>
+            {showMore &&
+              extraSkills.map((skill, i) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                >
+                  {renderSkill(skill)}
+                </motion.div>
+              ))}
+          </AnimatePresence>
+        </div>
+        <motion.button
+          onClick={() => setShowMore(!showMore)}
+          className="mt-4 text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          {showMore ? "View Less" : "View More"}
+        </motion.button>
+      </section>
+    </div>
+  );
+}

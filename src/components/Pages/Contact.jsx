@@ -51,8 +51,8 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-12 p-4 
-                 scroll-mt-20 md:scroll-mt-0 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 p-4 
+                 scroll-mt-8 md:scroll-mt-0 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
     >
       {/* Floating Success/Error Messages */}
       <AnimatePresence>
@@ -150,7 +150,7 @@ const Contact = () => {
         <hr className="w-full border-t border-gray-300 dark:border-gray-700 mb-4" />
         <p>You can also reach me directly at:</p>
         <p className="mt-2 font-semibold text-gray-800 dark:text-gray-200">
-          Email: razvan.pelinari@gmail.com
+          Email: razvanpelinari@gmail.com
         </p>
         <p className="font-semibold text-gray-800 dark:text-gray-200">
           Phone: +40729244375

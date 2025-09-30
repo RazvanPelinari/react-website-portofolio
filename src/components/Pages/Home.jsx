@@ -155,7 +155,7 @@ const Home = () => {
 
             {/* Download CV */}
             <a
-              href="/cv.pdf"
+              href="src\assets\Razvan_Pelinari_CV.pdf"
               download
               className="flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
                 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]

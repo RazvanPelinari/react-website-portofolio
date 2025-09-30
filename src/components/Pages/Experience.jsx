@@ -5,13 +5,13 @@ const Experience = () => {
     <div
       id="Experience"
       className="flex min-h-screen w-full flex-col items-center justify-center gap-20 
-                 p-14 md:p-20 lg:p-36 scroll-mt-20 md:scroll-mt-0 
+                 p-10 md:p-15 lg:p-20 scroll-mt-20 md:scroll-mt-0 
                  bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
     >
       <h1 className="text-center text-5xl font-light">Experience</h1>
 
       <div className="flex flex-wrap gap-0 md:flex-nowrap md:gap-10 w-full max-w-4xl">
-        <div className="flex-1 space-y-10">
+        <div className="flex-1 space-y-0">
           {/* Experience 1 */}
           <div className="relative space-y-1 border-l-2 border-gray-300 dark:border-gray-700 p-8 text-left transition-colors">
             <h3 className="text-xl md:text-2xl font-semibold">Experience 1</h3>
