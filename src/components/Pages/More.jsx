@@ -68,7 +68,7 @@ export default function AboutMe() {
       {/* Top row: About + Learning */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         {/* About Me */}
-        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-4 flex flex-col h-full transition-colors duration-500">
+        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-4 flex flex-col h-full">
           <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <BookOpen className="w-6 h-6 text-purple-500" />A Little More About
             Me
