@@ -34,6 +34,15 @@ const Projects = () => {
       projectUrl: "https://kulturclothing.netlify.app",
       github: "https://github.com/RazvanPelinari/Kultur-Shop",
     },
+
+    {
+      title: "Pizzeria Next",
+      tech: "Next.js • Tailwind CSS • React Context",
+      desc: "Pizzeria Next is a full-featured, responsive e-commerce application for ordering pizza. It features a modern interface, a functional shopping cart, and a realistic, client-side order tracking page with live status and progress simulation.",
+      projectUrl: "pizzeria-next.netlify.app",
+      github: "https://github.com/razvanpelinari/pizzeria-app",
+    },
+
     {
       title: "Your Project Here",
       tech: "Let's Talk!",
