@@ -59,9 +59,9 @@ const Projects = () => {
     <div
       id="Projects"
       className="min-h-screen w-full flex flex-col 
-                 items-center justify-center gap-20 p-10 md:p-12 xl:p-24 
+                 items-center justify-center gap-6 p-10 md:p-12 xl:p-24 
                  bg-white dark:bg-gray-900 text-black dark:text-white 
-                 transition-colors duration-500 scroll-mt-20 md:scroll-mt-0 "
+                 transition-colors duration-500 scroll-mt-14 md:scroll-mt-20 "
     >
       <h1 className="text-center text-5xl font-light translate-y-0 md:translate-y-[-0px] xl:translate-y-[-140px]">
         Projects
