@@ -24,6 +24,7 @@ const Projects = () => {
              details, contact information, and booking opportunities.`,
       projectUrl: "https://villaotto.netlify.app",
       github: "https://github.com/RazvanPelinari/villa-otto",
+      url: "https://villaotto.netlify.app",
     },
     {
       title: "Kultur Clothing",
@@ -33,6 +34,7 @@ const Projects = () => {
              smooth animations, and responsive layouts.`,
       projectUrl: "https://kulturclothing.netlify.app",
       github: "https://github.com/RazvanPelinari/Kultur-Shop",
+      url: "https://kulturclothing.netlify.app",
     },
 
     {
@@ -41,6 +43,7 @@ const Projects = () => {
       desc: "Pizzeria Next is a full-featured, responsive e-commerce application for ordering pizza. It features a modern interface, a functional shopping cart, and a realistic, client-side order tracking page with live status and progress simulation.",
       projectUrl: "https://pizzeria-next.netlify.app/",
       github: "https://github.com/razvanpelinari/pizzeria-app",
+      url: "https://pizzeria-next.netlify.app",
     },
 
     {
@@ -87,39 +90,53 @@ const Projects = () => {
             </div>
 
             {/* Buttons */}
-            <div className="pt-6 flex flex-wrap justify-center gap-3">
+            <div className="pt-2 flex flex-wrap justify-center items-center gap-1 flex-col">
               {project.projectUrl && (
                 <button
                   onClick={() => handleOpenModal(project.projectUrl)}
                   className="px-5 py-2 rounded-lg text-white bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
                              animate-gradient bg-[length:400%_400%]
-                             shadow-md hover:shadow-lg transition-all duration-200"
+                             shadow-md hover:shadow-lg transition-all duration-200 w-57"
                 >
                   View Project
                 </button>
               )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-lg border border-purple-500 text-purple-600 
+              <div className="pt-2 flex flex-wrap justify-center gap-5">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2 rounded-lg border border-purple-500 text-purple-600 
                              dark:text-purple-400 hover:bg-purple-500 hover:text-white 
                              transition-all duration-200"
-                >
-                  GitHub
-                </a>
-              )}
-              {project.contact && (
-                <a
-                  href={project.contact}
-                  className="px-5 py-2 rounded-lg border border-fuchsia-500 text-fuchsia-600 
+                  >
+                    GitHub
+                  </a>
+                )}
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2 rounded-lg border border-purple-500 text-purple-600 
+                             dark:text-purple-400 hover:bg-purple-500 hover:text-white 
+                             transition-all duration-200"
+                  >
+                    Go to site
+                  </a>
+                )}
+                {project.contact && (
+                  <a
+                    href={project.contact}
+                    className="px-5 py-2 rounded-lg border border-fuchsia-500 text-fuchsia-600 
                              dark:text-fuchsia-400 hover:bg-fuchsia-500 hover:text-white 
                              transition-all duration-200"
-                >
-                  Contact Me
-                </a>
-              )}
+                  >
+                    Contact Me
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         ))}
