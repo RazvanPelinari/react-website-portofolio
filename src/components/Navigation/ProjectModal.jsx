@@ -53,7 +53,7 @@ const ProjectModal = ({ show, onClose, projectUrl }) => {
             exit="closed"
             transition={{ duration: 0.3 }}
             // 🎯 MOBILE HEIGHT ADJUSTMENT: Changed h-[95vh] to h-[90vh] on small screens
-            className="relative w-[95vw] h-[90vh] sm:h-5/6 md:w-3/4 md:h-5/6 bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-[95vw] h-[80vh] sm:h-5/6 md:w-3/4 md:h-5/6 bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header/Nav Section (Top of the Modal) */}
