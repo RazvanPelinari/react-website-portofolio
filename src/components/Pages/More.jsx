@@ -4,6 +4,7 @@ import { BookOpen, Code, Rocket } from "lucide-react";
 
 export default function AboutMe() {
   const [showMore, setShowMore] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const coreSkills = [
     { name: "JavaScript", level: "Advanced", percent: 90 },
@@ -13,10 +14,13 @@ export default function AboutMe() {
   ];
 
   const extraSkills = [
-    { name: "Next.js", level: "Intermediate", percent: 60},
-    { name: "Docker", level: "Intermediate", percent: 50},
+    { name: "Next.js", level: "Intermediate", percent: 60 },
+    { name: "Docker", level: "Intermediate", percent: 50 },
     { name: "Node.js", level: "Intermediate", percent: 55 },
     { name: "MongoDB", level: "Intermediate", percent: 55 },
+    { name: "Netlify", level: "Intermediate", percent: 65 },
+    { name: "Vercel", level: "Intermediate", percent: 65 },
+    { name: "Git & GitHub", level: "Intermediate", percent: 80 },
   ];
 
   const learningNow = [
@@ -86,39 +90,51 @@ export default function AboutMe() {
         </section>
 
         {/* Learning Now Section */}
-        
-    <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6 flex flex-col h-full">
-  <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
-    <Rocket className="w-6 h-6" />
-    What I’m Learning Right Now
-  </h2>
+        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6 flex flex-col h-full">
+          <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
+            <Rocket className="w-6 h-6" />
+            What I’m Learning Right Now
+          </h2>
 
-  <ul className="space-y-4">
-    {learningNow.slice(0, expanded ? learningNow.length : 3).map((tech) => (
-      <li key={tech.name} className="space-y-1">
-        <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
-          <span>{tech.name}</span>
-          <span className="text-purple-600 dark:text-purple-400">
-            {tech.level}
-          </span>
-        </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {tech.reason}
-        </p>
-      </li>
-    ))}
-  </ul>
+          <ul className="space-y-4">
+            <AnimatePresence>
+              {learningNow
+                .slice(0, expanded ? learningNow.length : 3)
+                .map((tech, i) => (
+                  <motion.li
+                    key={tech.name}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    className="space-y-1"
+                  >
+                    <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <span>{tech.name}</span>
+                      <span className="text-purple-600 dark:text-purple-400">
+                        {tech.level}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {tech.reason}
+                    </p>
+                  </motion.li>
+                ))}
+            </AnimatePresence>
+          </ul>
 
-  {learningNow.length > 3 && (
-    <button
-      onClick={() => setExpanded(!expanded)}
-      className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline self-start"
-    >
-      {expanded ? "View Less" : "View More"}
-    </button>
-  )}
-</section>
-
+          {learningNow.length > 3 && (
+            <motion.button
+              onClick={() => setExpanded(!expanded)}
+              className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline self-start"
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              {expanded ? "View Less" : "View More"}
+            </motion.button>
+          )}
+        </section>
+      </div>
 
       {/* Skills & Expertise - full width */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
