@@ -118,8 +118,6 @@ export default function AboutMe() {
         </button>
       )}
     </section>
-  );
-}
 
       {/* Skills & Expertise - full width */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
