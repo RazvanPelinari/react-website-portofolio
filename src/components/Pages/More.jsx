@@ -13,9 +13,10 @@ export default function AboutMe() {
   ];
 
   const extraSkills = [
-    { name: "Docker", level: "Intermediate", percent: 40 },
-    { name: "Node.js", level: "Intermediate", percent: 35 },
-    { name: "MongoDB", level: "Intermediate", percent: 30 },
+    { name: "Next.js", level: "Intermediate", percent: 60
+    { name: "Docker", level: "Intermediate", percent: 50},
+    { name: "Node.js", level: "Intermediate", percent: 55 },
+    { name: "MongoDB", level: "Intermediate", percent: 55 },
   ];
 
   const learningNow = [
@@ -84,36 +85,41 @@ export default function AboutMe() {
           </p>
         </section>
 
-        {/* Learning Now */}
-        <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6 flex flex-col h-full">
-          <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
-            <Rocket className="w-6 h-6" />
-            What I’m Learning Right Now
-          </h2>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            I believe in continuous learning. Exploring new tools not only helps
-            me grow technically but also gives me the flexibility to adapt to
-            different project needs. Right now, I’m focusing on technologies
-            that complement my front-end skills and open doors to full-stack and
-            cross-platform development.
-          </p>
-          <ul className="space-y-4">
-            {learningNow.map((tech) => (
-              <li key={tech.name} className="space-y-1">
-                <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
-                  <span>{tech.name}</span>
-                  <span className="text-purple-600 dark:text-purple-400">
-                    {tech.level}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {tech.reason}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+        {/* Learning Now Section */}
+        
+    <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6 flex flex-col h-full">
+      <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
+        <Rocket className="w-6 h-6" />
+        What I’m Learning Right Now
+      </h2>
+
+      <ul className="space-y-4">
+        {learningNow.slice(0, expanded ? learningNow.length : 3).map((tech) => (
+          <li key={tech.name} className="space-y-1">
+            <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span>{tech.name}</span>
+              <span className="text-purple-600 dark:text-purple-400">
+                {tech.level}
+              </span>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {tech.reason}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      {learningNow.length > 3 && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline self-start"
+        >
+          {expanded ? "View Less" : "View More"}
+        </button>
+      )}
+    </section>
+  );
+}
 
       {/* Skills & Expertise - full width */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
