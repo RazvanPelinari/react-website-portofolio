@@ -2,57 +2,65 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Code, Rocket } from "lucide-react";
 
+// react-icons
+import {
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiSass,
+  SiNextdotjs,
+  SiDocker,
+  SiNodedotjs,
+  SiMongodb,
+  SiNetlify,
+  SiVercel,
+  SiGit,
+  SiGithub,
+  SiAngular,
+  SiPostgresql,
+  SiFlutter,
+  SiVuedotjs,
+  SiPhp,
+} from "react-icons/si";
+
 export default function AboutMe() {
   const [showMore, setShowMore] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const coreSkills = [
-    { name: "JavaScript", level: "Advanced", percent: 90 },
-    { name: "React.js", level: "Advanced", percent: 85 },
-    { name: "TypeScript", level: "Intermediate", percent: 70 },
-    { name: "SCSS", level: "Intermediate", percent: 75 },
+    { name: "JavaScript", level: "Advanced", percent: 90, icon: <SiJavascript className="text-yellow-500 w-5 h-5" /> },
+    { name: "React.js", level: "Advanced", percent: 85, icon: <SiReact className="text-blue-500 w-5 h-5" /> },
+    { name: "TypeScript", level: "Intermediate", percent: 70, icon: <SiTypescript className="text-blue-600 w-5 h-5" /> },
+    { name: "SCSS", level: "Intermediate", percent: 75, icon: <SiSass className="text-pink-400 w-5 h-5" /> },
   ];
 
   const extraSkills = [
-    { name: "Next.js", level: "Intermediate", percent: 60 },
-    { name: "Docker", level: "Intermediate", percent: 50 },
-    { name: "Node.js", level: "Intermediate", percent: 55 },
-    { name: "MongoDB", level: "Intermediate", percent: 55 },
-    { name: "Netlify", level: "Intermediate", percent: 65 },
-    { name: "Vercel", level: "Intermediate", percent: 65 },
-    { name: "Git & GitHub", level: "Intermediate", percent: 80 },
+    { name: "Next.js", level: "Intermediate", percent: 60, icon: <SiNextdotjs className="text-gray-900 dark:text-gray-100 w-5 h-5" /> },
+    { name: "Docker", level: "Intermediate", percent: 50, icon: <SiDocker className="text-blue-400 w-5 h-5" /> },
+    { name: "Node.js", level: "Intermediate", percent: 55, icon: <SiNodedotjs className="text-green-600 w-5 h-5" /> },
+    { name: "MongoDB", level: "Intermediate", percent: 55, icon: <SiMongodb className="text-green-500 w-5 h-5" /> },
+    { name: "Netlify", level: "Intermediate", percent: 65, icon: <SiNetlify className="text-cyan-500 w-5 h-5" /> },
+    { name: "Vercel", level: "Intermediate", percent: 65, icon: <SiVercel className="text-black dark:text-white w-5 h-5" /> },
+    { name: "Git", level: "Intermediate", percent: 80, icon: <SiGit className="text-orange-500 w-5 h-5" /> },
+    { name: "GitHub", level: "Intermediate", percent: 80, icon: <SiGithub className="text-gray-800 dark:text-gray-200 w-5 h-5" /> },
   ];
 
   const learningNow = [
-    {
-      name: "Angular",
-      level: "Learning",
-      reason:
-        "I want to understand another major front-end framework and broaden my perspective beyond React. This helps me compare approaches and improve as a well-rounded developer.",
-    },
-    {
-      name: "PostgreSQL",
-      level: "Learning",
-      reason:
-        "To gain stronger experience in relational databases, improve my backend skills, and handle structured data more effectively in full-stack applications.",
-    },
-    {
-      name: "Flutter",
-      level: "Learning",
-      reason:
-        "To expand into cross-platform mobile development and build apps that run seamlessly on both iOS and Android using a single codebase.",
-    },
+    { name: "Angular", level: "Learning", reason: "Understanding another major front-end framework to broaden perspective.", icon: <SiAngular className="text-red-600 w-5 h-5" /> },
+    { name: "PostgreSQL", level: "Learning", reason: "Strengthening backend with relational databases.", icon: <SiPostgresql className="text-blue-600 w-5 h-5" /> },
+    { name: "Flutter", level: "Learning", reason: "Cross-platform mobile apps with one codebase.", icon: <SiFlutter className="text-sky-500 w-5 h-5" /> },
+    { name: "Vue 3", level: "Learning", reason: "Expanding front-end versatility with another modern framework.", icon: <SiVuedotjs className="text-green-500 w-5 h-5" /> },
+    { name: "PHP", level: "Learning", reason: "Building a stronger backend foundation with a widely-used language.", icon: <SiPhp className="text-indigo-600 w-5 h-5" /> },
   ];
 
   const renderSkill = (skill) => (
     <div key={skill.name} className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium text-gray-700 dark:text-gray-300">
-          {skill.name}
-        </span>
-        <span className="text-purple-600 dark:text-purple-400">
-          {skill.level}
-        </span>
+      <div className="flex justify-between items-center text-sm">
+        <div className="flex items-center gap-2">
+          {skill.icon}
+          <span className="font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
+        </div>
+        <span className="text-purple-600 dark:text-purple-400">{skill.level}</span>
       </div>
       <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
         <motion.div
@@ -75,8 +83,7 @@ export default function AboutMe() {
         {/* About Me */}
         <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-4 flex flex-col h-full">
           <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-500" />A Little More About
-            Me
+            <BookOpen className="w-6 h-6 text-purple-500" />A Little More About Me
           </h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             Hello! I’m a web developer based in Galați, Romania, with a strong
@@ -103,21 +110,20 @@ export default function AboutMe() {
                 .map((tech, i) => (
                   <motion.li
                     key={tech.name}
+                    className="space-y-1"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className="space-y-1"
                   >
-                    <div className="flex justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
-                      <span>{tech.name}</span>
-                      <span className="text-purple-600 dark:text-purple-400">
-                        {tech.level}
-                      </span>
+                    <div className="flex justify-between items-center text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <div className="flex items-center gap-2">
+                        {tech.icon}
+                        <span>{tech.name}</span>
+                      </div>
+                      <span className="text-purple-600 dark:text-purple-400">{tech.level}</span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {tech.reason}
-                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{tech.reason}</p>
                   </motion.li>
                 ))}
             </AnimatePresence>
