@@ -13,7 +13,7 @@ export default function AboutMe() {
   ];
 
   const extraSkills = [
-    { name: "Next.js", level: "Intermediate", percent: 60
+    { name: "Next.js", level: "Intermediate", percent: 60},
     { name: "Docker", level: "Intermediate", percent: 50},
     { name: "Node.js", level: "Intermediate", percent: 55 },
     { name: "MongoDB", level: "Intermediate", percent: 55 },
