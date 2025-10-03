@@ -183,3 +183,8 @@
   position: relative;
   z-index: 1; /* ensure content is above glow */
 }
+
+.box > *:not(.glow),
+.box2 > *:not(.glow) {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
