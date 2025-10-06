@@ -12,12 +12,7 @@ import {
   BiX,
 } from "react-icons/bi";
 import { Sun, Moon } from "lucide-react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
   { href: "#Home", icon: BiHome, label: "Home" },
@@ -173,36 +168,65 @@ function MobileOffCanvasNav({ dark, toggle }) {
 
 const HeaderLeft = () => {
   const { dark, toggle } = useDarkMode();
+  // useActiveSection is now removed
 
   return (
     <>
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex md:flex-[0.8]">
+      <div className="hidden md:flex md:flex-[0.6]">
+        {/* Main Sidebar Container - Set to column layout to stack nav and toggle */}
         <div
-          className="min-h-screen w-full text-white top-0 sticky flex items-center justify-center
+          className="min-h-screen w-full text-white top-0 sticky flex flex-col justify-between items-center py-10
                      border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
                      animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
-          <ul className="flex flex-col gap-10">
-            {NAV_ITEMS.map(({ label }, idx) => (
-              <li
-                key={idx}
-                className="flex items-center justify-start cursor-pointer font-medium
-                           transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl"
-              >
-                <BiRightArrowAlt
-                  className="text-4xl -translate-x-5 opacity-0 transform transition-all duration-200
-                             group-hover:opacity-100 group-hover:translate-0"
-                />
-                <a
-                  href={`#${label.replace(/\s+/g, "")}`}
-                  className="transition-all duration-200 hover:translate-x-2"
+          {/* Navigation List (Pushed to center) */}
+          <div className="flex-1 flex items-center justify-center">
+            <ul className="flex flex-col gap-10">
+              {NAV_ITEMS.map(({ href, icon: Icon, label }, idx) => (
+                <li
+                  key={idx}
+                  className="relative flex cursor-pointer font-medium transition-all duration-200 group text-xl xl:text-3xl"
                 >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+                  {/* ⭐️ Arrow Indicator (Now only relies on group-hover) ⭐️ */}
+                  <BiRightArrowAlt
+                    className="text-4xl absolute right-full mr-4 transform -translate-x-4 opacity-0
+                             transition-all duration-300 text-white 
+                             group-hover:opacity-100 group-hover:translate-x-0 "
+                  />
+
+                  <a
+                    href={href}
+                    // Styling now only relies on hover/active states
+                    className="flex items-center gap-3 transition-all duration-200 
+                                hover:scale-110 active:scale-100"
+                  >
+                    <Icon className="text-3xl xl:text-4xl" />
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Theme Changer (Fixed at the bottom) */}
+          <div className="mt-auto px-4">
+            <button
+              onClick={toggle}
+              className="flex items-center gap-3 text-lg p-2 rounded-full 
+                         bg-white/20 hover:bg-white/25
+                         transition-all duration-300 hover:scale-105 active:scale-100"
+            >
+              {dark ? (
+                <Sun className="text-xl text-white" />
+              ) : (
+                <Moon className="text-xl text-white" />
+              )}
+              <span className="hidden xl:inline">
+                {dark ? "Light Mode" : "Dark Mode"}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

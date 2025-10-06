@@ -1,5 +1,35 @@
 import React from "react";
 
+const experienceData = [
+  {
+    title: "Freelance Full Stack Developer & Personal Projects",
+    company: "Active Development",
+    timeframe: "Jan 2023 - Present (Ongoing)", // Updated timeframe
+    description:
+      "Successfully delivering **full-stack web solutions** for clients and driving my own **personal projects** (like this portfolio). Specializing in modern MERN/Next.js stack applications, I manage the full development lifecycle from design to secure deployment. This hands-on work ensures I am constantly sharp with the latest industry standards.",
+    focus: "MERN Stack, Next.js, Secure APIs, Deployment (Netlify/Vercel)",
+    color: "text-purple-600 dark:text-purple-400",
+  },
+  {
+    title: "Final Year: Computer Science (B.S.)",
+    company: "University Danubius",
+    timeframe: "Oct 2023 - Present (Final Year)", // Updated start year
+    description:
+      "Currently in the final year, building on a strong foundation in **core Computer Science principles**, including algorithms, data structures, and object-oriented programming. University projects involve team collaboration and applying complex logic in C++ and Java, complementing my front-end expertise.",
+    focus: "Software Engineering, Advanced Algorithms, Team Project Management",
+    color: "text-fuchsia-600 dark:text-fuchsia-400",
+  },
+  {
+    title: "Introductory Programming & Logic",
+    company: "Self-Guided Study & Projects",
+    timeframe: "2019 - 2022",
+    description:
+      "The initial phase of my development journey. This period was dedicated to mastering the fundamentals of HTML, CSS, and basic JavaScript. It laid the crucial groundwork for understanding web standards and structure before moving to modern frameworks.",
+    focus: "HTML5, CSS3, Vanilla JavaScript Fundamentals, Web Standards",
+    color: "text-blue-600 dark:text-blue-400",
+  },
+];
+
 const Experience = () => {
   return (
     <div
@@ -8,60 +38,35 @@ const Experience = () => {
                  p-10 md:p-15 lg:p-20 scroll-mt-20 md:scroll-mt-0 
                  bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
     >
-      <h1 className="text-center text-5xl font-light">Experience</h1>
+      <h1 className="text-center text-5xl font-light">Professional Timeline</h1>
 
       <div className="flex flex-wrap gap-0 md:flex-nowrap md:gap-10 w-full max-w-4xl">
         <div className="flex-1 space-y-0">
-          {/* Experience 1 */}
-          <div className="relative space-y-1 border-l-2 border-gray-300 dark:border-gray-700 p-8 text-left transition-colors">
-            <h3 className="text-xl md:text-2xl font-semibold">Experience 1</h3>
-            <p className="font-light text-lg text-gray-600 dark:text-gray-300">
-              University Danubius
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Along university, I have worked on several projects that have
-              allowed me to apply and enhance my web development skills. These
-              projects range from personal websites to collaborative team
-              efforts, showcasing my ability to create responsive and
-              user-friendly web applications.
-            </p>
-            <span className="absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-purple-500"></span>
-          </div>
+          {experienceData.map((exp, index) => (
+            <div
+              key={index}
+              className="relative space-y-1 border-l-2 border-gray-300 dark:border-gray-700 p-8 text-left transition-colors"
+            >
+              <h3 className="text-xl md:text-2xl font-semibold text-purple-600 dark:text-purple-400">
+                {exp.title}
+              </h3>
+              <p className="font-light text-lg text-gray-600 dark:text-gray-300">
+                {exp.company}
+                <span className="text-sm ml-4 font-normal text-fuchsia-500 dark:text-fuchsia-400">
+                  ({exp.timeframe})
+                </span>
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-400 mt-2">
+                {exp.description}
+              </p>
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-500 mt-1">
+                **Focus:** {exp.focus}
+              </p>
 
-          {/* Experience 2 */}
-          <div className="relative space-y-1 border-l-2 border-gray-300 dark:border-gray-700 p-8 text-left transition-colors">
-            <h3 className="text-xl md:text-2xl font-semibold">Experience 2</h3>
-            <p className="font-light text-lg text-gray-600 dark:text-gray-300">
-              Freelancing
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              While freelancing, I have had the opportunity to work with diverse
-              clients, delivering tailored web solutions that meet their
-              specific needs. This experience has honed my skills in client
-              communication, project management, and adapting to various project
-              requirements. As a web developer, I am committed to continuous
-              learning and staying updated with the latest industry trends and
-              technologies to provide the best solutions for my clients.
-            </p>
-            <span className="absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-purple-500"></span>
-          </div>
-
-          {/* Experience 3 */}
-          <div className="relative space-y-1 border-l-2 border-gray-300 dark:border-gray-700 p-8 text-left transition-colors">
-            <h3 className="text-xl md:text-2xl font-semibold">Experience 3</h3>
-            <p className="font-light text-lg text-gray-600 dark:text-gray-300">
-              Personal Projects
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              For personal projects, I have taken the initiative to design and
-              develop various web applications that reflect my creativity and
-              technical skills. These projects serve as a testament to my
-              passion for web development and my ability to bring ideas to life
-              through code. This hands-on experience has been invaluable in my
-              business endeavors.
-            </p>
-            <span className="absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-purple-500"></span>
-          </div>
+              {/* Timeline dot */}
+              <span className="absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-purple-500 ring-4 ring-white dark:ring-gray-900"></span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -22,11 +22,6 @@ function App() {
         <TechStack />
         <Contact />
       </main>
-
-      {/* Dark Mode Toggle (always floating above everything) */}
-      <div className="fixed top-4 right-4 z-[9999] md:translate-y-0 translate-y-8 md:translate-x-0 translate-x-4">
-        <DarkModeToggle />
-      </div>
     </div>
   );
 }
