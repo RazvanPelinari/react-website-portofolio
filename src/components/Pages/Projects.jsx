@@ -143,15 +143,13 @@ const ProjectCard = ({ project, idx, handleOpenModal }) => {
               className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white 
                              bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-600 
                              animate-gradient bg-[length:400%_400%] shadow-xl shadow-fuchsia-500/50
-                             hover:scale-[1.02] active:scale-95 transition-all duration-300 w-full text-center font-bold text-lg"
+                             hover:scale-[1.02] active:scale-95 transition-all duration-300 w-full text-center font-bold text-lg mb-6"
             >
               {primaryActionText}
               {isContactCard ? <BiLinkExternal /> : <BiMouse />}
             </a>
           )}
 
-          {/* ⭐️ SECONDARY ACTIONS ROW (Visit Site and GitHub) ⭐️ */}
-          {/* Only render this container if at least one link is available */}
           {(isLiveSiteAvailable || project.github) && (
             <div
               className={`flex ${
@@ -166,7 +164,7 @@ const ProjectCard = ({ project, idx, handleOpenModal }) => {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-purple-400 text-purple-600 
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full border-2 border-purple-400 text-purple-600 
                                  dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/40
                                  transition-all duration-200 text-sm font-medium flex-1 justify-center" // flex-1 ensures even spacing
                 >

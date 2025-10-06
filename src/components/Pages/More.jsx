@@ -27,28 +27,25 @@ export default function AboutMe() {
   const [showMore, setShowMore] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
+  // Core and extra skills
   const coreSkills = [
     {
       name: "JavaScript",
-      level: "Advanced",
       percent: 90,
       icon: <SiJavascript className="text-yellow-500 w-5 h-5" />,
     },
     {
       name: "React.js",
-      level: "Advanced",
       percent: 85,
       icon: <SiReact className="text-blue-500 w-5 h-5" />,
     },
     {
       name: "TypeScript",
-      level: "Intermediate",
       percent: 70,
       icon: <SiTypescript className="text-blue-600 w-5 h-5" />,
     },
     {
       name: "SCSS",
-      level: "Intermediate",
       percent: 75,
       icon: <SiSass className="text-pink-400 w-5 h-5" />,
     },
@@ -57,7 +54,6 @@ export default function AboutMe() {
   const extraSkills = [
     {
       name: "Next.js",
-      level: "Intermediate",
       percent: 60,
       icon: (
         <SiNextdotjs className="text-gray-900 dark:text-gray-100 w-5 h-5" />
@@ -65,43 +61,36 @@ export default function AboutMe() {
     },
     {
       name: "Docker",
-      level: "Intermediate",
       percent: 50,
       icon: <SiDocker className="text-blue-400 w-5 h-5" />,
     },
     {
       name: "Node.js",
-      level: "Intermediate",
       percent: 55,
       icon: <SiNodedotjs className="text-green-600 w-5 h-5" />,
     },
     {
       name: "MongoDB",
-      level: "Intermediate",
       percent: 55,
       icon: <SiMongodb className="text-green-500 w-5 h-5" />,
     },
     {
       name: "Netlify",
-      level: "Intermediate",
       percent: 65,
       icon: <SiNetlify className="text-cyan-500 w-5 h-5" />,
     },
     {
       name: "Vercel",
-      level: "Intermediate",
       percent: 65,
       icon: <SiVercel className="text-black dark:text-white w-5 h-5" />,
     },
     {
       name: "Git",
-      level: "Intermediate",
       percent: 80,
       icon: <SiGit className="text-orange-500 w-5 h-5" />,
     },
     {
       name: "GitHub",
-      level: "Intermediate",
       percent: 80,
       icon: <SiGithub className="text-gray-800 dark:text-gray-200 w-5 h-5" />,
     },
@@ -142,6 +131,17 @@ export default function AboutMe() {
     },
   ];
 
+  // Function to determine level based on percentage
+  const getLevel = (percent) => {
+    if (percent >= 85) return "Advanced";
+    if (percent >= 65) return "Intermediate";
+    return "Beginner";
+  };
+
+  // Sort skills by percentage descending
+  const sortedCore = [...coreSkills].sort((a, b) => b.percent - a.percent);
+  const sortedExtra = [...extraSkills].sort((a, b) => b.percent - a.percent);
+
   const renderSkill = (skill) => (
     <div key={skill.name} className="space-y-1">
       <div className="flex justify-between items-center text-sm">
@@ -152,7 +152,7 @@ export default function AboutMe() {
           </span>
         </div>
         <span className="text-purple-600 dark:text-purple-400">
-          {skill.level}
+          {getLevel(skill.percent)}
         </span>
       </div>
       <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -240,18 +240,19 @@ export default function AboutMe() {
         </section>
       </div>
 
-      {/* Skills & Expertise - full width */}
+      {/* Skills & Expertise */}
       <section className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg p-8 space-y-6">
         <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center gap-2">
           <Code className="w-6 h-6" />
           My Skills & Expertise
         </h2>
+
         <div className="space-y-4">
-          {coreSkills.map(renderSkill)}
+          {sortedCore.map(renderSkill)}
 
           <AnimatePresence>
             {showMore &&
-              extraSkills.map((skill, i) => (
+              sortedExtra.map((skill, i) => (
                 <motion.div
                   key={skill.name}
                   initial={{ opacity: 0, height: 0 }}
@@ -264,6 +265,7 @@ export default function AboutMe() {
               ))}
           </AnimatePresence>
         </div>
+
         <motion.button
           onClick={() => setShowMore(!showMore)}
           className="mt-4 text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
