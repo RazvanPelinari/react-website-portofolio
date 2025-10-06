@@ -28,13 +28,14 @@ function useDarkMode() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
     if (savedTheme) {
       setDark(savedTheme === "dark");
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
       setDark(prefersDark);
       document.documentElement.classList.toggle("dark", prefersDark);
     }
@@ -58,6 +59,14 @@ function MobileOffCanvasNav({ dark, toggle }) {
 
   useEffect(() => setMounted(true), []);
 
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   const handleTouchStart = (e) => {
     setTouchStartX(e.touches[0].clientX);
     setTouchCurrentX(e.touches[0].clientX);
@@ -71,11 +80,10 @@ function MobileOffCanvasNav({ dark, toggle }) {
   const handleTouchEnd = () => {
     if (touchStartX === null || touchCurrentX === null) return;
     const diff = touchStartX - touchCurrentX;
+    const threshold = window.innerWidth * 0.15;
 
-    // Swipe right-to-left → open menu
-    if (!open && diff > 80) setOpen(true);
-    // Swipe left-to-right → close menu
-    if (open && diff < -80) setOpen(false);
+    if (!open && diff > threshold) setOpen(true);
+    if (open && diff < -threshold) setOpen(false);
 
     setTouchStartX(null);
     setTouchCurrentX(null);
@@ -126,8 +134,14 @@ function MobileOffCanvasNav({ dark, toggle }) {
               onTouchEnd={handleTouchEnd}
             >
               <ul className="flex flex-col gap-6 mt-10">
-                {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
-                  <li key={label}>
+                {NAV_ITEMS.map(({ href, icon: Icon, label }, i) => (
+                  <motion.li
+                    key={label}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 50, opacity: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
                     <a
                       href={href}
                       onClick={() => setOpen(false)}
@@ -136,11 +150,14 @@ function MobileOffCanvasNav({ dark, toggle }) {
                       <Icon className="text-2xl" />
                       {label}
                     </a>
-                  </li>
+                  </motion.li>
                 ))}
 
-                {/* Dark mode toggle (mobile only) */}
-                <li>
+                <motion.li
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: NAV_ITEMS.length * 0.05 }}
+                >
                   <button
                     onClick={() => {
                       toggle();
@@ -148,14 +165,19 @@ function MobileOffCanvasNav({ dark, toggle }) {
                     }}
                     className="flex items-center gap-3 text-lg"
                   >
-                    {dark ? (
-                      <Moon className="text-2xl" />
-                    ) : (
-                      <Sun className="text-2xl" />
-                    )}
+                    <motion.div
+                      animate={{ rotate: dark ? 180 : 0 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {dark ? (
+                        <Moon className="text-2xl" />
+                      ) : (
+                        <Sun className="text-2xl" />
+                      )}
+                    </motion.div>
                     Theme
                   </button>
-                </li>
+                </motion.li>
               </ul>
             </motion.div>
           </>
@@ -168,38 +190,33 @@ function MobileOffCanvasNav({ dark, toggle }) {
 
 const HeaderLeft = () => {
   const { dark, toggle } = useDarkMode();
-  // useActiveSection is now removed
 
   return (
     <>
       {/* Desktop Sidebar */}
       <div className="hidden md:flex md:flex-[0.6]">
-        {/* Main Sidebar Container - Set to column layout to stack nav and toggle */}
         <div
-          className="min-h-screen w-full text-white top-0 sticky flex flex-col justify-between items-center py-10
+          className="min-h-screen w-full text-white sticky top-0 flex flex-col justify-between items-center py-10
                      border-purple-400 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
                      animate-gradient bg-[length:400%_400%] backdrop-filter backdrop-blur-sm"
         >
-          {/* Navigation List (Pushed to center) */}
           <div className="flex-1 flex items-center justify-center">
             <ul className="flex flex-col gap-10">
               {NAV_ITEMS.map(({ href, icon: Icon, label }, idx) => (
                 <li
                   key={idx}
-                  className="relative flex cursor-pointer font-medium transition-all duration-200 group text-xl xl:text-3xl"
+                  className="relative flex cursor-pointer font-medium text-xl xl:text-3xl group"
                 >
-                  {/* ⭐️ Arrow Indicator (Now only relies on group-hover) ⭐️ */}
+                  {/* Arrow */}
                   <BiRightArrowAlt
                     className="text-4xl absolute right-full mr-4 transform -translate-x-4 opacity-0
-                             transition-all duration-300 text-white 
-                             group-hover:opacity-100 group-hover:translate-x-0 "
+                               transition-all duration-300 text-white 
+                               group-hover:opacity-100 group-hover:translate-x-0"
                   />
 
                   <a
                     href={href}
-                    // Styling now only relies on hover/active states
-                    className="flex items-center gap-3 transition-all duration-200 
-                                hover:scale-110 active:scale-100"
+                    className="flex items-center gap-3 transition-all duration-200 hover:scale-110 active:scale-100"
                   >
                     <Icon className="text-3xl xl:text-4xl" />
                     {label}
@@ -209,22 +226,22 @@ const HeaderLeft = () => {
             </ul>
           </div>
 
-          {/* Theme Changer (Fixed at the bottom) */}
-          <div className="mt-auto px-4">
+          <div className="mt-auto px-4 flex flex-col gap-4 items-center">
             <button
               onClick={toggle}
-              className="flex items-center gap-3 text-lg p-2 rounded-full 
-                         bg-white/20 hover:bg-white/25
-                         transition-all duration-300 hover:scale-105 active:scale-100"
+              className="flex items-center gap-3 text-lg p-2 rounded-full bg-white/20 hover:bg-white/25 transition-all"
             >
-              {dark ? (
-                <Sun className="text-xl text-white" />
-              ) : (
-                <Moon className="text-xl text-white" />
-              )}
-              <span className="hidden xl:inline">
-                {dark ? "Light Mode" : "Dark Mode"}
-              </span>
+              <motion.div
+                animate={{ rotate: dark ? 100 : 0, duration: 300 }}
+                transition={{ type: "spring", stiffness: 100, duration: 300 }}
+              >
+                {dark ? (
+                  <Sun className="text-xl text-white" />
+                ) : (
+                  <Moon className="text-xl text-white" />
+                )}
+              </motion.div>
+              <span>{dark ? "Light Mode" : "Dark Mode"}</span>
             </button>
           </div>
         </div>
