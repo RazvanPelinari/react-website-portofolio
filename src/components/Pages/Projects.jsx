@@ -222,11 +222,9 @@ const Projects = () => {
       id="Projects"
       className="min-h-screen w-full flex flex-col items-center justify-start gap-10 p-10 md:p-12 xl:p-24 
                  bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500 
-                 scroll-mt-14 md:scroll-mt-0"
+                 scroll-mt-20 md:scroll-mt-0"
     >
-      <h1 className="text-center text-5xl font-light pt-10">
-        Featured Projects
-      </h1>
+      <h1 className="text-center text-5xl font-light">Featured Projects</h1>
 
       {/* FILTER BUTTONS */}
       <div className="flex flex-wrap justify-center gap-3 w-full max-w-4xl px-4">

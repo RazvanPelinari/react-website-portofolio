@@ -52,7 +52,7 @@ const Contact = () => {
     <div
       id="Contact"
       className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 p-4 
-                 scroll-mt-8 md:scroll-mt-0 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
+                 scroll-mt-20 md:scroll-mt-0 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
     >
       {/* Floating Success/Error Messages */}
       <AnimatePresence>
@@ -85,7 +85,7 @@ const Contact = () => {
       </AnimatePresence>
 
       {/* Heading */}
-      <h1 className="text-center text-5xl md:text-6xl font-light text-purple-600 mb-6 mt-16">
+      <h1 className="text-center text-5xl md:text-6xl font-light text-purple-600">
         Get in Touch
       </h1>
 

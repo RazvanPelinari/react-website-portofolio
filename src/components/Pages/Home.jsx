@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Artwork from "../../assets/artwork2.jpg";
+import resume from "../../assets/Razvan_Pelinari_CV.pdf";
+
 import {
   BiLogoGithub,
   BiLogoInstagram,
@@ -10,24 +12,88 @@ import {
   BiCodeAlt,
 } from "react-icons/bi";
 import Typewriter from "../Animations/Typewriter";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+// Modern gradient button
+const ModernGradientButton = ({
+  icon: Icon,
+  children,
+  onClick,
+  href,
+  download,
+  ariaLabel,
+}) => {
+  const baseClasses = `flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent 
+     bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient 
+     bg-[length:400%_400%] text-white dark:text-gray-100 transition-all duration-300 
+     hover:scale-105 hover:translate-y-0.5 hover:shadow-[0_8px_20px_rgba(147,51,234,0.4)]`;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        download={download}
+        className={baseClasses}
+        aria-label={ariaLabel}
+      >
+        {Icon && <Icon className="text-lg" />} {children}
+      </a>
+    );
+  }
+
+  return (
+    <button onClick={onClick} className={baseClasses} aria-label={ariaLabel}>
+      {Icon && <Icon className="text-lg" />} {children}
+    </button>
+  );
+};
+
+// Copy button with internal feedback
+const CopyButton = ({ icon: Icon, copyText, label }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard
+      .writeText(copyText)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      })
+      .catch((err) => console.error("Failed to copy:", err));
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className={`flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent 
+        bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient 
+        bg-[length:400%_400%] text-white dark:text-gray-100 transition-all duration-300 
+        hover:scale-105 hover:translate-y-0.5 hover:shadow-[0_8px_20px_rgba(147,51,234,0.4)]`}
+    >
+      {Icon && <Icon className="text-lg" />}
+      {copied ? "Copied!" : label}
+    </button>
+  );
+};
 
 const Home = () => {
-  const [copiedMessage, setCopiedMessage] = useState("");
-
-  const handleCopy = (text, message) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        setCopiedMessage(message);
-        setTimeout(() => {
-          setCopiedMessage("");
-        }, 1500);
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-  };
+  const socialLinks = [
+    {
+      href: "https://github.com/RazvanPelinari",
+      icon: BiLogoGithub,
+      label: "GitHub Profile",
+    },
+    {
+      href: "https://www.linkedin.com/in/razvan-pelinari/",
+      icon: BiLogoLinkedin,
+      label: "LinkedIn Profile",
+    },
+    {
+      href: "https://www.instagram.com/razvan.peli",
+      icon: BiLogoInstagram,
+      label: "Instagram Profile",
+    },
+  ];
 
   return (
     <div
@@ -40,11 +106,12 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="box overflow-visible m-4"
+          className="overflow-visible m-4 box"
         >
           <img
             src={Artwork}
-            alt="Logo"
+            alt="Răzvan Pelinari Portrait"
+            loading="lazy"
             className="w-[250px] sm:w-[300px] rounded-full scroll-mt-14 md:scroll-mt-0 overflow-hidden shadow-lg dark:shadow-purple-900/50"
           />
         </motion.div>
@@ -65,13 +132,13 @@ const Home = () => {
             </span>
           </h1>
 
-          <h3 className="flex items-center justify-center-safe gap-2 text-xl md:text-2xl lg:text-3xl font-semibold">
+          <h3 className="flex items-center justify-center gap-2 text-xl md:text-2xl lg:text-3xl font-semibold">
             <span
               className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 
                animate-gradient bg-[length:400%_400%] bg-clip-text text-transparent 
                drop-shadow-[0_-4px_6px_rgba(255,255,255,0.8)] 
                dark:drop-shadow-[0_-4px_6px_rgba(147,51,234,0.3)]
-               inline-block min-w-[180px] text-xl md:text-2xl lg:text-3xl"
+               inline-block min-w-[180px]"
             >
               <Typewriter />
             </span>
@@ -89,25 +156,13 @@ const Home = () => {
         {/* Social Icons */}
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-3">
-            {[
-              {
-                href: "https://github.com/RazvanPelinari",
-                icon: BiLogoGithub,
-              },
-              {
-                href: "https://www.linkedin.com/in/razvan-pelinari/",
-                icon: BiLogoLinkedin,
-              },
-              {
-                href: "https://www.instagram.com/razvan.peli",
-                icon: BiLogoInstagram,
-              },
-            ].map(({ href, icon: Icon }, i) => (
+            {socialLinks.map(({ href, icon: Icon, label }, i) => (
               <a
                 key={i}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={label}
                 className="h-10 w-10 cursor-pointer rounded-full p-2
                   border-2 border-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500
                   animate-gradient bg-[length:400%_400%] text-white dark:text-gray-100
@@ -119,70 +174,36 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Action buttons */}
+          {/* Action Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            {/* Copy Phone */}
-            <button
-              onClick={() => handleCopy("+40729244375", "Phone number copied!")}
-              className=" flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
-                bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
-                text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
-            >
-              <BiPhone className="text-lg" /> Call Me!
-            </button>
-
-            {/* Copy Email */}
-            <button
-              onClick={() =>
-                handleCopy("razvanpelinari@gmail.com", "Email address copied!")
-              }
-              className="flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
-                bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
-                text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
-            >
-              <BiEnvelope className="text-lg" /> Email Me!
-            </button>
-
-            {/* View Projects */}
-            <a
+            <CopyButton
+              icon={BiPhone}
+              copyText="+40729244375"
+              label="Call Me!"
+            />
+            <CopyButton
+              icon={BiEnvelope}
+              copyText="razvanpelinari@gmail.com"
+              label="Email Me!"
+            />
+            <ModernGradientButton
+              icon={BiCodeAlt}
               href="#Projects"
-              className="flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
-                bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
-                text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
+              ariaLabel="View Projects Section"
             >
-              <BiCodeAlt className="text-lg" /> View Projects
-            </a>
-
-            {/* Download CV */}
-            <a
-              href="src\assets\Razvan_Pelinari_CV.pdf"
+              View Projects
+            </ModernGradientButton>
+            <ModernGradientButton
+              icon={BiDownload}
+              href={resume}
               download
-              className="flex items-center gap-2 rounded-full px-4 py-2 border-2 border-transparent
-                bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 animate-gradient bg-[length:400%_400%]
-                text-white dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:translate-y-1"
+              ariaLabel="Download Resume"
             >
-              <BiDownload className="text-lg" /> View Resume
-            </a>
+              View Resume
+            </ModernGradientButton>
           </div>
         </div>
       </div>
-
-      {/* Copy Feedback */}
-      <AnimatePresence>
-        {copiedMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.3 }}
-            className="absolute left-1/2 -translate-x-1/2 bottom-4 z-50"
-          >
-            <div className="rounded-lg border border-purple-300 bg-white/30 dark:bg-gray-800/50 px-4 py-2 text-sm text-gray-800 dark:text-gray-200 backdrop-blur-md shadow-lg">
-              {copiedMessage}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
