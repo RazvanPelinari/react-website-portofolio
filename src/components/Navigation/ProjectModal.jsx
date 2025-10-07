@@ -56,13 +56,13 @@ const ProjectModal = ({ show, onClose, projectUrl }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header/Nav Section (Top of the Modal) */}
-            <div className="flex-shrink-0 p-3 px-4 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-gray-800">Project Demo</h3>
+            <div className="flex-shrink-0 p-3 px-4 bg-gray-800 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-gray-50">Project Demo</h3>
 
               {/* 🎯 CLOSE BUTTON IN NAV: Clean, integrated close button */}
               <button
                 onClick={onClose}
-                className="p-1 w-8 h-8 flex items-center justify-center text-gray-800 text-3xl font-bold rounded-full hover:bg-gray-200 transition-colors"
+                className="p-1 w-8 h-8 flex items-center justify-center text-gray-50 text-3xl font-bold rounded-full hover:bg-gray-50 hover:text-black transition-colors"
                 aria-label="Close Project Demo"
               >
                 &times;
